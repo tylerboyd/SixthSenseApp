@@ -22,13 +22,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate: started.");
 
-        backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
+        backgroundImage = findViewById(R.id.backgroundImage);
 
         int imageResource = getResources().getIdentifier("@drawable/startscreen", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
 
-        loginButton = (Button) findViewById(R.id.loginButton);
-        setupButton = (Button) findViewById(R.id.setupButton);
+        loginButton = findViewById(R.id.loginButton);
+        setupButton = findViewById(R.id.setupButton);
 
         loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
