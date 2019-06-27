@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
     private Button loginButton;
     private Button setupButton;
     private ImageView backgroundImage;
@@ -20,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d(TAG, "onCreate: started.");
 
         backgroundImage = findViewById(R.id.backgroundImage);
 
