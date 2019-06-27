@@ -3,11 +3,9 @@ package com.example.sixthsenseapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setupButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(MainActivity.this, SetupActivity.class);
+                Intent intent = new Intent(MainActivity.this, SetupUserType.class);
                 startActivity(intent);
             }
         });
