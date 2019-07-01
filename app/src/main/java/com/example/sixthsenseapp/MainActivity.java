@@ -19,12 +19,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         backgroundImage = findViewById(R.id.backgroundImage);
+        loginButton = findViewById(R.id.loginButton);
+        setupButton = findViewById(R.id.setupButton);
 
         int imageResource = getResources().getIdentifier("@drawable/startscreen", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
-
-        loginButton = findViewById(R.id.loginButton);
-        setupButton = findViewById(R.id.setupButton);
 
         loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -41,6 +40,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }
