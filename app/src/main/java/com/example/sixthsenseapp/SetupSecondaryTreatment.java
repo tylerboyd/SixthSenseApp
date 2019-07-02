@@ -9,48 +9,48 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class SetupPrimaryTreatment extends AppCompatActivity {
+public class SetupSecondaryTreatment extends AppCompatActivity {
 
     private ImageView backgroundImage;
     private Button nextButton;
     private Button backButton;
     private Button glucoseTabletButton;
-    private Button confectioneryButton;
+    private Button glucoseGelButton;
     private Button sugaryDrinkButton;
     private TextView otherText;
-    private String primaryTreatment = "";
+    private String secondaryTreatment = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setup_primary_treatment);
+        setContentView(R.layout.activity_setup_secondary_treatment);
 
         backgroundImage = findViewById(R.id.backgroundImage);
         nextButton = findViewById(R.id.nextButton);
         backButton = findViewById(R.id.backButton);
         glucoseTabletButton = findViewById(R.id.glucoseTablet);
-        confectioneryButton = findViewById(R.id.confectionery);
+        glucoseGelButton = findViewById(R.id.glucoseGel);
         sugaryDrinkButton = findViewById(R.id.sugaryDrink);
         otherText = findViewById(R.id.other);
 
-        int imageResource = getResources().getIdentifier("@drawable/primarytreatmentsetup", null, this.getPackageName());
+        int imageResource = getResources().getIdentifier("@drawable/secondarytreatmentsetup", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
 
         nextButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 //Gets text from other field
-                primaryTreatment = otherText.getText().toString();
+                secondaryTreatment = otherText.getText().toString();
 
-                Intent intent = new Intent(SetupPrimaryTreatment.this, SetupSecondaryTreatment.class);
-                startActivity(intent);
+                //Intent intent = new Intent(SetupSecondaryTreatment.this, SetupWaitTimer.class);
+                //startActivity(intent);
             }
         });
 
         backButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(SetupPrimaryTreatment.this, SetupBloodSugar.class);
+                Intent intent = new Intent(SetupSecondaryTreatment.this, SetupPrimaryTreatment.class);
                 startActivity(intent);
             }
         });
@@ -58,28 +58,28 @@ public class SetupPrimaryTreatment extends AppCompatActivity {
         glucoseTabletButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                primaryTreatment = "Glucose Tablet";
+                secondaryTreatment = "Glucose Tablet";
             }
         });
 
-        confectioneryButton.setOnClickListener(new View.OnClickListener() {
+        glucoseGelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                primaryTreatment = "Confectionery";
+                secondaryTreatment = "Glucose Gel";
             }
         });
 
         sugaryDrinkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                primaryTreatment = "Sugary Drink";
+                secondaryTreatment = "Sugary Drink";
             }
         });
 
         otherText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                primaryTreatment = "";
+                secondaryTreatment = "";
             }
         });
     }
