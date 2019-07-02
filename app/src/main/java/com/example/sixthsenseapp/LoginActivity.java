@@ -24,10 +24,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         backgroundImage = findViewById(R.id.backgroundImage);
-        email = (EditText)findViewById(R.id.emailField);
-        password = (EditText)findViewById(R.id.passwordField);
-        loginButton = (Button)findViewById(R.id.loginButton);
-        errorMessage = (TextView)findViewById(R.id.errorMessage);
+        email = findViewById(R.id.emailField);
+        password = findViewById(R.id.passwordField);
+        loginButton = findViewById(R.id.loginButton);
+        errorMessage = findViewById(R.id.errorMessage);
 
         int imageResource = getResources().getIdentifier("@drawable/loginbackground", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         }
         else{
             Log.i("LoginFailure", "Incorrect Email or Password!");
-            errorMessage.setText("Incorrect email or password!");
+            errorMessage.setText("Incorrect email address or password!");
         }
     }
 }
