@@ -25,13 +25,13 @@ public class SetupPrimaryTreatment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_primary_treatment);
 
-        backgroundImage = findViewById(R.id.backgroundImage);
-        nextButton = findViewById(R.id.nextButton);
-        backButton = findViewById(R.id.backButton);
-        glucoseTabletButton = findViewById(R.id.glucoseTablet);
-        confectioneryButton = findViewById(R.id.confectionery);
-        sugaryDrinkButton = findViewById(R.id.sugaryDrink);
-        otherText = findViewById(R.id.other);
+        backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
+        nextButton = (Button) findViewById(R.id.nextButton);
+        backButton = (Button) findViewById(R.id.backButton);
+        glucoseTabletButton = (Button) findViewById(R.id.glucoseTablet);
+        confectioneryButton = (Button) findViewById(R.id.confectionery);
+        sugaryDrinkButton = (Button) findViewById(R.id.sugaryDrink);
+        otherText = (TextView) findViewById(R.id.other);
 
         int imageResource = getResources().getIdentifier("@drawable/primarytreatmentsetup", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);

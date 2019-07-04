@@ -1,6 +1,7 @@
 package com.example.sixthsenseapp;
 
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,16 +33,16 @@ public class SetupBloodSugar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_blood_sugar);
 
-        backgroundImage = findViewById(R.id.backgroundImage);
-        addUpperLimit = findViewById(R.id.addUpperLimit);
-        subtractUpperLimit = findViewById(R.id.subtractUpperLimit);
-        addLowerLimit = findViewById(R.id.addLowerLimit);
-        subtractLowerLimit = findViewById(R.id.subtractLowerLimit);
-        nextButton = findViewById(R.id.nextButton);
-        backButton = findViewById(R.id.backButton);
-        upperLimitText = findViewById(R.id.upperLimit);
-        lowerLimitText = findViewById(R.id.lowerLimit);
-        errorMessage = findViewById(R.id.errorMessage);
+        backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
+        addUpperLimit = (Button) findViewById(R.id.addUpperLimit);
+        subtractUpperLimit = (Button) findViewById(R.id.subtractUpperLimit);
+        addLowerLimit = (Button) findViewById(R.id.addLowerLimit);
+        subtractLowerLimit = (Button) findViewById(R.id.subtractLowerLimit);
+        nextButton = (Button) findViewById(R.id.nextButton);
+        backButton = (Button) findViewById(R.id.backButton);
+        upperLimitText = (TextView) findViewById(R.id.upperLimit);
+        lowerLimitText = (TextView) findViewById(R.id.lowerLimit);
+        errorMessage = (TextView) findViewById(R.id.errorMessage);
 
         int imageResource = getResources().getIdentifier("@drawable/bloodsugarsetup", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
@@ -106,8 +107,14 @@ public class SetupBloodSugar extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(SetupBloodSugar.this, SetupUserType.class);
-                startActivity(intent);
+                if(SetupUserType.getUserType().equals("User")){
+                    Intent intent = new Intent(SetupBloodSugar.this, SetupUserInfo2.class);
+                    startActivity(intent);
+                }
+                else if(SetupUserType.getUserType().equals("Caregiver")){
+                    Intent intent = new Intent(SetupBloodSugar.this, SetupCaregiverInfo.class);
+                    startActivity(intent);
+                }
             }
         });
     }
