@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SetupSecondaryTreatment"></activity>
+        <activity android:name=".SetupUserInfo2"></activity>
+        <activity android:name=".Dashboard" />
+        <activity android:name=".SetupCaregiverInfo" />
+        <activity android:name=".SetupUserInfo" />
+        <activity android:name=".SetupSecondaryTreatment" />
         <activity android:name=".SetupPrimaryTreatment" />
         <activity android:name=".SetupBloodSugar" />
         <activity android:name=".SetupUserType" />
