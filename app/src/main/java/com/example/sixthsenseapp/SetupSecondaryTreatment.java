@@ -42,8 +42,8 @@ public class SetupSecondaryTreatment extends AppCompatActivity {
                 //Gets text from other field
                 secondaryTreatment = otherText.getText().toString();
 
-                //Intent intent = new Intent(SetupSecondaryTreatment.this, SetupWaitTimer.class);
-                //startActivity(intent);
+                Intent intent = new Intent(SetupSecondaryTreatment.this, SetupWaitTimer.class);
+                startActivity(intent);
             }
         });
 

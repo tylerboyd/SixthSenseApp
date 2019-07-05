@@ -3,21 +3,25 @@ package com.example.sixthsenseapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 public class SetupPrimaryTreatment extends AppCompatActivity {
 
     private ImageView backgroundImage;
     private Button nextButton;
     private Button backButton;
-    private Button glucoseTabletButton;
-    private Button confectioneryButton;
-    private Button sugaryDrinkButton;
-    private TextView otherText;
+    private ToggleButton glucoseTabletButton;
+    private ToggleButton confectioneryButton;
+    private ToggleButton sugaryDrinkButton;
+    private EditText otherText;
     private String primaryTreatment = "";
 
     @Override
@@ -28,10 +32,10 @@ public class SetupPrimaryTreatment extends AppCompatActivity {
         backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
         nextButton = (Button) findViewById(R.id.nextButton);
         backButton = (Button) findViewById(R.id.backButton);
-        glucoseTabletButton = (Button) findViewById(R.id.glucoseTablet);
-        confectioneryButton = (Button) findViewById(R.id.confectionery);
-        sugaryDrinkButton = (Button) findViewById(R.id.sugaryDrink);
-        otherText = (TextView) findViewById(R.id.other);
+        glucoseTabletButton = (ToggleButton) findViewById(R.id.glucoseTablet);
+        confectioneryButton = (ToggleButton) findViewById(R.id.confectionery);
+        sugaryDrinkButton = (ToggleButton) findViewById(R.id.sugaryDrink);
+        otherText = (EditText) findViewById(R.id.other);
 
         int imageResource = getResources().getIdentifier("@drawable/primarytreatmentsetup", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
@@ -42,8 +46,10 @@ public class SetupPrimaryTreatment extends AppCompatActivity {
                 //Gets text from other field
                 primaryTreatment = otherText.getText().toString();
 
-                Intent intent = new Intent(SetupPrimaryTreatment.this, SetupSecondaryTreatment.class);
-                startActivity(intent);
+                if((glucoseTabletButton.isChecked()) || (confectioneryButton.isChecked()) || (sugaryDrinkButton.isChecked()) || (!TextUtils.isEmpty(primaryTreatment)) ){
+                    Intent intent = new Intent(SetupPrimaryTreatment.this, SetupSecondaryTreatment.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -55,24 +61,33 @@ public class SetupPrimaryTreatment extends AppCompatActivity {
             }
         });
 
-        glucoseTabletButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                primaryTreatment = "Glucose Tablet";
+        glucoseTabletButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    primaryTreatment = "Glucose Tablet";
+                    confectioneryButton.setChecked(false);
+                    sugaryDrinkButton.setChecked(false);
+                }
             }
         });
 
-        confectioneryButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                primaryTreatment = "Confectionery";
+        confectioneryButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    primaryTreatment = "Confectionery";
+                    glucoseTabletButton.setChecked(false);
+                    sugaryDrinkButton.setChecked(false);
+                }
             }
         });
 
-        sugaryDrinkButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                primaryTreatment = "Sugary Drink";
+        sugaryDrinkButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    primaryTreatment = "Sugary Drink";
+                    glucoseTabletButton.setChecked(false);
+                    confectioneryButton.setChecked(false);
+                }
             }
         });
 
