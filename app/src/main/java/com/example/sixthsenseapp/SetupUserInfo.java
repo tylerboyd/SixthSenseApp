@@ -1,10 +1,12 @@
 package com.example.sixthsenseapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,12 +25,14 @@ public class SetupUserInfo extends AppCompatActivity {
     private EditText emailAddressField;
     private EditText passwordField;
     private EditText retypePasswordField;
+    private EditText phoneNumberField;
     private TextView errorMessage;
     private String firstName = "";
     private String lastName = "";
     private String emailAddress = "";
     private String password = "";
     private String retypePassword = "";
+    private String phoneNumber = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,7 @@ public class SetupUserInfo extends AppCompatActivity {
         emailAddressField = (EditText) findViewById(R.id.emailField);
         passwordField = (EditText) findViewById(R.id.passwordField);
         retypePasswordField = (EditText) findViewById(R.id.retypePasswordField);
+        phoneNumberField = (EditText) findViewById(R.id.phoneNumberField);
         errorMessage = (TextView) findViewById(R.id.errorMessage);
 
         int imageResource = getResources().getIdentifier("@drawable/loginbackground", null, this.getPackageName());
@@ -57,17 +62,27 @@ public class SetupUserInfo extends AppCompatActivity {
                 emailAddress = emailAddressField.getText().toString();
                 password = passwordField.getText().toString();
                 retypePassword = retypePasswordField.getText().toString();
+                phoneNumber = phoneNumberField.getText().toString();
 
-                if((!TextUtils.isEmpty(firstName))&& (!TextUtils.isEmpty(lastName)) && (!TextUtils.isEmpty(emailAddress)) && (!TextUtils.isEmpty(password)) && (!TextUtils.isEmpty(retypePassword))){
+                if((!TextUtils.isEmpty(firstName))&& (!TextUtils.isEmpty(lastName)) && (!TextUtils.isEmpty(emailAddress)) && (!TextUtils.isEmpty(password))
+                        && (!TextUtils.isEmpty(retypePassword)) && (!TextUtils.isEmpty(phoneNumber))){
                     if(password.equals(retypePassword)){
-                        Intent intent = new Intent(SetupUserInfo.this, SetupUserInfo2.class);
-                        startActivity(intent);
+                        if (SetupUserType.getUserType().equals("User")) {
+                            Intent intent = new Intent(SetupUserInfo.this, SetupUserInfo2.class);
+                            startActivity(intent);
+                        }
+                        else if(SetupUserType.getUserType().equals("Caregiver")){
+                            Intent intent = new Intent(SetupUserInfo.this, SetupCaregiverInfo.class);
+                            startActivity(intent);
+                        }
                     }
                     else{
+                        errorMessage.setTextColor(Color.RED);
                         errorMessage.setText("Passwords do not match!");
                     }
                 }
                 else{
+                    errorMessage.setTextColor(Color.RED);
                     errorMessage.setText("Please fill out all fields!");
                 }
             }

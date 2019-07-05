@@ -37,16 +37,8 @@ public class SetupUserType extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                if(mineButton.isChecked() || someoneElseButton.isChecked()){
-                    if(mineButton.isChecked()){
-                        Intent intent = new Intent(SetupUserType.this, SetupUserInfo.class);
-                        startActivity(intent);
-                    }
-                    else if(someoneElseButton.isChecked()){
-                        Intent intent = new Intent(SetupUserType.this, SetupCaregiverInfo.class);
-                        startActivity(intent);
-                    }
-                }
+                Intent intent = new Intent(SetupUserType.this, SetupUserInfo.class);
+                startActivity(intent);
             }
         });
 

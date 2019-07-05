@@ -1,6 +1,7 @@
 package com.example.sixthsenseapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -48,11 +49,10 @@ public class LoginActivity extends AppCompatActivity {
         if((userEmail.equals(storedEmail)) && (userPassword.equals(storedPassword))){
             Intent intent =  new Intent(LoginActivity.this, Dashboard.class);
             startActivity(intent);
-            Log.i("LoginSuccess", "Correct Email and Password!");
             errorMessage.setText("");
         }
         else{
-            Log.i("LoginFailure", "Incorrect Email or Password!");
+            errorMessage.setTextColor(Color.RED);
             errorMessage.setText("Incorrect email address or password!");
         }
     }

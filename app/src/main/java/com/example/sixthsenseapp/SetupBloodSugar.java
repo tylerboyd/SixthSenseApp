@@ -1,6 +1,7 @@
 package com.example.sixthsenseapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,7 +50,6 @@ public class SetupBloodSugar extends AppCompatActivity {
 
         upperLimitText.setText(""+upperLimit);
         lowerLimitText.setText(""+lowerLimit);
-        errorMessage.setText("");
 
         addUpperLimit.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -122,6 +122,7 @@ public class SetupBloodSugar extends AppCompatActivity {
     private boolean validateData(float uLimit, float lLimit){
         boolean proceed = false;
         if(lowerLimit > upperLimit){
+            errorMessage.setTextColor(Color.RED);
             errorMessage.setText("Lower limit cannot be greater than upper limit!");
         }
         else{
