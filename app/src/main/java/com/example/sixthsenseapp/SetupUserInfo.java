@@ -5,11 +5,14 @@ import android.graphics.Color;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,8 +21,8 @@ import org.w3c.dom.Text;
 public class SetupUserInfo extends AppCompatActivity {
 
     private ImageView backgroundImage;
-    private Button nextButton;
-    private Button backButton;
+    private ImageButton nextButton;
+    private ImageButton backButton;
     private EditText firstNameField;
     private EditText lastNameField;
     private EditText emailAddressField;
@@ -40,8 +43,8 @@ public class SetupUserInfo extends AppCompatActivity {
         setContentView(R.layout.activity_setup_user_info);
 
         backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
-        nextButton = (Button) findViewById(R.id.nextButton);
-        backButton = (Button) findViewById(R.id.backButton);
+        nextButton = (ImageButton) findViewById(R.id.nextButton);
+        backButton = (ImageButton) findViewById(R.id.backButton);
         firstNameField = (EditText) findViewById(R.id.firstNameField);
         lastNameField = (EditText) findViewById(R.id.lastNameField);
         emailAddressField = (EditText) findViewById(R.id.emailField);
@@ -52,6 +55,110 @@ public class SetupUserInfo extends AppCompatActivity {
 
         int imageResource = getResources().getIdentifier("@drawable/loginbackground", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
+
+        nextButton.setEnabled(false);
+
+        firstNameField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                checkTextFields();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        lastNameField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                checkTextFields();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        emailAddressField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                checkTextFields();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        passwordField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                checkTextFields();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        retypePasswordField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                checkTextFields();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        phoneNumberField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                checkTextFields();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         nextButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -64,26 +171,19 @@ public class SetupUserInfo extends AppCompatActivity {
                 retypePassword = retypePasswordField.getText().toString();
                 phoneNumber = phoneNumberField.getText().toString();
 
-                if((!TextUtils.isEmpty(firstName))&& (!TextUtils.isEmpty(lastName)) && (!TextUtils.isEmpty(emailAddress)) && (!TextUtils.isEmpty(password))
-                        && (!TextUtils.isEmpty(retypePassword)) && (!TextUtils.isEmpty(phoneNumber))){
-                    if(password.equals(retypePassword)){
-                        if (SetupUserType.getUserType().equals("User")) {
-                            Intent intent = new Intent(SetupUserInfo.this, SetupUserInfo2.class);
-                            startActivity(intent);
-                        }
-                        else if(SetupUserType.getUserType().equals("Caregiver")){
-                            Intent intent = new Intent(SetupUserInfo.this, SetupCaregiverInfo.class);
-                            startActivity(intent);
-                        }
+                if(password.equals(retypePassword)){
+                    if (SetupUserType.getUserType().equals("User")) {
+                        Intent intent = new Intent(SetupUserInfo.this, SetupUserInfo2.class);
+                        startActivity(intent);
                     }
-                    else{
-                        errorMessage.setTextColor(Color.RED);
-                        errorMessage.setText("Passwords do not match!");
+                    else if(SetupUserType.getUserType().equals("Caregiver")){
+                        Intent intent = new Intent(SetupUserInfo.this, SetupCaregiverInfo.class);
+                        startActivity(intent);
                     }
                 }
                 else{
                     errorMessage.setTextColor(Color.RED);
-                    errorMessage.setText("Please fill out all fields!");
+                    errorMessage.setText("Passwords do not match!");
                 }
             }
         });
@@ -95,5 +195,15 @@ public class SetupUserInfo extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void checkTextFields(){
+        if((!firstNameField.getText().toString().isEmpty()) && (!lastNameField.getText().toString().isEmpty()) && (!emailAddressField.getText().toString().isEmpty())
+                && (!passwordField.getText().toString().isEmpty()) && (!retypePasswordField.getText().toString().isEmpty()) && (!phoneNumberField.getText().toString().isEmpty())){
+            nextButton.setEnabled(true);
+        }
+        else{
+            nextButton.setEnabled(false);
+        }
     }
 }

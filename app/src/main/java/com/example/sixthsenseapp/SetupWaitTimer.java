@@ -5,14 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SetupWaitTimer extends AppCompatActivity {
 
     private ImageView backgroundImage;
-    private Button nextButton;
-    private Button backButton;
+    private ImageButton nextButton;
+    private ImageButton backButton;
     private Button addTime;
     private Button subtractTime;
     private TextView waitTimeText;
@@ -24,8 +25,8 @@ public class SetupWaitTimer extends AppCompatActivity {
         setContentView(R.layout.activity_setup_wait_timer);
 
         backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
-        nextButton = (Button) findViewById(R.id.nextButton);
-        backButton = (Button) findViewById(R.id.backButton);
+        nextButton = (ImageButton) findViewById(R.id.nextButton);
+        backButton = (ImageButton) findViewById(R.id.backButton);
         addTime = (Button) findViewById(R.id.addTime);
         subtractTime = (Button) findViewById(R.id.subtractTime);
         waitTimeText = (TextView) findViewById(R.id.timerText);

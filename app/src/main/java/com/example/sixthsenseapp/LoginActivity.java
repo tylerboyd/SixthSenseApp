@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,7 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     private ImageView backgroundImage;
     private EditText emailField;
     private EditText passwordField;
-    private Button loginButton;
+    private ImageButton loginButton;
     private TextView errorMessage;
     private String storedEmail = "test";
     private String storedPassword = "test";
@@ -30,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
         emailField = (EditText) findViewById(R.id.emailField);
         passwordField = (EditText) findViewById(R.id.passwordField);
-        loginButton = (Button) findViewById(R.id.loginButton);
+        loginButton = (ImageButton) findViewById(R.id.loginButton);
         errorMessage = (TextView) findViewById(R.id.errorMessage);
 
         int imageResource = getResources().getIdentifier("@drawable/loginbackground", null, this.getPackageName());
