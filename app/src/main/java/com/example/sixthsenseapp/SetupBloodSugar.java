@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,8 +22,8 @@ public class SetupBloodSugar extends AppCompatActivity {
     private Button subtractUpperLimit;
     private Button addLowerLimit;
     private Button subtractLowerLimit;
-    private Button nextButton;
-    private Button backButton;
+    private ImageButton nextButton;
+    private ImageButton backButton;
     private TextView upperLimitText;
     private TextView lowerLimitText;
     private TextView errorMessage;
@@ -39,14 +40,16 @@ public class SetupBloodSugar extends AppCompatActivity {
         subtractUpperLimit = (Button) findViewById(R.id.subtractUpperLimit);
         addLowerLimit = (Button) findViewById(R.id.addLowerLimit);
         subtractLowerLimit = (Button) findViewById(R.id.subtractLowerLimit);
-        nextButton = (Button) findViewById(R.id.nextButton);
-        backButton = (Button) findViewById(R.id.backButton);
+        nextButton = (ImageButton) findViewById(R.id.nextButton);
+        backButton = (ImageButton) findViewById(R.id.backButton);
         upperLimitText = (TextView) findViewById(R.id.upperLimit);
         lowerLimitText = (TextView) findViewById(R.id.lowerLimit);
         errorMessage = (TextView) findViewById(R.id.errorMessage);
 
         int imageResource = getResources().getIdentifier("@drawable/bloodsugarsetup", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
+
+        nextButton.setEnabled(false);
 
         upperLimitText.setText(""+upperLimit);
         lowerLimitText.setText(""+lowerLimit);
@@ -57,6 +60,7 @@ public class SetupBloodSugar extends AppCompatActivity {
                 upperLimit += 0.1f;
                 upperLimit = roundFloat(upperLimit);
                 upperLimitText.setText(""+upperLimit);
+                nextButton.setEnabled(true);
             }
         });
 
@@ -69,6 +73,7 @@ public class SetupBloodSugar extends AppCompatActivity {
                     upperLimit = 0.1f;
                 }
                 upperLimitText.setText(""+upperLimit);
+                nextButton.setEnabled(true);
             }
         });
 
@@ -78,6 +83,7 @@ public class SetupBloodSugar extends AppCompatActivity {
                 lowerLimit += 0.1f;
                 lowerLimit = roundFloat(lowerLimit);
                 lowerLimitText.setText(""+lowerLimit);
+                nextButton.setEnabled(true);
             }
         });
 
@@ -90,6 +96,7 @@ public class SetupBloodSugar extends AppCompatActivity {
                     lowerLimit = 0.1f;
                 }
                 lowerLimitText.setText(""+lowerLimit);
+                nextButton.setEnabled(true);
             }
         });
 
@@ -121,9 +128,9 @@ public class SetupBloodSugar extends AppCompatActivity {
 
     private boolean validateData(float uLimit, float lLimit){
         boolean proceed = false;
-        if(lowerLimit > upperLimit){
+        if(lowerLimit >= upperLimit){
             errorMessage.setTextColor(Color.RED);
-            errorMessage.setText("Lower limit cannot be greater than upper limit!");
+            errorMessage.setText("Lower limit cannot be greater or the same as upper limit.");
         }
         else{
             errorMessage.setText("");

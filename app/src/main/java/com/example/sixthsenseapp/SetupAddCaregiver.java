@@ -7,13 +7,14 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 public class SetupAddCaregiver extends AppCompatActivity {
 
     private ImageView backgroundImage;
-    private Button nextButton;
-    private Button backButton;
+    private ImageButton nextButton;
+    private ImageButton backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +22,8 @@ public class SetupAddCaregiver extends AppCompatActivity {
         setContentView(R.layout.activity_setup_add_caregiver);
 
         backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
-        nextButton = (Button) findViewById(R.id.nextButton);
-        backButton = (Button) findViewById(R.id.backButton);
+        nextButton = (ImageButton) findViewById(R.id.nextButton);
+        backButton = (ImageButton) findViewById(R.id.backButton);
 
         int imageResource = getResources().getIdentifier("@drawable/loginbackground", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
@@ -32,7 +33,6 @@ public class SetupAddCaregiver extends AppCompatActivity {
             public void onClick(View view){
                 Intent intent = new Intent(SetupAddCaregiver.this, SetupBloodSugar.class);
                 startActivity(intent);
-
             }
         });
 

@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setupButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(MainActivity.this, SetupUserType.class);
+                Intent intent = new Intent(MainActivity.this, SetupWaitTimer.class);
                 startActivity(intent);
             }
         });

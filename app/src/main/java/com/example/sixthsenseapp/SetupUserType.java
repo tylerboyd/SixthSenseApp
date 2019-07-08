@@ -14,10 +14,10 @@ import android.widget.ToggleButton;
 public class SetupUserType extends AppCompatActivity {
 
     private ImageView backgroundImage;
-    private ToggleButton mineButton;
-    private ToggleButton someoneElseButton;
-    private Button nextButton;
-    private Button backButton;
+    private ImageButton mineButton;
+    private ImageButton someoneElseButton;
+    private ImageButton nextButton;
+    private ImageButton backButton;
     private static String userType = "";
 
     @Override
@@ -26,19 +26,24 @@ public class SetupUserType extends AppCompatActivity {
         setContentView(R.layout.activity_setup_user_type);
 
         backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
-        mineButton = (ToggleButton) findViewById(R.id.mineButton);
-        someoneElseButton = (ToggleButton) findViewById(R.id.someoneElseButton);
-        nextButton = (Button) findViewById(R.id.nextButton);
-        backButton = (Button) findViewById(R.id.backButton);
+        mineButton = (ImageButton) findViewById(R.id.mineButton);
+        someoneElseButton = (ImageButton) findViewById(R.id.someoneElseButton);
+        nextButton = (ImageButton) findViewById(R.id.nextButton);
+        backButton = (ImageButton) findViewById(R.id.backButton);
 
         int imageResource = getResources().getIdentifier("@drawable/usertype", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
 
+
+        nextButton.setEnabled(false);
+
         nextButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(SetupUserType.this, SetupUserInfo.class);
-                startActivity(intent);
+                if(!userType.equals("")){
+                    Intent intent = new Intent(SetupUserType.this, SetupUserInfo.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -50,21 +55,21 @@ public class SetupUserType extends AppCompatActivity {
             }
         });
 
-        mineButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    userType = "User";
-                    someoneElseButton.setChecked(false);
-                }
+        mineButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                userType = "User";
+
+                nextButton.setEnabled(true);
             }
         });
 
-        someoneElseButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    userType = "Caregiver";
-                    mineButton.setChecked(false);
-                }
+        someoneElseButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                userType = "Caregiver";
+
+                nextButton.setEnabled(true);
             }
         });
     }
