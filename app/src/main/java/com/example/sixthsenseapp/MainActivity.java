@@ -1,8 +1,8 @@
 package com.example.sixthsenseapp;
 
 import android.content.Intent;
-import android.media.Image;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setupButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(MainActivity.this, SetupWaitTimer.class);
+                Intent intent = new Intent(MainActivity.this, SetupUserType.class);
                 startActivity(intent);
             }
         });
