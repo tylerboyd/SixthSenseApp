@@ -18,8 +18,9 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@android:color/background_light" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@android:color/background_light"
+         />
 
     <Button
         android:id="@+id/loginButton"
@@ -52,4 +53,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.941" />
+
+
 </android.support.constraint.ConstraintLayout>
