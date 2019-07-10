@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -16,29 +17,10 @@ public class SetupVerification extends AppCompatActivity {
     private ImageView backgroundImage;
     private ImageButton nextButton;
     private ImageButton backButton;
-    private String patientFirstName;
-    private String patientLastName;
-    private String patientEmailAddress;
-    private String patientPassword;
-    private String phoneNumber;
-    private String dateOfBirth;
-    private String patientFullName;
-    private String gpName;
-    private String gpNumber;
-    private String emergencyContactName;
-    private String emergencyContactNumber;
-    private String primaryTreatmentMethod;
-    private String secondaryTreatmentMethod;
-    private String highBloodSugarTreatment;
-    private String caregiverFullName;
-    private String caregiverEmail;
-    private String caregiverPassword;
-    private String caregiverPhoneNumber;
-    private float bloodSugarHighLimit;
-    private float bloodSugarLowLimit;
-    private int interventionWaitTime;
-
-    DatabaseReference ref;
+    private DatabaseReference refPatient;
+    private DatabaseReference refCaregiver;
+    private Patient patient;
+    private Caregiver caregiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,37 +34,48 @@ public class SetupVerification extends AppCompatActivity {
         int imageResource = getResources().getIdentifier("@drawable/loginbackground", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
 
-        ref = FirebaseDatabase.getInstance().getReference().child("patient");
+        patient = new Patient();
+        caregiver = new Caregiver();
+
+        refPatient = FirebaseDatabase.getInstance().getReference().child("patient");
+        refCaregiver = FirebaseDatabase.getInstance().getReference().child("caregiver");
 
         nextButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
 
-                patientFirstName = SetupUserInfo.getFirstName();
-                patientLastName = SetupUserInfo.getLastName();
-                patientEmailAddress = SetupUserInfo.getEmailAddress()
-                patientPassword = SetupUserInfo.getPassword();
-                phoneNumber = SetupUserInfo.getPhoneNumber();
-                dateOfBirth = SetupUserInfo2.getDateOfBirth();
-                patientFullName = patientFirstName + " " + patientLastName;
-                gpName = SetupUserInfo2.getGpName();
-                gpNumber = SetupUserInfo2.getGpNumber();
-                emergencyContactName = SetupUserInfo2.getEmergencyName();
-                emergencyContactNumber = SetupUserInfo2.getEmergencyNumber();
-                primaryTreatmentMethod = SetupPrimaryTreatment.getPrimaryTreatement();
-                secondaryTreatmentMethod = SetupSecondaryTreatment.getSecondaryTreatment();
-                highBloodSugarTreatment = SetupHighBloodSugar.getHighBloodSugarTreatment();
-                //caregiverFullName = SetupCaregiverInfo.get;
-                //caregiverEmail;
-                //caregiverPassword;
-                //caregiverPhoneNumber;
-                //bloodSugarHighLimit = Se;
-                bloodSugarLowLimit = SetupBloodSugar;
-                interventionWaitTime = SetupWaitTimer.getWaitTime();
+                patient.setFirstName(SetupUserInfo.getFirstName());
+                patient.setLastName(SetupUserInfo.getLastName());
+                patient.setEmailAddress(SetupUserInfo.getEmailAddress());
+                patient.setPassword(SetupUserInfo.getPassword());
+                patient.setPhoneNumber(SetupUserInfo.getPhoneNumber());
+                patient.setDateOfBirth(SetupUserInfo2.getDateOfBirth());
+                patient.setGpName(SetupUserInfo2.getGpName());
+                patient.setGpNumber(SetupUserInfo2.getGpNumber());
+                patient.setEmergencyContactName(SetupUserInfo2.getEmergencyName());
+                patient.setEmergencyContactNumber(SetupUserInfo2.getEmergencyNumber());
+                patient.setPrimaryTreatmentMethod(SetupPrimaryTreatment.getPrimaryTreatement());
+                patient.setSecondaryTreatmentMethod(SetupSecondaryTreatment.getSecondaryTreatment());
+                patient.setHighBloodSugarTreatment(SetupHighBloodSugar.getHighBloodSugarTreatment());
+                patient.setBloodSugarHighLimit(SetupBloodSugar.getUpperLimit());
+                patient.setBloodSugarLowLimit(SetupBloodSugar.getLowerLimit());
+                patient.setInterventionWaitTime(SetupWaitTimer.getWaitTime());
 
+                caregiver.setFirstName(SetupCaregiverInfo.getFirstName());
+                caregiver.setLastName(SetupCaregiverInfo.getLastName());
+                caregiver.setEmail(SetupCaregiverInfo.getEmailAddress());
+                caregiver.setPassword(SetupCaregiverInfo.getPassword());
+                caregiver.setPhoneNumber(SetupCaregiverInfo.getPhoneNumber());
 
+                if(SetupUserType.getUserType().equals("User")){
+                    refPatient.push().setValue(patient);
+                }
+                else if(SetupUserType.getUserType().equals("Caregiver")){
+                    refPatient.push().setValue(patient);
+                    refCaregiver.push().setValue(caregiver);
+                }
 
-
+                Toast.makeText(SetupVerification.this, "User account created succcessfully!", Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(SetupVerification.this, SetupComplete.class);
                 startActivity(intent);
