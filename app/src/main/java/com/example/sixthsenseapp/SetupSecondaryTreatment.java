@@ -17,7 +17,7 @@ public class SetupSecondaryTreatment extends AppCompatActivity {
     private Button glucoseGelButton;
     private Button sugaryDrinkButton;
     private TextView otherText;
-    private String secondaryTreatment = "";
+    private static String secondaryTreatment = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,5 +81,9 @@ public class SetupSecondaryTreatment extends AppCompatActivity {
                 secondaryTreatment = "";
             }
         });
+    }
+
+    public static String getSecondaryTreatment(){
+        return secondaryTreatment;
     }
 }

@@ -17,7 +17,7 @@ public class SetupWaitTimer extends AppCompatActivity {
     private Button addTime;
     private Button subtractTime;
     private TextView waitTimeText;
-    private int waitTime = 10;
+    private static int waitTime = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,5 +69,9 @@ public class SetupWaitTimer extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public static int getWaitTime(){
+        return waitTime;
     }
 }

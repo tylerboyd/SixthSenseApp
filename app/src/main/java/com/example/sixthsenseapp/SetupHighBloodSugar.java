@@ -12,6 +12,7 @@ public class SetupHighBloodSugar extends AppCompatActivity {
     private ImageView backgroundImage;
     private ImageButton nextButton;
     private ImageButton backButton;
+    private static String highBloodSugarTreatment = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class SetupHighBloodSugar extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(SetupHighBloodSugar.this, SetupComplete.class);
+                Intent intent = new Intent(SetupHighBloodSugar.this, SetupVerification.class);
                 startActivity(intent);
             }
         });
@@ -40,5 +41,9 @@ public class SetupHighBloodSugar extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public static String getHighBloodSugarTreatment(){
+        return highBloodSugarTreatment;
     }
 }

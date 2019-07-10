@@ -25,8 +25,8 @@ public class SetupBloodSugar extends AppCompatActivity {
     private TextView upperLimitText;
     private TextView lowerLimitText;
     private TextView errorMessage;
-    private float upperLimit = 5.0f;
-    private float lowerLimit = 5.0f;
+    private static float upperLimit = 5.0f;
+    private static float lowerLimit = 5.0f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,5 +141,13 @@ public class SetupBloodSugar extends AppCompatActivity {
     {
         DecimalFormat twoDForm = new DecimalFormat("#.#");
         return Float.valueOf(twoDForm.format(d));
+    }
+
+    public float getUpperLimit() {
+        return upperLimit;
+    }
+
+    public float getLowerLimit() {
+        return lowerLimit;
     }
 }

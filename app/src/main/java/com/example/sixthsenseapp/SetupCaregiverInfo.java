@@ -25,13 +25,13 @@ public class SetupCaregiverInfo extends AppCompatActivity {
     private EditText emergencyNameField;
     private EditText emergencyNumberField;
     private TextView errorMessage;
-    private String firstName = "";
-    private String phoneNumber = "";
-    private String dateOfBirth;
-    private String gpName = "";
-    private String gpNumber = "";
-    private String emergencyName = "";
-    private String emergencyNumber = "";
+    private static String firstName = "";
+    private static String phoneNumber = "";
+    private static String dateOfBirth;
+    private static String gpName = "";
+    private static String gpNumber = "";
+    private static String emergencyName = "";
+    private static String emergencyNumber = "";
 
 
     @Override
@@ -203,12 +203,40 @@ public class SetupCaregiverInfo extends AppCompatActivity {
     }
 
     private void checkTextFields(){
-        if((!firstNameField.getText().toString().isEmpty()) && (!firstNameField.getText().toString().isEmpty()) && (!phoneNumberField.getText().toString().isEmpty()) && (!dateOfBirthField.getText().toString().isEmpty())
+        if((!firstNameField.getText().toString().isEmpty()) && (!phoneNumberField.getText().toString().isEmpty()) && (!dateOfBirthField.getText().toString().isEmpty())
                 && (!gpNameField.getText().toString().isEmpty()) && (!gpNumberField.getText().toString().isEmpty()) && (!emergencyNameField.getText().toString().isEmpty()) && (!emergencyNumberField.getText().toString().isEmpty())){
             nextButton.setEnabled(true);
         }
         else{
             nextButton.setEnabled(false);
         }
+    }
+
+    public static String getFirstName() {
+        return firstName;
+    }
+
+    public static String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public static String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public static String getGpName() {
+        return gpName;
+    }
+
+    public static String getGpNumber() {
+        return gpNumber;
+    }
+
+    public static String getEmergencyName() {
+        return emergencyName;
+    }
+
+    public static String getEmergencyNumber() {
+        return emergencyNumber;
     }
 }
