@@ -30,7 +30,6 @@ public class SetupUserType extends AppCompatActivity {
         int imageResource = getResources().getIdentifier("@drawable/usertype", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
 
-
         nextButton.setEnabled(false);
 
         nextButton.setOnClickListener(new View.OnClickListener(){

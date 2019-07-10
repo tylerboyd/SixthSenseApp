@@ -25,11 +25,11 @@ public class SetupUserInfo2 extends AppCompatActivity {
     private EditText emergencyNumberField;
     private TextView errorMessage;
     private CheckBox addCaregiver;
-    private String dateOfBirth = "";
-    private String gpName = "";
-    private String gpNumber = "";
-    private String emergencyName = "";
-    private String emergencyNumber = "";
+    private static String dateOfBirth = "";
+    private static String gpName = "";
+    private static String gpNumber = "";
+    private static String emergencyName = "";
+    private static String emergencyNumber = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -174,5 +174,25 @@ public class SetupUserInfo2 extends AppCompatActivity {
         else{
             nextButton.setEnabled(false);
         }
+    }
+
+    public static String getDateOfBirth(){
+        return dateOfBirth;
+    }
+
+    public static String getGpName(){
+        return gpName;
+    }
+
+    public static String getGpNumber(){
+        return gpNumber;
+    }
+
+    public static String getEmergencyName(){
+        return emergencyName;
+    }
+
+    public static String getEmergencyNumber(){
+        return emergencyNumber;
     }
 }

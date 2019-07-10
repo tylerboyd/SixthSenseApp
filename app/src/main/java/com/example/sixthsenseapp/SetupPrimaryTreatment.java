@@ -20,7 +20,7 @@ public class SetupPrimaryTreatment extends AppCompatActivity {
     private ToggleButton confectioneryButton;
     private ToggleButton sugaryDrinkButton;
     private EditText otherText;
-    private String primaryTreatment = "";
+    private static String primaryTreatment = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,5 +95,9 @@ public class SetupPrimaryTreatment extends AppCompatActivity {
                 primaryTreatment = "";
             }
         });
+    }
+
+    public static String getPrimaryTreatement(){
+        return primaryTreatment;
     }
 }

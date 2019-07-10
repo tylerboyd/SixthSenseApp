@@ -25,12 +25,12 @@ public class SetupUserInfo extends AppCompatActivity {
     private EditText retypePasswordField;
     private EditText phoneNumberField;
     private TextView errorMessage;
-    private String firstName = "";
-    private String lastName = "";
-    private String emailAddress = "";
-    private String password = "";
-    private String retypePassword = "";
-    private String phoneNumber = "";
+    private static String firstName = "";
+    private static String lastName = "";
+    private static String emailAddress = "";
+    private static String password = "";
+    private static String retypePassword = "";
+    private static String phoneNumber = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -200,5 +200,25 @@ public class SetupUserInfo extends AppCompatActivity {
         else{
             nextButton.setEnabled(false);
         }
+    }
+
+    public static String getFirstName(){
+        return firstName;
+    }
+
+    public static String getLastName(){
+        return lastName;
+    }
+
+    public static String getEmailAddress(){
+        return emailAddress;
+    }
+
+    public static String getPassword(){
+        return password;
+    }
+
+    public static String getPhoneNumber(){
+        return phoneNumber;
     }
 }
