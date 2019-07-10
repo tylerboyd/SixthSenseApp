@@ -3,6 +3,8 @@ package com.example.sixthsenseapp;
 import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,20 +20,18 @@ public class SetupCaregiverInfo extends AppCompatActivity {
     private ImageButton nextButton;
     private ImageButton backButton;
     private EditText firstNameField;
+    private EditText lastNameField;
+    private EditText emailAddressField;
+    private EditText passwordField;
+    private EditText retypePasswordField;
     private EditText phoneNumberField;
-    private EditText dateOfBirthField;
-    private EditText gpNameField;
-    private EditText gpNumberField;
-    private EditText emergencyNameField;
-    private EditText emergencyNumberField;
     private TextView errorMessage;
     private static String firstName = "";
+    private static String lastName = "";
+    private static String emailAddress = "";
+    private static String password = "";
+    private static String retypePassword = "";
     private static String phoneNumber = "";
-    private static String dateOfBirth;
-    private static String gpName = "";
-    private static String gpNumber = "";
-    private static String emergencyName = "";
-    private static String emergencyNumber = "";
 
 
     @Override
@@ -43,12 +43,11 @@ public class SetupCaregiverInfo extends AppCompatActivity {
         nextButton = (ImageButton) findViewById(R.id.nextButton);
         backButton = (ImageButton) findViewById(R.id.backButton);
         firstNameField = (EditText) findViewById(R.id.firstNameField);
+        lastNameField = (EditText) findViewById(R.id.lastNameField);
+        emailAddressField = (EditText) findViewById(R.id.emailField);
+        passwordField = (EditText) findViewById(R.id.passwordField);
+        retypePasswordField = (EditText) findViewById(R.id.retypePasswordField);
         phoneNumberField = (EditText) findViewById(R.id.phoneNumberField);
-        dateOfBirthField = (EditText) findViewById(R.id.dateOfBirthField);
-        gpNameField = (EditText) findViewById(R.id.gpNameField);
-        gpNumberField = (EditText) findViewById(R.id.gpNumberField);
-        emergencyNameField = (EditText) findViewById(R.id.emergencyNameField);
-        emergencyNumberField = (EditText) findViewById(R.id.emergencyNumberField);
         errorMessage = (TextView) findViewById(R.id.errorMessage);
 
         int imageResource = getResources().getIdentifier("@drawable/loginbackground", null, this.getPackageName());
@@ -57,6 +56,74 @@ public class SetupCaregiverInfo extends AppCompatActivity {
         nextButton.setEnabled(false);
 
         firstNameField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                checkTextFields();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        lastNameField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                checkTextFields();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        emailAddressField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                checkTextFields();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        passwordField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                checkTextFields();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        retypePasswordField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -90,106 +157,25 @@ public class SetupCaregiverInfo extends AppCompatActivity {
             }
         });
 
-        dateOfBirthField.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                checkTextFields();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        gpNameField.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                checkTextFields();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        gpNumberField.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                checkTextFields();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        emergencyNameField.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                checkTextFields();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        emergencyNumberField.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                checkTextFields();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
         nextButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
 
                 firstName = firstNameField.getText().toString();
+                lastName = lastNameField.getText().toString();
+                emailAddress = emailAddressField.getText().toString();
+                password = passwordField.getText().toString();
+                retypePassword = retypePasswordField.getText().toString();
                 phoneNumber = phoneNumberField.getText().toString();
-                dateOfBirth = dateOfBirthField.getText().toString();
-                gpName = gpNameField.getText().toString();
-                gpNumber = gpNumberField.getText().toString();
-                emergencyName = emergencyNameField.getText().toString();
-                emergencyNumber = emergencyNumberField.getText().toString();
 
-
-                Intent intent = new Intent(SetupCaregiverInfo.this, SetupAddCaregiver.class);
-                startActivity(intent);
+                if(password.equals(retypePassword)){
+                    Intent intent = new Intent(SetupCaregiverInfo.this, SetupUserInfo2.class);
+                    startActivity(intent);
+                }
+                else{
+                    errorMessage.setTextColor(Color.RED);
+                    errorMessage.setText("Passwords do not match!");
+                }
             }
         });
 
@@ -203,8 +189,8 @@ public class SetupCaregiverInfo extends AppCompatActivity {
     }
 
     private void checkTextFields(){
-        if((!firstNameField.getText().toString().isEmpty()) && (!phoneNumberField.getText().toString().isEmpty()) && (!dateOfBirthField.getText().toString().isEmpty())
-                && (!gpNameField.getText().toString().isEmpty()) && (!gpNumberField.getText().toString().isEmpty()) && (!emergencyNameField.getText().toString().isEmpty()) && (!emergencyNumberField.getText().toString().isEmpty())){
+        if((!firstNameField.getText().toString().isEmpty()) && (!lastNameField.getText().toString().isEmpty()) && (!emailAddressField.getText().toString().isEmpty())
+                && (!passwordField.getText().toString().isEmpty()) && (!retypePasswordField.getText().toString().isEmpty()) && (!phoneNumberField.getText().toString().isEmpty())){
             nextButton.setEnabled(true);
         }
         else{
@@ -212,31 +198,23 @@ public class SetupCaregiverInfo extends AppCompatActivity {
         }
     }
 
-    public static String getFirstName() {
+    public static String getFirstName(){
         return firstName;
     }
 
-    public static String getPhoneNumber() {
+    public static String getLastName(){
+        return lastName;
+    }
+
+    public static String getEmailAddress(){
+        return emailAddress;
+    }
+
+    public static String getPassword(){
+        return password;
+    }
+
+    public static String getPhoneNumber(){
         return phoneNumber;
-    }
-
-    public static String getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public static String getGpName() {
-        return gpName;
-    }
-
-    public static String getGpNumber() {
-        return gpNumber;
-    }
-
-    public static String getEmergencyName() {
-        return emergencyName;
-    }
-
-    public static String getEmergencyNumber() {
-        return emergencyNumber;
     }
 }

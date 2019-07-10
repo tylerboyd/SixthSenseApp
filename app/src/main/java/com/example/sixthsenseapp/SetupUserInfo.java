@@ -167,14 +167,8 @@ public class SetupUserInfo extends AppCompatActivity {
                 phoneNumber = phoneNumberField.getText().toString();
 
                 if(password.equals(retypePassword)){
-                    if (SetupUserType.getUserType().equals("User")) {
                         Intent intent = new Intent(SetupUserInfo.this, SetupUserInfo2.class);
                         startActivity(intent);
-                    }
-                    else if(SetupUserType.getUserType().equals("Caregiver")){
-                        Intent intent = new Intent(SetupUserInfo.this, SetupCaregiverInfo.class);
-                        startActivity(intent);
-                    }
                 }
                 else{
                     errorMessage.setTextColor(Color.RED);

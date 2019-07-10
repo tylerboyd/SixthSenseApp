@@ -52,6 +52,13 @@ public class SetupUserInfo2 extends AppCompatActivity {
 
         nextButton.setEnabled(false);
 
+        if(SetupUserType.getUserType().equals("User")){
+            addCaregiver.setVisibility(View.VISIBLE);
+        }
+        else if(SetupUserType.getUserType().equals("Caregiver")){
+            addCaregiver.setVisibility(View.INVISIBLE);
+        }
+
         dateOfBirthField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -146,12 +153,18 @@ public class SetupUserInfo2 extends AppCompatActivity {
                 emergencyName = emergencyNameField.getText().toString();
                 emergencyNumber = emergencyNumberField.getText().toString();
 
-                if(addCaregiver.isChecked()){
-                    Intent intent = new Intent(SetupUserInfo2.this, SetupAddCaregiver.class);
-                    startActivity(intent);
+                if(SetupUserType.getUserType().equals("User")){
+                    if(addCaregiver.isChecked()){
+                        Intent intent = new Intent(SetupUserInfo2.this, SetupAddCaregiver.class);
+                        startActivity(intent);
+                    }
+                    else{
+                        Intent intent = new Intent(SetupUserInfo2.this, SetupBloodSugar.class);
+                        startActivity(intent);
+                    }
                 }
-                else{
-                    Intent intent = new Intent(SetupUserInfo2.this, SetupBloodSugar.class);
+                else if(SetupUserType.getUserType().equals("Caregiver")){
+                    Intent intent = new Intent(SetupUserInfo2.this, SetupCaregiverInfo.class);
                     startActivity(intent);
                 }
             }
