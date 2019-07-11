@@ -54,7 +54,8 @@ public class SetupUserType extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 userType = "User";
-
+                mineButton.setBackgroundResource(R.drawable.mineiconenabled);
+                someoneElseButton.setBackgroundResource(R.drawable.someoneelseicondisabled);
                 nextButton.setEnabled(true);
             }
         });
@@ -63,7 +64,8 @@ public class SetupUserType extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 userType = "Caregiver";
-
+                someoneElseButton.setBackgroundResource(R.drawable.someoneelseiconenabled);
+                mineButton.setBackgroundResource(R.drawable.mineicondisabled);
                 nextButton.setEnabled(true);
             }
         });
