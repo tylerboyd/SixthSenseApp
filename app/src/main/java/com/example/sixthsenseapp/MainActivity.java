@@ -1,34 +1,30 @@
 package com.example.sixthsenseapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+    private ImageView backgroundImage;
     private Button loginButton;
     private Button setupButton;
-    private ImageView backgroundImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d(TAG, "onCreate: started.");
 
-        backgroundImage = findViewById(R.id.backgroundImage);
+        backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
+        loginButton = (Button) findViewById(R.id.loginButton);
+        setupButton = (Button) findViewById(R.id.setupButton);
 
         int imageResource = getResources().getIdentifier("@drawable/startscreen", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
-
-        loginButton = findViewById(R.id.loginButton);
-        setupButton = findViewById(R.id.setupButton);
 
         loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -41,10 +37,9 @@ public class MainActivity extends AppCompatActivity {
         setupButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(MainActivity.this, SetupActivity.class);
+                Intent intent = new Intent(MainActivity.this, SetupUserType.class);
                 startActivity(intent);
             }
         });
-
     }
 }
