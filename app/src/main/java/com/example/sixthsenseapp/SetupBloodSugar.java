@@ -137,17 +137,17 @@ public class SetupBloodSugar extends AppCompatActivity {
         return proceed;
     }
 
-    public float roundFloat(float d)
+    private float roundFloat(float d)
     {
         DecimalFormat twoDForm = new DecimalFormat("#.#");
         return Float.valueOf(twoDForm.format(d));
     }
 
-    public float getUpperLimit() {
+    public static float getUpperLimit() {
         return upperLimit;
     }
 
-    public float getLowerLimit() {
+    public static float getLowerLimit() {
         return lowerLimit;
     }
 }
