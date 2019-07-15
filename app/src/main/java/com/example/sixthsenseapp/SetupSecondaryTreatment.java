@@ -106,7 +106,6 @@ public class SetupSecondaryTreatment extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                secondaryTreatment = "";
 
                 if(otherText.getText().toString().equals("") && secondaryTreatment.equals("")){
                     nextButton.setEnabled(false);

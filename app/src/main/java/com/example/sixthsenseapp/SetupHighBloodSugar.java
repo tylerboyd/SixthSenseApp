@@ -90,7 +90,6 @@ public class SetupHighBloodSugar extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                highBloodSugarTreatment = "";
 
                 if(otherText.getText().toString().equals("") && highBloodSugarTreatment.equals("")){
                     nextButton.setEnabled(false);

@@ -14,6 +14,7 @@ public class Patient {
     private String primaryTreatmentMethod;
     private String secondaryTreatmentMethod;
     private String highBloodSugarTreatment;
+    private String dbUserID;
     private float bloodSugarHighLimit;
     private float bloodSugarLowLimit;
     private int interventionWaitTime;
@@ -148,5 +149,13 @@ public class Patient {
 
     public void setInterventionWaitTime(int interventionWaitTime) {
         this.interventionWaitTime = interventionWaitTime;
+    }
+
+    public void setDbUserID(String dbUserID) {
+        this.dbUserID = dbUserID;
+    }
+
+    public String getDbUserID() {
+        return dbUserID;
     }
 }
