@@ -108,7 +108,7 @@ public class SetupPrimaryTreatment extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                primaryTreatment = "";
+
 
                 if(otherText.getText().toString().equals("") && primaryTreatment.equals("")){
                     nextButton.setEnabled(false);

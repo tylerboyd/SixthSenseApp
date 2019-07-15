@@ -166,13 +166,19 @@ public class SetupUserInfo extends AppCompatActivity {
                 retypePassword = retypePasswordField.getText().toString();
                 phoneNumber = phoneNumberField.getText().toString();
 
-                if(password.equals(retypePassword)){
+                if(password.length() >= 8){
+                    if(password.equals(retypePassword)){
                         Intent intent = new Intent(SetupUserInfo.this, SetupUserInfo2.class);
                         startActivity(intent);
+                    }
+                    else{
+                        errorMessage.setTextColor(Color.RED);
+                        errorMessage.setText("Passwords do not match!");
+                    }
                 }
                 else{
                     errorMessage.setTextColor(Color.RED);
-                    errorMessage.setText("Passwords do not match!");
+                    errorMessage.setText("Password must be at least 8 characters!");
                 }
             }
         });
