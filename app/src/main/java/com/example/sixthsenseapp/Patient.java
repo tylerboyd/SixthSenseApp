@@ -150,9 +150,9 @@ public class Patient {
         this.interventionWaitTime = interventionWaitTime;
     }
 
-    PatientIDGenerator patIDCreate = new PatientIDGenerator();
+    //PatientIDGenerator patIDCreate = new PatientIDGenerator();
 
-    String newPatID = patIDCreate.createPatID();
+    //String newPatID = patIDCreate.createPatID();
 
-    public String setPatID() { return newPatID; }
+    //public String setPatID() { return newPatID; }
 }
