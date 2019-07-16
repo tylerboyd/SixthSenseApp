@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "632088562642",
+    "firebase_url": "https://sixth-sense-database.firebaseio.com",
+    "project_id": "sixth-sense-database",
+    "storage_bucket": "sixth-sense-database.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632088562642:android:24539b08f2a824b3",
+        "android_client_info": {
+          "package_name": "com.example.sixthsenseapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632088562642-vtqrhtitph8l21u4dspdicgnjvc7cefm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sixthsenseapp",
+            "certificate_hash": "bf0c22c4b855e5075ac9cb422402419278d5dfa4"
+          }
+        },
+        {
+          "client_id": "632088562642-rocoj0cio2d7r1q7vg1obk7oo4tlmumd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHrVtsaXOlnO5xkZCciLAMSWLhTeCMIpw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632088562642-rocoj0cio2d7r1q7vg1obk7oo4tlmumd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
