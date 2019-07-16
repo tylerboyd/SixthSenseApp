@@ -60,6 +60,8 @@ public class SetupVerification extends AppCompatActivity {
                 patient.setBloodSugarHighLimit(SetupBloodSugar.getUpperLimit());
                 patient.setBloodSugarLowLimit(SetupBloodSugar.getLowerLimit());
                 patient.setInterventionWaitTime(SetupWaitTimer.getWaitTime());
+                //Set Patient ID TEMP Usage
+                patient.setPatID();
 
                 caregiver.setFirstName(SetupCaregiverInfo.getFirstName());
                 caregiver.setLastName(SetupCaregiverInfo.getLastName());
