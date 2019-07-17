@@ -9,9 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SetupActivity"/>
+        <activity android:name=".SetupComplete"></activity>
+        <activity android:name=".RetestBloodActivity"/>
+        <activity android:name=".SetupHighBloodSugar" />
+        <activity android:name=".SetupWaitTimer" />
+        <activity android:name=".SetupAddCaregiver" />
+        <activity android:name=".SetupUserInfo2" />
+        <activity android:name=".Dashboard" />
+        <activity android:name=".SetupCaregiverInfo" />
+        <activity android:name=".SetupUserInfo" />
+        <activity android:name=".SetupSecondaryTreatment" />
+        <activity android:name=".SetupPrimaryTreatment" />
+        <activity android:name=".SetupBloodSugar" />
+        <activity android:name=".SetupUserType" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".RetestBloodActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
