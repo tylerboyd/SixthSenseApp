@@ -70,7 +70,6 @@ public class SetupVerification extends AppCompatActivity {
                 patient.setBloodSugarHighLimit(SetupBloodSugar.getUpperLimit());
                 patient.setBloodSugarLowLimit(SetupBloodSugar.getLowerLimit());
                 patient.setInterventionWaitTime(SetupWaitTimer.getWaitTime());
-                patient.setDbUserID("Before");
 
                 caregiver.setFirstName(SetupCaregiverInfo.getFirstName());
                 caregiver.setLastName(SetupCaregiverInfo.getLastName());
@@ -83,14 +82,21 @@ public class SetupVerification extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(SetupVerification.this, "User account created succcessfully!", Toast.LENGTH_LONG).show();
-                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    Toast.makeText(SetupVerification.this, "Account created succcessfully!", Toast.LENGTH_LONG).show();
+                                    Log.d("Db", "" + mAuth.getCurrentUser().getUid());
+
+                                    if(SetupUserType.getUserType().equals("User")){
+                                        refPatient.child(mAuth.getCurrentUser().getUid()).setValue(patient);
+                                    }
+                                    else if(SetupUserType.getUserType().equals("Caregiver")){
+                                        refPatient.child(mAuth.getCurrentUser().getUid()).setValue(patient);
+                                        refCaregiver.child(mAuth.getCurrentUser().getUid()).setValue(caregiver);
+                                    }
 
                                     Intent intent = new Intent(SetupVerification.this, SetupComplete.class);
                                     startActivity(intent);
 
                                 } else {
-                                    // If sign in fails, display a message to the user.
                                     Log.w("Password", "createUserWithEmail:failure", task.getException());
                                     Toast.makeText(SetupVerification.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
@@ -98,14 +104,6 @@ public class SetupVerification extends AppCompatActivity {
                                 }
                             }
                         });
-
-                if(SetupUserType.getUserType().equals("User")){
-                    refPatient.push().setValue(patient);
-                }
-                else if(SetupUserType.getUserType().equals("Caregiver")){
-                    refPatient.push().setValue(patient);
-                    refCaregiver.push().setValue(caregiver);
-                }
             }
         });
 

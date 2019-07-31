@@ -169,7 +169,7 @@ public class SetupCaregiverInfo extends AppCompatActivity {
                 phoneNumber = phoneNumberField.getText().toString();
 
                 if(password.equals(retypePassword)){
-                    Intent intent = new Intent(SetupCaregiverInfo.this, SetupUserInfo2.class);
+                    Intent intent = new Intent(SetupCaregiverInfo.this, SetupBloodSugar.class);
                     startActivity(intent);
                 }
                 else{
