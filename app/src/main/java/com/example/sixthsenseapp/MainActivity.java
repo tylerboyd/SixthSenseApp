@@ -4,27 +4,22 @@ import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.example.sixthsenseapp.Setup.SetupUserType;
 
 public class MainActivity extends AppCompatActivity {
 
     private ImageView backgroundImage;
     private Button loginButton;
     private Button setupButton;
-    private FirebaseAuth mAuth;
 
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        //FirebaseUser currentUser = mAuth.getCurrentUser();
-        //updateUI(currentUser);
     }
 
     @Override
@@ -54,5 +49,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed(){
+        //Back Button disabled on Main screen
+        Toast.makeText(getApplicationContext(), "Cannot go back, you are not logged in.", Toast.LENGTH_LONG).show();
     }
 }

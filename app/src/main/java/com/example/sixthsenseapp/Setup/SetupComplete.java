@@ -1,8 +1,10 @@
-package com.example.sixthsenseapp;
+package com.example.sixthsenseapp.Setup;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
+
+import com.example.sixthsenseapp.R;
 
 public class SetupComplete extends AppCompatActivity {
 

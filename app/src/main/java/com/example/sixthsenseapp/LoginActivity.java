@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     private String enteredPassword;
     private String storedEmail = "test";
     private String storedPassword = "test";
-    private FirebaseAuth mAuth;
+    private static FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,4 +88,11 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
+    public static FirebaseAuth getFirebaseAuth() {
+        return mAuth;
+    }
 }
+
+

@@ -1,9 +1,8 @@
-package com.example.sixthsenseapp;
+package com.example.sixthsenseapp.Setup;
 
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.media.Image;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -11,6 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+
+import com.example.sixthsenseapp.R;
 
 public class SetupHighBloodSugar extends AppCompatActivity {
 

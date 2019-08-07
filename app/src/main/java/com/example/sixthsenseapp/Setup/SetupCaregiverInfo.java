@@ -1,4 +1,4 @@
-package com.example.sixthsenseapp;
+package com.example.sixthsenseapp.Setup;
 
 import android.content.Intent;
 
@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.sixthsenseapp.R;
 
 public class SetupCaregiverInfo extends AppCompatActivity {
 

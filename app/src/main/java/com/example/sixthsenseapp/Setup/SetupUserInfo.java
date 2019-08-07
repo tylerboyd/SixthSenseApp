@@ -1,65 +1,61 @@
-package com.example.sixthsenseapp;
+package com.example.sixthsenseapp.Setup;
 
 import android.content.Intent;
+import android.graphics.Color;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class SetupUserInfo2 extends AppCompatActivity {
+import com.example.sixthsenseapp.R;
+
+public class SetupUserInfo extends AppCompatActivity {
 
     private ImageView backgroundImage;
     private ImageButton nextButton;
     private ImageButton backButton;
-    private EditText dateOfBirthField;
-    private EditText gpNameField;
-    private EditText gpNumberField;
-    private EditText emergencyNameField;
-    private EditText emergencyNumberField;
+    private EditText firstNameField;
+    private EditText lastNameField;
+    private EditText emailAddressField;
+    private EditText passwordField;
+    private EditText retypePasswordField;
+    private EditText phoneNumberField;
     private TextView errorMessage;
-    private CheckBox addCaregiver;
-    private static String dateOfBirth = "";
-    private static String gpName = "";
-    private static String gpNumber = "";
-    private static String emergencyName = "";
-    private static String emergencyNumber = "";
+    private static String firstName = "";
+    private static String lastName = "";
+    private static String emailAddress = "";
+    private static String password = "";
+    private static String retypePassword = "";
+    private static String phoneNumber = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setup_user_info2);
+        setContentView(R.layout.activity_setup_user_info);
 
         backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
         nextButton = (ImageButton) findViewById(R.id.nextButton);
         backButton = (ImageButton) findViewById(R.id.backButton);
-        dateOfBirthField = (EditText) findViewById(R.id.dateOfBirthField);
-        gpNameField = (EditText) findViewById(R.id.gpNameField);
-        gpNumberField = (EditText) findViewById(R.id.gpNumberField);
-        emergencyNameField = (EditText) findViewById(R.id.emergencyNameField);
-        emergencyNumberField = (EditText) findViewById(R.id.emergencyNumberField);
+        firstNameField = (EditText) findViewById(R.id.firstNameField);
+        lastNameField = (EditText) findViewById(R.id.lastNameField);
+        emailAddressField = (EditText) findViewById(R.id.emailField);
+        passwordField = (EditText) findViewById(R.id.passwordField);
+        retypePasswordField = (EditText) findViewById(R.id.retypePasswordField);
+        phoneNumberField = (EditText) findViewById(R.id.phoneNumberField);
         errorMessage = (TextView) findViewById(R.id.errorMessage);
-        addCaregiver = (CheckBox) findViewById(R.id.addCaregiver);
 
         int imageResource = getResources().getIdentifier("@drawable/loginbackground", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
 
         nextButton.setEnabled(false);
 
-        if(SetupUserType.getUserType().equals("User")){
-            addCaregiver.setVisibility(View.VISIBLE);
-        }
-        else if(SetupUserType.getUserType().equals("Caregiver")){
-            addCaregiver.setVisibility(View.INVISIBLE);
-        }
-
-        dateOfBirthField.addTextChangedListener(new TextWatcher() {
+        firstNameField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -76,7 +72,7 @@ public class SetupUserInfo2 extends AppCompatActivity {
             }
         });
 
-        gpNameField.addTextChangedListener(new TextWatcher() {
+        lastNameField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -93,7 +89,7 @@ public class SetupUserInfo2 extends AppCompatActivity {
             }
         });
 
-        gpNumberField.addTextChangedListener(new TextWatcher() {
+        emailAddressField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -110,7 +106,7 @@ public class SetupUserInfo2 extends AppCompatActivity {
             }
         });
 
-        emergencyNameField.addTextChangedListener(new TextWatcher() {
+        passwordField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -127,7 +123,24 @@ public class SetupUserInfo2 extends AppCompatActivity {
             }
         });
 
-        emergencyNumberField.addTextChangedListener(new TextWatcher() {
+        retypePasswordField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                checkTextFields();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        phoneNumberField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -147,25 +160,27 @@ public class SetupUserInfo2 extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                dateOfBirth = dateOfBirthField.getText().toString();
-                gpName = gpNameField.getText().toString();
-                gpNumber = gpNumberField.getText().toString();
-                emergencyName = emergencyNameField.getText().toString();
-                emergencyNumber = emergencyNumberField.getText().toString();
 
-                if(SetupUserType.getUserType().equals("User")){
-                    if(addCaregiver.isChecked()){
-                        Intent intent = new Intent(SetupUserInfo2.this, SetupAddCaregiver.class);
+                firstName = firstNameField.getText().toString();
+                lastName = lastNameField.getText().toString();
+                emailAddress = emailAddressField.getText().toString();
+                password = passwordField.getText().toString();
+                retypePassword = retypePasswordField.getText().toString();
+                phoneNumber = phoneNumberField.getText().toString();
+
+                if(password.length() >= 8){
+                    if(password.equals(retypePassword)){
+                        Intent intent = new Intent(SetupUserInfo.this, SetupUserInfo2.class);
                         startActivity(intent);
                     }
                     else{
-                        Intent intent = new Intent(SetupUserInfo2.this, SetupBloodSugar.class);
-                        startActivity(intent);
+                        errorMessage.setTextColor(Color.RED);
+                        errorMessage.setText("Passwords do not match!");
                     }
                 }
-                else if(SetupUserType.getUserType().equals("Caregiver")){
-                    Intent intent = new Intent(SetupUserInfo2.this, SetupCaregiverInfo.class);
-                    startActivity(intent);
+                else{
+                    errorMessage.setTextColor(Color.RED);
+                    errorMessage.setText("Password must be at least 8 characters!");
                 }
             }
         });
@@ -173,15 +188,15 @@ public class SetupUserInfo2 extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(SetupUserInfo2.this, SetupUserInfo.class);
+                Intent intent = new Intent(SetupUserInfo.this, SetupUserType.class);
                 startActivity(intent);
             }
         });
     }
 
     private void checkTextFields(){
-        if((!dateOfBirthField.getText().toString().isEmpty()) && (!gpNameField.getText().toString().isEmpty()) && (!gpNumberField.getText().toString().isEmpty())
-                && (!emergencyNameField.getText().toString().isEmpty()) && (!emergencyNumberField.getText().toString().isEmpty())){
+        if((!firstNameField.getText().toString().isEmpty()) && (!lastNameField.getText().toString().isEmpty()) && (!emailAddressField.getText().toString().isEmpty())
+                && (!passwordField.getText().toString().isEmpty()) && (!retypePasswordField.getText().toString().isEmpty())){
             nextButton.setEnabled(true);
         }
         else{
@@ -189,23 +204,23 @@ public class SetupUserInfo2 extends AppCompatActivity {
         }
     }
 
-    public static String getDateOfBirth(){
-        return dateOfBirth;
+    public static String getFirstName(){
+        return firstName;
     }
 
-    public static String getGpName(){
-        return gpName;
+    public static String getLastName(){
+        return lastName;
     }
 
-    public static String getGpNumber(){
-        return gpNumber;
+    public static String getEmailAddress(){
+        return emailAddress;
     }
 
-    public static String getEmergencyName(){
-        return emergencyName;
+    public static String getPassword(){
+        return password;
     }
 
-    public static String getEmergencyNumber(){
-        return emergencyNumber;
+    public static String getPhoneNumber(){
+        return phoneNumber;
     }
 }

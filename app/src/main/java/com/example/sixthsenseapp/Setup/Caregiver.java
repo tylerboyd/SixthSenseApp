@@ -1,4 +1,4 @@
-package com.example.sixthsenseapp;
+package com.example.sixthsenseapp.Setup;
 
 public class Caregiver {
     private String firstName;

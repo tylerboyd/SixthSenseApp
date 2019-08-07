@@ -1,4 +1,4 @@
-package com.example.sixthsenseapp;
+package com.example.sixthsenseapp.Setup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,11 +11,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.sixthsenseapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -54,28 +54,8 @@ public class SetupVerification extends AppCompatActivity {
             @Override
             public void onClick(View view){
 
-                patient.setFirstName(SetupUserInfo.getFirstName());
-                patient.setLastName(SetupUserInfo.getLastName());
-                patient.setEmailAddress(SetupUserInfo.getEmailAddress());
-                patient.setPassword(SetupUserInfo.getPassword());
-                patient.setPhoneNumber(SetupUserInfo.getPhoneNumber());
-                patient.setDateOfBirth(SetupUserInfo2.getDateOfBirth());
-                patient.setGpName(SetupUserInfo2.getGpName());
-                patient.setGpNumber(SetupUserInfo2.getGpNumber());
-                patient.setEmergencyContactName(SetupUserInfo2.getEmergencyName());
-                patient.setEmergencyContactNumber(SetupUserInfo2.getEmergencyNumber());
-                patient.setPrimaryTreatmentMethod(SetupPrimaryTreatment.getPrimaryTreatment());
-                patient.setSecondaryTreatmentMethod(SetupSecondaryTreatment.getSecondaryTreatment());
-                patient.setHighBloodSugarTreatment(SetupHighBloodSugar.getHighBloodSugarTreatment());
-                patient.setBloodSugarHighLimit(SetupBloodSugar.getUpperLimit());
-                patient.setBloodSugarLowLimit(SetupBloodSugar.getLowerLimit());
-                patient.setInterventionWaitTime(SetupWaitTimer.getWaitTime());
-
-                caregiver.setFirstName(SetupCaregiverInfo.getFirstName());
-                caregiver.setLastName(SetupCaregiverInfo.getLastName());
-                caregiver.setEmail(SetupCaregiverInfo.getEmailAddress());
-                caregiver.setPassword(SetupCaregiverInfo.getPassword());
-                caregiver.setPhoneNumber(SetupCaregiverInfo.getPhoneNumber());
+                //Gets data from each setup form
+                setData();
 
                 mAuth.createUserWithEmailAndPassword(patient.getEmailAddress(), patient.getPassword())
                         .addOnCompleteListener(SetupVerification.this, new OnCompleteListener<AuthResult>() {
@@ -83,7 +63,6 @@ public class SetupVerification extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(SetupVerification.this, "Account created succcessfully!", Toast.LENGTH_LONG).show();
-                                    Log.d("Db", "" + mAuth.getCurrentUser().getUid());
 
                                     if(SetupUserType.getUserType().equals("User")){
                                         refPatient.child(mAuth.getCurrentUser().getUid()).setValue(patient);
@@ -97,10 +76,8 @@ public class SetupVerification extends AppCompatActivity {
                                     startActivity(intent);
 
                                 } else {
-                                    Log.w("Password", "createUserWithEmail:failure", task.getException());
                                     Toast.makeText(SetupVerification.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
-
                                 }
                             }
                         });
@@ -115,4 +92,38 @@ public class SetupVerification extends AppCompatActivity {
             }
         });
     }
+
+
+    private void setData(){
+        patient.setFirstName(SetupUserInfo.getFirstName());
+        patient.setLastName(SetupUserInfo.getLastName());
+        patient.setEmailAddress(SetupUserInfo.getEmailAddress());
+        patient.setPassword(SetupUserInfo.getPassword());
+        patient.setPhoneNumber(SetupUserInfo.getPhoneNumber());
+        patient.setDateOfBirth(SetupUserInfo2.getDateOfBirth());
+        patient.setGpName(SetupUserInfo2.getGpName());
+        patient.setGpNumber(SetupUserInfo2.getGpNumber());
+        patient.setEmergencyContactName(SetupUserInfo2.getEmergencyName());
+        patient.setEmergencyContactNumber(SetupUserInfo2.getEmergencyNumber());
+        patient.setPrimaryTreatmentMethod(SetupPrimaryTreatment.getPrimaryTreatment());
+        patient.setSecondaryTreatmentMethod(SetupSecondaryTreatment.getSecondaryTreatment());
+        patient.setHighBloodSugarTreatment(SetupHighBloodSugar.getHighBloodSugarTreatment());
+        patient.setBloodSugarHighLimit(SetupBloodSugar.getUpperLimit());
+        patient.setBloodSugarLowLimit(SetupBloodSugar.getLowerLimit());
+        patient.setInterventionWaitTime(SetupWaitTimer.getWaitTime());
+
+        caregiver.setFirstName(SetupCaregiverInfo.getFirstName());
+        caregiver.setLastName(SetupCaregiverInfo.getLastName());
+        caregiver.setEmail(SetupCaregiverInfo.getEmailAddress());
+        caregiver.setPassword(SetupCaregiverInfo.getPassword());
+        caregiver.setPhoneNumber(SetupCaregiverInfo.getPhoneNumber());
+    }
+
+    /*private void writeUserData(String userId, name, email, imageUrl) {
+        firebase.database().ref('users/' + userId).set({
+                username: name,
+                email: email,
+                profile_picture : imageUrl
+        });
+    }*/
 }

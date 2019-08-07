@@ -1,4 +1,4 @@
-package com.example.sixthsenseapp;
+package com.example.sixthsenseapp.Setup;
 
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.sixthsenseapp.R;
 
 public class SetupWaitTimer extends AppCompatActivity {
 
