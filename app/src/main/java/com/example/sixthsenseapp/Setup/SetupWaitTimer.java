@@ -26,12 +26,12 @@ public class SetupWaitTimer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_wait_timer);
 
-        backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
-        nextButton = (ImageButton) findViewById(R.id.nextButton);
-        backButton = (ImageButton) findViewById(R.id.backButton);
-        addTime = (Button) findViewById(R.id.addTime);
-        subtractTime = (Button) findViewById(R.id.subtractTime);
-        waitTimeText = (TextView) findViewById(R.id.timerText);
+        backgroundImage = findViewById(R.id.backgroundImage);
+        nextButton = findViewById(R.id.nextButton);
+        backButton = findViewById(R.id.backButton);
+        addTime = findViewById(R.id.addTime);
+        subtractTime = findViewById(R.id.subtractTime);
+        waitTimeText = findViewById(R.id.timerText);
 
         int imageResource = getResources().getIdentifier("@drawable/setupwaittimer", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);

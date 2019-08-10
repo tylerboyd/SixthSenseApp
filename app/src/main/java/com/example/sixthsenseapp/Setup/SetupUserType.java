@@ -24,11 +24,11 @@ public class SetupUserType extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_user_type);
 
-        backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
-        mineButton = (ImageButton) findViewById(R.id.mineButton);
-        someoneElseButton = (ImageButton) findViewById(R.id.someoneElseButton);
-        nextButton = (ImageButton) findViewById(R.id.nextButton);
-        backButton = (ImageButton) findViewById(R.id.backButton);
+        backgroundImage = findViewById(R.id.backgroundImage);
+        mineButton = findViewById(R.id.mineButton);
+        someoneElseButton = findViewById(R.id.someoneElseButton);
+        nextButton = findViewById(R.id.nextButton);
+        backButton = findViewById(R.id.backButton);
 
         int imageResource = getResources().getIdentifier("@drawable/usertype", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);

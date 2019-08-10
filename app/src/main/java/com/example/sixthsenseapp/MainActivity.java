@@ -27,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
-        loginButton = (Button) findViewById(R.id.loginButton);
-        setupButton = (Button) findViewById(R.id.setupButton);
+        backgroundImage = findViewById(R.id.backgroundImage);
+        loginButton = findViewById(R.id.loginButton);
+        setupButton = findViewById(R.id.setupButton);
 
         int imageResource = getResources().getIdentifier("@drawable/startscreen", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);

@@ -35,16 +35,16 @@ public class SetupBloodSugar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_blood_sugar);
 
-        backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
-        addUpperLimit = (Button) findViewById(R.id.addUpperLimit);
-        subtractUpperLimit = (Button) findViewById(R.id.subtractUpperLimit);
-        addLowerLimit = (Button) findViewById(R.id.addLowerLimit);
-        subtractLowerLimit = (Button) findViewById(R.id.subtractLowerLimit);
-        nextButton = (ImageButton) findViewById(R.id.nextButton);
-        backButton = (ImageButton) findViewById(R.id.backButton);
-        upperLimitText = (TextView) findViewById(R.id.upperLimit);
-        lowerLimitText = (TextView) findViewById(R.id.lowerLimit);
-        errorMessage = (TextView) findViewById(R.id.errorMessage);
+        backgroundImage = findViewById(R.id.backgroundImage);
+        addUpperLimit = findViewById(R.id.addUpperLimit);
+        subtractUpperLimit = findViewById(R.id.subtractUpperLimit);
+        addLowerLimit = findViewById(R.id.addLowerLimit);
+        subtractLowerLimit = findViewById(R.id.subtractLowerLimit);
+        nextButton = findViewById(R.id.nextButton);
+        backButton = findViewById(R.id.backButton);
+        upperLimitText = findViewById(R.id.upperLimit);
+        lowerLimitText = findViewById(R.id.lowerLimit);
+        errorMessage = findViewById(R.id.errorMessage);
 
         int imageResource = getResources().getIdentifier("@drawable/bloodsugarsetup", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);

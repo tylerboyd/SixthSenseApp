@@ -38,11 +38,11 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
-        emailField = (EditText) findViewById(R.id.emailField);
-        passwordField = (EditText) findViewById(R.id.passwordField);
-        loginButton = (ImageButton) findViewById(R.id.loginButton);
-        errorMessage = (TextView) findViewById(R.id.errorMessage);
+        backgroundImage = findViewById(R.id.backgroundImage);
+        emailField = findViewById(R.id.emailField);
+        passwordField = findViewById(R.id.passwordField);
+        loginButton = findViewById(R.id.loginButton);
+        errorMessage = findViewById(R.id.errorMessage);
 
         int imageResource = getResources().getIdentifier("@drawable/loginbackground", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
@@ -57,20 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    //NEEDS TO GET EMAIL AND PASSWORD DATA FROM DATABASE
     private void validateData(String userEmail, String userPassword){
-        /*if((userEmail.equals(storedEmail)) && (userPassword.equals(storedPassword))){
-            Intent intent =  new Intent(LoginActivity.this, Dashboard.class);
-            startActivity(intent);
-            errorMessage.setText("");
-        }
-        else{
-            errorMessage.setTextColor(Color.RED);
-            errorMessage.setText("Incorrect email address or password!");
-        }*/
-
-
-
         mAuth.signInWithEmailAndPassword(enteredEmail, enteredPassword)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -88,7 +75,6 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
-
 
     public static FirebaseAuth getFirebaseAuth() {
         return mAuth;

@@ -20,7 +20,7 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        logOutButton = (Button) findViewById(R.id.logoutButton);
+        logOutButton = findViewById(R.id.logoutButton);
 
         mAuth = LoginActivity.getFirebaseAuth();
 
@@ -29,6 +29,7 @@ public class Dashboard extends AppCompatActivity {
             public void onClick(View view) {
 
                 mAuth.getInstance().signOut();
+                Toast.makeText(Dashboard.this, "Successfully logged out.", Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(Dashboard.this, MainActivity.class);
                 startActivity(intent);

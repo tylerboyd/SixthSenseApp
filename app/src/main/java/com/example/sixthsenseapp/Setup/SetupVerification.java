@@ -37,9 +37,9 @@ public class SetupVerification extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_verification);
 
-        backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
-        nextButton = (ImageButton) findViewById(R.id.nextButton);
-        backButton = (ImageButton) findViewById(R.id.backButton);
+        backgroundImage = findViewById(R.id.backgroundImage);
+        nextButton = findViewById(R.id.nextButton);
+        backButton = findViewById(R.id.backButton);
 
         int imageResource = getResources().getIdentifier("@drawable/loginbackground", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);

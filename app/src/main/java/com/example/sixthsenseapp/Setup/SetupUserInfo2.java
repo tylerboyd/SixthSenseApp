@@ -38,16 +38,16 @@ public class SetupUserInfo2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_user_info2);
 
-        backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
-        nextButton = (ImageButton) findViewById(R.id.nextButton);
-        backButton = (ImageButton) findViewById(R.id.backButton);
-        dateOfBirthField = (EditText) findViewById(R.id.dateOfBirthField);
-        gpNameField = (EditText) findViewById(R.id.gpNameField);
-        gpNumberField = (EditText) findViewById(R.id.gpNumberField);
-        emergencyNameField = (EditText) findViewById(R.id.emergencyNameField);
-        emergencyNumberField = (EditText) findViewById(R.id.emergencyNumberField);
-        errorMessage = (TextView) findViewById(R.id.errorMessage);
-        addCaregiver = (CheckBox) findViewById(R.id.addCaregiver);
+        backgroundImage = findViewById(R.id.backgroundImage);
+        nextButton = findViewById(R.id.nextButton);
+        backButton = findViewById(R.id.backButton);
+        dateOfBirthField = findViewById(R.id.dateOfBirthField);
+        gpNameField = findViewById(R.id.gpNameField);
+        gpNumberField = findViewById(R.id.gpNumberField);
+        emergencyNameField = findViewById(R.id.emergencyNameField);
+        emergencyNumberField = findViewById(R.id.emergencyNumberField);
+        errorMessage = findViewById(R.id.errorMessage);
+        addCaregiver = findViewById(R.id.addCaregiver);
 
         int imageResource = getResources().getIdentifier("@drawable/loginbackground", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
@@ -161,7 +161,7 @@ public class SetupUserInfo2 extends AppCompatActivity {
                         startActivity(intent);
                     }
                     else{
-                        Intent intent = new Intent(SetupUserInfo2.this, SetupVerification.class);
+                        Intent intent = new Intent(SetupUserInfo2.this, SetupBloodSugar.class);
                         startActivity(intent);
                     }
                 }

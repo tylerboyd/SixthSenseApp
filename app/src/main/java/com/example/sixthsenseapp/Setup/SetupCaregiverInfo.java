@@ -41,16 +41,16 @@ public class SetupCaregiverInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_caregiver_info);
 
-        backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
-        nextButton = (ImageButton) findViewById(R.id.nextButton);
-        backButton = (ImageButton) findViewById(R.id.backButton);
-        firstNameField = (EditText) findViewById(R.id.firstNameField);
-        lastNameField = (EditText) findViewById(R.id.lastNameField);
-        emailAddressField = (EditText) findViewById(R.id.emailField);
-        passwordField = (EditText) findViewById(R.id.passwordField);
-        retypePasswordField = (EditText) findViewById(R.id.retypePasswordField);
-        phoneNumberField = (EditText) findViewById(R.id.phoneNumberField);
-        errorMessage = (TextView) findViewById(R.id.errorMessage);
+        backgroundImage = findViewById(R.id.backgroundImage);
+        nextButton = findViewById(R.id.nextButton);
+        backButton = findViewById(R.id.backButton);
+        firstNameField = findViewById(R.id.firstNameField);
+        lastNameField = findViewById(R.id.lastNameField);
+        emailAddressField = findViewById(R.id.emailField);
+        passwordField = findViewById(R.id.passwordField);
+        retypePasswordField = findViewById(R.id.retypePasswordField);
+        phoneNumberField = findViewById(R.id.phoneNumberField);
+        errorMessage = findViewById(R.id.errorMessage);
 
         int imageResource = getResources().getIdentifier("@drawable/loginbackground", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);

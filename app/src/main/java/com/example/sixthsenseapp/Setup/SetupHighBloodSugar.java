@@ -28,12 +28,12 @@ public class SetupHighBloodSugar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_high_blood_sugar);
 
-        backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
-        nextButton = (ImageButton) findViewById(R.id.nextButton);
-        backButton = (ImageButton) findViewById(R.id.backButton);
-        insulinPumpButton = (ImageButton) findViewById(R.id.insulinPump);
-        insulinPenButton = (ImageButton) findViewById(R.id.insulinPen);
-        otherText = (EditText) findViewById(R.id.other);
+        backgroundImage = findViewById(R.id.backgroundImage);
+        nextButton = findViewById(R.id.nextButton);
+        backButton = findViewById(R.id.backButton);
+        insulinPumpButton = findViewById(R.id.insulinPump);
+        insulinPenButton = findViewById(R.id.insulinPen);
+        otherText = findViewById(R.id.other);
 
         int imageResource = getResources().getIdentifier("@drawable/setuphighbloodsugar", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
