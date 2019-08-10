@@ -161,7 +161,7 @@ public class SetupUserInfo2 extends AppCompatActivity {
                         startActivity(intent);
                     }
                     else{
-                        Intent intent = new Intent(SetupUserInfo2.this, SetupBloodSugar.class);
+                        Intent intent = new Intent(SetupUserInfo2.this, SetupVerification.class);
                         startActivity(intent);
                     }
                 }

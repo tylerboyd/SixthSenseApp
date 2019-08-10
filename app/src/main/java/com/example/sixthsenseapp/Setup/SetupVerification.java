@@ -24,6 +24,8 @@ public class SetupVerification extends AppCompatActivity {
     private ImageView backgroundImage;
     private ImageButton nextButton;
     private ImageButton backButton;
+    private DatabaseReference refUsers;
+    private DatabaseReference refUID;
     private DatabaseReference refPatient;
     private DatabaseReference refCaregiver;
     private FirebaseAuth mAuth;
@@ -42,13 +44,11 @@ public class SetupVerification extends AppCompatActivity {
         int imageResource = getResources().getIdentifier("@drawable/loginbackground", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
 
-        mAuth = FirebaseAuth.getInstance();
-
         patient = new Patient();
         caregiver = new Caregiver();
 
-        refPatient = FirebaseDatabase.getInstance().getReference().child("patient");
-        refCaregiver = FirebaseDatabase.getInstance().getReference().child("caregiver");
+        mAuth = FirebaseAuth.getInstance();
+        refUsers = FirebaseDatabase.getInstance().getReference().child("users");
 
         nextButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -65,11 +65,13 @@ public class SetupVerification extends AppCompatActivity {
                                     Toast.makeText(SetupVerification.this, "Account created succcessfully!", Toast.LENGTH_LONG).show();
 
                                     if(SetupUserType.getUserType().equals("User")){
-                                        refPatient.child(mAuth.getCurrentUser().getUid()).setValue(patient);
+                                        String UID = mAuth.getCurrentUser().getUid();
+                                        refUsers.child(UID).child("patient").setValue(patient);
                                     }
                                     else if(SetupUserType.getUserType().equals("Caregiver")){
-                                        refPatient.child(mAuth.getCurrentUser().getUid()).setValue(patient);
-                                        refCaregiver.child(mAuth.getCurrentUser().getUid()).setValue(caregiver);
+                                        String UID = mAuth.getCurrentUser().getUid();
+                                        refUsers.child(UID).child("patient").setValue(patient);
+                                        refUsers.child(UID).child("caregiver").setValue(caregiver);
                                     }
 
                                     Intent intent = new Intent(SetupVerification.this, SetupComplete.class);
@@ -92,7 +94,6 @@ public class SetupVerification extends AppCompatActivity {
             }
         });
     }
-
 
     private void setData(){
         patient.setFirstName(SetupUserInfo.getFirstName());
@@ -118,12 +119,4 @@ public class SetupVerification extends AppCompatActivity {
         caregiver.setPassword(SetupCaregiverInfo.getPassword());
         caregiver.setPhoneNumber(SetupCaregiverInfo.getPhoneNumber());
     }
-
-    /*private void writeUserData(String userId, name, email, imageUrl) {
-        firebase.database().ref('users/' + userId).set({
-                username: name,
-                email: email,
-                profile_picture : imageUrl
-        });
-    }*/
 }
