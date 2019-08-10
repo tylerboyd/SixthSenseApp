@@ -29,13 +29,13 @@ public class SetupSecondaryTreatment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_secondary_treatment);
 
-        backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
-        nextButton = (ImageButton) findViewById(R.id.nextButton);
-        backButton = (ImageButton) findViewById(R.id.backButton);
-        glucoseTabletButton = (ImageButton) findViewById(R.id.glucoseTablet);
-        glucoseGelButton = (ImageButton) findViewById(R.id.glucoseGel);
-        sugaryDrinkButton = (ImageButton) findViewById(R.id.sugaryDrink);
-        otherText = (TextView) findViewById(R.id.other);
+        backgroundImage = findViewById(R.id.backgroundImage);
+        nextButton = findViewById(R.id.nextButton);
+        backButton = findViewById(R.id.backButton);
+        glucoseTabletButton = findViewById(R.id.glucoseTablet);
+        glucoseGelButton = findViewById(R.id.glucoseGel);
+        sugaryDrinkButton = findViewById(R.id.sugaryDrink);
+        otherText = findViewById(R.id.other);
 
         int imageResource = getResources().getIdentifier("@drawable/secondarytreatmentsetup", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
