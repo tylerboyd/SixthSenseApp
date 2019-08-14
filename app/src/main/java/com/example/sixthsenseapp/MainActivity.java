@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.sixthsenseapp.Setup.SetupAddCaregiver;
 import com.example.sixthsenseapp.Setup.SetupUserType;
 
 public class MainActivity extends AppCompatActivity {

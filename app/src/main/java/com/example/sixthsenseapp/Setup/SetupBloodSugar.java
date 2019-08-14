@@ -119,7 +119,7 @@ public class SetupBloodSugar extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else if(SetupUserType.getUserType().equals("Caregiver")){
-                    Intent intent = new Intent(SetupBloodSugar.this, SetupCaregiverInfo.class);
+                    Intent intent = new Intent(SetupBloodSugar.this, SetupAddCaregiver.class);
                     startActivity(intent);
                 }
             }

@@ -45,7 +45,6 @@ public class SetupVerification extends AppCompatActivity {
         backgroundImage.setImageResource(imageResource);
 
         patient = new Patient();
-        caregiver = new Caregiver();
 
         mAuth = FirebaseAuth.getInstance();
         refUsers = FirebaseDatabase.getInstance().getReference().child("users");
@@ -64,15 +63,19 @@ public class SetupVerification extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(SetupVerification.this, "Account created succcessfully!", Toast.LENGTH_LONG).show();
 
-                                    if(SetupUserType.getUserType().equals("User")){
+                                        //Get User ID
                                         String UID = mAuth.getCurrentUser().getUid();
+
+                                        //Push patient data
                                         refUsers.child(UID).child("patient").setValue(patient);
-                                    }
-                                    else if(SetupUserType.getUserType().equals("Caregiver")){
-                                        String UID = mAuth.getCurrentUser().getUid();
-                                        refUsers.child(UID).child("patient").setValue(patient);
-                                        refUsers.child(UID).child("caregiver").setValue(caregiver);
-                                    }
+
+                                        if(SetupAddCaregiver.getNumberOfCaregivers() > 0){
+                                            //Push each caregiver data
+                                            for(int i = 0; i < SetupAddCaregiver.getNumberOfCaregivers(); i++){
+                                                refUsers.child(UID).child("caregivers").child("caregiver_" + i).setValue(SetupAddCaregiver.getCareCircle().get(i));
+                                            }
+                                        }
+
 
                                     Intent intent = new Intent(SetupVerification.this, SetupComplete.class);
                                     startActivity(intent);
@@ -112,11 +115,5 @@ public class SetupVerification extends AppCompatActivity {
         patient.setBloodSugarHighLimit(SetupBloodSugar.getUpperLimit());
         patient.setBloodSugarLowLimit(SetupBloodSugar.getLowerLimit());
         patient.setInterventionWaitTime(SetupWaitTimer.getWaitTime());
-
-        caregiver.setFirstName(SetupCaregiverInfo.getFirstName());
-        caregiver.setLastName(SetupCaregiverInfo.getLastName());
-        caregiver.setEmail(SetupCaregiverInfo.getEmailAddress());
-        caregiver.setPassword(SetupCaregiverInfo.getPassword());
-        caregiver.setPhoneNumber(SetupCaregiverInfo.getPhoneNumber());
     }
 }

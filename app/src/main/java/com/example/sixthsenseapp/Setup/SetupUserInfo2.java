@@ -166,7 +166,7 @@ public class SetupUserInfo2 extends AppCompatActivity {
                     }
                 }
                 else if(SetupUserType.getUserType().equals("Caregiver")){
-                    Intent intent = new Intent(SetupUserInfo2.this, SetupCaregiverInfo.class);
+                    Intent intent = new Intent(SetupUserInfo2.this, SetupAddCaregiver.class);
                     startActivity(intent);
                 }
             }
