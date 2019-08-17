@@ -23,15 +23,11 @@ public class SetupUserInfo extends AppCompatActivity {
     private EditText firstNameField;
     private EditText lastNameField;
     private EditText emailAddressField;
-    private EditText passwordField;
-    private EditText retypePasswordField;
     private EditText phoneNumberField;
-    private TextView errorMessage;
+
     private static String firstName = "";
     private static String lastName = "";
     private static String emailAddress = "";
-    private static String password = "";
-    private static String retypePassword = "";
     private static String phoneNumber = "";
 
     @Override
@@ -45,10 +41,7 @@ public class SetupUserInfo extends AppCompatActivity {
         firstNameField = findViewById(R.id.firstNameField);
         lastNameField = findViewById(R.id.lastNameField);
         emailAddressField = findViewById(R.id.emailField);
-        passwordField = findViewById(R.id.passwordField);
-        retypePasswordField = findViewById(R.id.retypePasswordField);
         phoneNumberField = findViewById(R.id.phoneNumberField);
-        errorMessage = findViewById(R.id.errorMessage);
 
         int imageResource = getResources().getIdentifier("@drawable/loginbackground", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
@@ -106,40 +99,6 @@ public class SetupUserInfo extends AppCompatActivity {
             }
         });
 
-        passwordField.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                checkTextFields();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        retypePasswordField.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                checkTextFields();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
         phoneNumberField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -164,24 +123,10 @@ public class SetupUserInfo extends AppCompatActivity {
                 firstName = firstNameField.getText().toString();
                 lastName = lastNameField.getText().toString();
                 emailAddress = emailAddressField.getText().toString();
-                password = passwordField.getText().toString();
-                retypePassword = retypePasswordField.getText().toString();
                 phoneNumber = phoneNumberField.getText().toString();
 
-                if(password.length() >= 8){
-                    if(password.equals(retypePassword)){
-                        Intent intent = new Intent(SetupUserInfo.this, SetupUserInfo2.class);
-                        startActivity(intent);
-                    }
-                    else{
-                        errorMessage.setTextColor(Color.RED);
-                        errorMessage.setText("Passwords do not match!");
-                    }
-                }
-                else{
-                    errorMessage.setTextColor(Color.RED);
-                    errorMessage.setText("Password must be at least 8 characters!");
-                }
+                Intent intent = new Intent(SetupUserInfo.this, SetupUserInfo2.class);
+                startActivity(intent);
             }
         });
 
@@ -195,8 +140,7 @@ public class SetupUserInfo extends AppCompatActivity {
     }
 
     private void checkTextFields(){
-        if((!firstNameField.getText().toString().isEmpty()) && (!lastNameField.getText().toString().isEmpty()) && (!emailAddressField.getText().toString().isEmpty())
-                && (!passwordField.getText().toString().isEmpty()) && (!retypePasswordField.getText().toString().isEmpty())){
+        if((!firstNameField.getText().toString().isEmpty()) && (!lastNameField.getText().toString().isEmpty()) && (!emailAddressField.getText().toString().isEmpty())){
             nextButton.setEnabled(true);
         }
         else{
@@ -214,10 +158,6 @@ public class SetupUserInfo extends AppCompatActivity {
 
     public static String getEmailAddress(){
         return emailAddress;
-    }
-
-    public static String getPassword(){
-        return password;
     }
 
     public static String getPhoneNumber(){

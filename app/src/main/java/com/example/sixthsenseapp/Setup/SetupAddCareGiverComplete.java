@@ -15,7 +15,6 @@ public class SetupAddCareGiverComplete extends AppCompatActivity {
 
     private ImageView backgroundImage;
     private ImageButton nextButton;
-    private ImageButton backButton;
     private Button addCaregiverButton;
 
     @Override
@@ -25,7 +24,6 @@ public class SetupAddCareGiverComplete extends AppCompatActivity {
 
         backgroundImage = findViewById(R.id.backgroundImage);
         nextButton = findViewById(R.id.nextButton);
-        backButton = findViewById(R.id.backButton);
         addCaregiverButton = findViewById(R.id.addCaregiverButton);
 
         int imageResource = getResources().getIdentifier("@drawable/setupaddcaregivercomplete", null, this.getPackageName());
@@ -40,6 +38,7 @@ public class SetupAddCareGiverComplete extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         addCaregiverButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

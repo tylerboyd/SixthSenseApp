@@ -102,13 +102,13 @@ public class SetupVerification extends AppCompatActivity {
         patient.setFirstName(SetupUserInfo.getFirstName());
         patient.setLastName(SetupUserInfo.getLastName());
         patient.setEmailAddress(SetupUserInfo.getEmailAddress());
-        patient.setPassword(SetupUserInfo.getPassword());
+        patient.setPassword(SetupUserInfo2.getPassword());
         patient.setPhoneNumber(SetupUserInfo.getPhoneNumber());
         patient.setDateOfBirth(SetupUserInfo2.getDateOfBirth());
-        patient.setGpName(SetupUserInfo2.getGpName());
-        patient.setGpNumber(SetupUserInfo2.getGpNumber());
-        patient.setEmergencyContactName(SetupUserInfo2.getEmergencyName());
-        patient.setEmergencyContactNumber(SetupUserInfo2.getEmergencyNumber());
+        patient.setGpName(SetupUserInfo3.getGpName());
+        patient.setGpNumber(SetupUserInfo3.getGpNumber());
+        patient.setEmergencyContactName(SetupUserInfo4.getEmergencyName());
+        patient.setEmergencyContactNumber(SetupUserInfo4.getEmergencyNumber());
         patient.setPrimaryTreatmentMethod(SetupPrimaryTreatment.getPrimaryTreatment());
         patient.setSecondaryTreatmentMethod(SetupSecondaryTreatment.getSecondaryTreatment());
         patient.setHighBloodSugarTreatment(SetupHighBloodSugar.getHighBloodSugarTreatment());

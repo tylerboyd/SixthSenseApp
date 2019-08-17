@@ -4,6 +4,8 @@ import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -45,9 +47,75 @@ public class SetupAddCaregiver extends AppCompatActivity {
         int imageResource = getResources().getIdentifier("@drawable/setupaddcaregiver", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
 
+        nextButton.setEnabled(false);
 
+        firstNameField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-        int careCircleSize = careCircle.size();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                checkTextFields();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        lastNameField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                checkTextFields();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        phoneNumberField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                checkTextFields();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        emailField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                checkTextFields();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         nextButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -76,10 +144,19 @@ public class SetupAddCaregiver extends AppCompatActivity {
             @Override
             public void onClick(View view){
 
-                Intent intent = new Intent(SetupAddCaregiver.this, SetupUserInfo2.class);
+                Intent intent = new Intent(SetupAddCaregiver.this, SetupUserInfo4.class);
                 startActivity(intent);
             }
         });
+    }
+
+    private void checkTextFields(){
+        if((!firstNameField.getText().toString().isEmpty()) && (!lastNameField.getText().toString().isEmpty()) && (!phoneNumberField.getText().toString().isEmpty()) && (!emailField.getText().toString().isEmpty())){
+            nextButton.setEnabled(true);
+        }
+        else{
+            nextButton.setEnabled(false);
+        }
     }
 
     public static int getNumberOfCaregivers(){
