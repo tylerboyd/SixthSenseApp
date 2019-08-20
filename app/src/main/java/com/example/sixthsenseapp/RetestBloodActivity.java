@@ -1,14 +1,18 @@
 package com.example.sixthsenseapp;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
-import android.widget.Toast;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -17,6 +21,7 @@ public class RetestBloodActivity extends AppCompatActivity {
     private static SeekBar seekbar;
     EditText editText;
     ImageButton tickButton;
+    View view;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,9 +30,9 @@ public class RetestBloodActivity extends AppCompatActivity {
         seekbar=findViewById(R.id.seekBar2);
         editText=findViewById(R.id.editText);
         tickButton=findViewById(R.id.tickbutton);
-        final ConstraintLayout constraintLayout=findViewById(R.id.Layout);
-
-        constraintLayout.setBackgroundColor(Color.LTGRAY);
+        final RelativeLayout constraintLayout=findViewById(R.id.Layout);
+        view=getWindow().getDecorView();
+        constraintLayout.setBackgroundResource(R.color.gray);
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -36,12 +41,8 @@ public class RetestBloodActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.toString().trim().length() == 0) {
-                    tickButton.setEnabled(false);
-                } else {
-                    tickButton.setEnabled(true);
-
-                }
+                    String userinput=editText.getText().toString().trim();
+                    tickButton.setEnabled(!userinput.isEmpty());
             }
             @Override
             public void afterTextChanged(Editable s) {
@@ -56,14 +57,14 @@ public class RetestBloodActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (progress >= 10){
-                    constraintLayout.setBackgroundColor(Color.RED);
+                    constraintLayout.setBackgroundResource(R.color.red);
                 }
                 else if (progress<=4){
-                    constraintLayout.setBackgroundColor(Color.RED);
+                    constraintLayout.setBackgroundResource(R.color.red);
                 }
-                else if  (progress>4 && progress<10)
+                else
                 {
-                    constraintLayout.setBackgroundColor(Color.LTGRAY);
+                    constraintLayout.setBackgroundResource(R.color.gray);
                 }
 
 
@@ -79,7 +80,13 @@ public class RetestBloodActivity extends AppCompatActivity {
 
             }
         });
-
+        tickButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(RetestBloodActivity.this, SetupUserType.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

@@ -3,13 +3,15 @@ package com.example.sixthsenseapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
 
 public class TimerActivity extends AppCompatActivity {
-    private static final long START_TIME_IN_MILLS=900000;
+    static SetupWaitTimer setupWaitTimer= new SetupWaitTimer();
+    private static final long START_TIME_IN_MILLS= setupWaitTimer.waitTime;
 
     private long mTimerLeftInMills=START_TIME_IN_MILLS;
     private TextView timer;
@@ -18,7 +20,7 @@ public class TimerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
          timer =findViewById(R.id.timer);
-        new CountDownTimer(900000,1000) {
+        new CountDownTimer(setupWaitTimer.waitTime,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 mTimerLeftInMills=millisUntilFinished;

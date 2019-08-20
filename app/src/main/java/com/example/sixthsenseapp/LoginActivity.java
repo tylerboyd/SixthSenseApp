@@ -2,16 +2,21 @@ package com.example.sixthsenseapp;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.media.Image;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -20,13 +25,18 @@ public class LoginActivity extends AppCompatActivity {
     private EditText passwordField;
     private ImageButton loginButton;
     private TextView errorMessage;
+    private String enteredEmail;
+    private String enteredPassword;
     private String storedEmail = "test";
     private String storedPassword = "test";
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        mAuth = FirebaseAuth.getInstance();
 
         backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
         emailField = (EditText) findViewById(R.id.emailField);
@@ -40,14 +50,16 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                validateData(emailField.getText().toString(), passwordField.getText().toString());
+                enteredEmail = emailField.getText().toString();
+                enteredPassword = passwordField.getText().toString();
+                validateData(enteredEmail, enteredPassword);
             }
         });
     }
 
     //NEEDS TO GET EMAIL AND PASSWORD DATA FROM DATABASE
     private void validateData(String userEmail, String userPassword){
-        if((userEmail.equals(storedEmail)) && (userPassword.equals(storedPassword))){
+        /*if((userEmail.equals(storedEmail)) && (userPassword.equals(storedPassword))){
             Intent intent =  new Intent(LoginActivity.this, Dashboard.class);
             startActivity(intent);
             errorMessage.setText("");
@@ -55,6 +67,25 @@ public class LoginActivity extends AppCompatActivity {
         else{
             errorMessage.setTextColor(Color.RED);
             errorMessage.setText("Incorrect email address or password!");
-        }
+        }*/
+
+
+
+        mAuth.signInWithEmailAndPassword(enteredEmail, enteredPassword)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(getApplicationContext(), "Successfully Logged in.", Toast.LENGTH_LONG).show();
+                            Intent intent =  new Intent(LoginActivity.this, Dashboard.class);
+                            startActivity(intent);
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(), "Login failed.", Toast.LENGTH_LONG).show();
+                            errorMessage.setTextColor(Color.RED);
+                            errorMessage.setText("Failed to Logjn.");
+                        }
+                    }
+                });
     }
 }
