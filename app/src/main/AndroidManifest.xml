@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SetupVerification"></activity>
+        <activity android:name=".callibrateActivity"
+            android:theme="@style/AppTheme.callibrate">
+
+        </activity>
+        <activity android:name=".SetupVerification" />
         <activity android:name=".SetupComplete" />
         <activity android:name=".SetupHighBloodSugar" />
         <activity android:name=".SetupWaitTimer" />
