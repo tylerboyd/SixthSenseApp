@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray">
+
+    <ImageButton
+        android:id="@+id/tickbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="117dp"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="133dp"
+        android:layout_marginBottom="11dp"
+
+
+        android:background="@drawable/next_button"
+        android:gravity="center" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="224dp"
+        android:layout_height="84dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="189dp"
+        android:background="@drawable/textview_border"
+        android:ems="10"
+        android:inputType="number"
+        android:text=""
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/editText"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="90dp"
+        android:layout_marginBottom="-46dp"
+        android:gravity="center"
+        android:text="mmol/l"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="185dp"
+        android:layout_height="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="114dp"
+        android:layout_marginTop="344dp"
+        android:layout_marginEnd="110dp"
+        android:text="retest blood sugar"
+        android:textSize="20dp" />
+
+    <SeekBar
+        android:id="@+id/seekBar2"
+        android:layout_width="168dp"
+        android:layout_height="265dp"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="-12dp"
+        android:max="13"
+        android:progress="5"
+        android:rotation="270" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="256dp"
+        android:layout_height="320dp"
+        android:layout_alignStart="@+id/textView2"
+
+        android:layout_alignTop="@+id/seekBar2"
+
+        android:layout_marginStart="-39dp"
+        android:layout_marginTop="21dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/fingerdrip" />
+
+
+</RelativeLayout>
