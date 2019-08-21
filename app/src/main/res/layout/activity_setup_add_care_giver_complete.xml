@@ -4,44 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Setup.SetupAddCareGiverComplete">
 
     <ImageView
         android:id="@+id/backgroundImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/startscreen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@android:color/background_light" />
 
-    <Button
-        android:id="@+id/loginButton"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        app:layout_constraintBottom_toBottomOf="@+id/backgroundImage"
-        app:layout_constraintEnd_toEndOf="@+id/backgroundImage"
-        app:layout_constraintHorizontal_bias="0.498"
+    <ImageButton
+        android:id="@+id/nextButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/next_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.836"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.579" />
+        app:layout_constraintTop_toTopOf="@+id/backgroundImage"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/setupButton"
+        android:id="@+id/addCaregiverButton"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        app:layout_constraintBottom_toBottomOf="@+id/backgroundImage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:layout_width="105dp"
+        android:layout_height="94dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/backgroundImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.65" />
 </androidx.constraintlayout.widget.ConstraintLayout>
