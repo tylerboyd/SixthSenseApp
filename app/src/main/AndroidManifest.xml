@@ -6,7 +6,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/sixthsenseicon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Setup.SetupUserInfo4"></activity>
@@ -25,7 +25,8 @@
         <activity android:name=".Setup.SetupBloodSugar" />
         <activity android:name=".Setup.SetupUserType" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Settings.Tabs"/>
+        <activity android:name=".MainActivity"> <!-- Keep .MainActivity on this line to load into the main screen on startup-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
