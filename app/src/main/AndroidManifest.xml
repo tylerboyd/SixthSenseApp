@@ -26,6 +26,8 @@
         <activity android:name=".Setup.SetupUserType" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".Settings.Tabs"/>
+        <activity android:name=".RetestBloodActivity"/>
+        <activity android:name=".InterventionActivity"/>
         <activity android:name=".MainActivity"> <!-- Keep .MainActivity on this line to load into the main screen on startup-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

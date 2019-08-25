@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -18,22 +19,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class RetestBloodActivity extends AppCompatActivity {
-    private static SeekBar seekbar;
-    EditText editText;
-    ImageButton tickButton;
-    View view;
+
+    private static SeekBar seekBar;
+    private EditText bloodSugarField;
+    private ImageButton nextButton;
+    private View view;
+    private RelativeLayout constraintLayout;
+    private double bloodSugarValue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.retestblood_activity);
 
-        seekbar=findViewById(R.id.seekBar2);
-        editText=findViewById(R.id.editText);
-        tickButton=findViewById(R.id.tickbutton);
-        final RelativeLayout constraintLayout=findViewById(R.id.Layout);
-        view=getWindow().getDecorView();
+        seekBar = findViewById(R.id.seekBar);
+        bloodSugarField = findViewById(R.id.bloodSugarField);
+        nextButton = findViewById(R.id.nextButton);
+        constraintLayout = findViewById(R.id.Layout);
+        view = getWindow().getDecorView();
+
         constraintLayout.setBackgroundResource(R.color.gray);
-        editText.addTextChangedListener(new TextWatcher() {
+
+        nextButton.setEnabled(false);
+
+        bloodSugarField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -41,33 +50,43 @@ public class RetestBloodActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    String userinput=editText.getText().toString().trim();
-                    tickButton.setEnabled(!userinput.isEmpty());
+                    String userinput = bloodSugarField.getText().toString().trim();
+
+                    bloodSugarValue = Double.parseDouble(userinput);
+
+                    if(!bloodSugarField.getText().toString().isEmpty()){
+                        nextButton.setEnabled(true);
+                    }
+                    else if(bloodSugarField.getText().toString().isEmpty()) {
+                        nextButton.setEnabled(false);
+                    }
+
+                Log.d("gsgsf", ""+bloodSugarValue);
             }
             @Override
             public void afterTextChanged(Editable s) {
                 String text = s.toString();
                 if(!TextUtils.isEmpty(text)){
-                    seekbar.setProgress(Integer.parseInt(text));
+                    //seekBar.setProgress(Double.parseDouble(text));
                 }
             }
         });
-        seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (progress >= 10){
+                if (progress >= 10)
+                {
                     constraintLayout.setBackgroundResource(R.color.red);
                 }
-                else if (progress<=4){
+                else if (progress<=4)
+                {
                     constraintLayout.setBackgroundResource(R.color.red);
                 }
                 else
                 {
                     constraintLayout.setBackgroundResource(R.color.gray);
                 }
-
-
             }
 
             @Override
@@ -80,7 +99,7 @@ public class RetestBloodActivity extends AppCompatActivity {
 
             }
         });
-        tickButton.setOnClickListener(new View.OnClickListener(){
+        nextButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(RetestBloodActivity.this, InterventionActivity.class);
@@ -88,10 +107,5 @@ public class RetestBloodActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-
-
 }
 

@@ -17,6 +17,7 @@ public class Dashboard extends AppCompatActivity {
 
     private Button logOutButton;
     private Button settingsButton;
+    private Button interventionButton;
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -32,6 +33,8 @@ public class Dashboard extends AppCompatActivity {
         navigationView = findViewById(R.id.nav_view);
 
         logOutButton = findViewById(R.id.logoutButton);
+        settingsButton = findViewById(R.id.buttonsetting);
+        interventionButton = findViewById(R.id.interventionButton);
 
         mAuth = LoginActivity.getFirebaseAuth();
 
@@ -47,11 +50,18 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
-        settingsButton = (Button) findViewById(R.id.buttonsetting);
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Dashboard.this, Tabs.class);
+                startActivity(intent);
+            }
+        });
+
+        interventionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Dashboard.this, RetestBloodActivity.class);
                 startActivity(intent);
             }
         });

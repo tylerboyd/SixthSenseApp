@@ -13,9 +13,9 @@ public class snackActvity extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.snack_actvity);
-        ImageButton imageButton =findViewById(R.id.imageButton);
+        ImageButton nextButton = findViewById(R.id.nextButton);
 
-        imageButton.setOnClickListener(new View.OnClickListener(){
+        nextButton.setOnClickListener(new View.OnClickListener(){
 
 
             @Override

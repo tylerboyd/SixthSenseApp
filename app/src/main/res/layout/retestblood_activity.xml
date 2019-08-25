@@ -7,86 +7,93 @@
     android:layout_height="match_parent"
     android:background="@color/gray">
 
-    <ImageButton
-        android:id="@+id/tickbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="117dp"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="133dp"
-        android:layout_marginBottom="11dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <ImageButton
+            android:id="@+id/nextButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/next_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.916" />
 
-        android:background="@drawable/next_button"
-        android:gravity="center" />
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="121dp"
+            android:layout_height="265dp"
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="224dp"
-        android:layout_height="84dp"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="189dp"
-        android:background="@drawable/textview_border"
-        android:ems="10"
-        android:inputType="number"
-        android:text=""
-        android:textSize="30dp" />
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:max="13"
+            android:progress="5"
+            android:rotation="270"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.153" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignBottom="@+id/editText"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="90dp"
-        android:layout_marginBottom="-46dp"
-        android:gravity="center"
-        android:text="mmol/l"
-        app:layout_constraintVertical_bias="1.0" />
+        <ImageView
+            android:id="@+id/testIcon"
+            android:layout_width="269dp"
+            android:layout_height="369dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/fingerdrip"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.13" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="185dp"
-        android:layout_height="36dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="114dp"
-        android:layout_marginTop="344dp"
-        android:layout_marginEnd="110dp"
-        android:text="retest blood sugar"
-        android:textSize="20dp" />
+        <ImageView
+            android:id="@+id/bloodSugarBox"
+            android:layout_width="323dp"
+            android:layout_height="110dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/testbloodsugarbox"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.68"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.684" />
 
-    <SeekBar
-        android:id="@+id/seekBar2"
-        android:layout_width="168dp"
-        android:layout_height="265dp"
+        <EditText
+            android:id="@+id/bloodSugarField"
+            android:layout_width="308dp"
+            android:layout_height="77dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.61"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.662" />
 
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="-12dp"
-        android:max="13"
-        android:progress="5"
-        android:rotation="270" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="256dp"
-        android:layout_height="320dp"
-        android:layout_alignStart="@+id/textView2"
-
-        android:layout_alignTop="@+id/seekBar2"
-
-        android:layout_marginStart="-39dp"
-        android:layout_marginTop="21dp"
-        android:scaleType="fitXY"
-        app:srcCompat="@drawable/fingerdrip" />
-
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>

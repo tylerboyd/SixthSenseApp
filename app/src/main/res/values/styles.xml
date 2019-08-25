@@ -8,8 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
 
         <!--    Min API 21 or higher-->
-        <item name="android:statusBarColor">@android:color/transparent</item>
-
     </style>
     <style name="AppTheme.callibrate">
         <item name="android:windowIsTranslucent">

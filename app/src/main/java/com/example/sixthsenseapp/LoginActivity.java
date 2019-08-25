@@ -52,7 +52,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view){
                 enteredEmail = emailField.getText().toString();
                 enteredPassword = passwordField.getText().toString();
-                validateData(enteredEmail, enteredPassword);
+                //validateData(enteredEmail, enteredPassword);
+                Intent intent =  new Intent(LoginActivity.this, Dashboard.class);
+                startActivity(intent);
             }
         });
     }

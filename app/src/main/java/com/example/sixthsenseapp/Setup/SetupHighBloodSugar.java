@@ -76,7 +76,7 @@ public class SetupHighBloodSugar extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 highBloodSugarTreatment = "Insulin Pen";
-                insulinPenButton.setBackgroundResource(R.drawable.insulinpenabled);
+                insulinPenButton.setBackgroundResource(R.drawable.insulinpenenabled);
                 insulinPumpButton.setBackgroundResource(R.drawable.insulinpumpdisabled);
                 otherText.setText("");
                 nextButton.setEnabled(true);
