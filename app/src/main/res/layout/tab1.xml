@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#00D83434">
+    android:background="#3F51B5"
+    android:backgroundTint="#3F51B5"
+    android:backgroundTintMode="add">
 
     <Button
         android:id="@+id/buttonMinus"
@@ -104,9 +106,21 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="219dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="157dp"
+        android:layout_marginStart="212dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="163dp"
         android:text="@string/auto_on" />
+
+    <Button
+        android:id="@+id/buttonupdatesensor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="157dp"
+        android:layout_marginBottom="201dp"
+        android:text="Update Sensor" />
 
 </RelativeLayout>

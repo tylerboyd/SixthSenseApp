@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -14,12 +15,12 @@ import com.example.sixthsenseapp.R;
 
 public class tab2 extends Fragment {
 
-    private ImageButton minusButton1;
-    private ImageButton plusButton1;
-    private ImageButton minusButton2;
-    private ImageButton plusButton2;
-    private ImageButton minusButton3;
-    private ImageButton plusButton3;
+    private Button minusButton1;
+    private Button plusButton1;
+    private Button minusButton2;
+    private Button plusButton2;
+    private Button minusButton3;
+    private Button plusButton3;
 
 
 
@@ -28,7 +29,7 @@ public class tab2 extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.tab2, container, false);
 
-        minusButton1 = (ImageButton) v.findViewById(R.id.minusbutton1);
+        minusButton1 = (Button) v.findViewById(R.id.minusbutton1);
         minusButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,7 +39,7 @@ public class tab2 extends Fragment {
         });
 
 
-        plusButton1 = (ImageButton) v.findViewById(R.id.plusbutton1);
+        plusButton1 = (Button) v.findViewById(R.id.plusbutton1);
         plusButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,7 +48,7 @@ public class tab2 extends Fragment {
             }
         });
 
-        minusButton2 = (ImageButton) v.findViewById(R.id.minusbutton2);
+        minusButton2 = (Button) v.findViewById(R.id.minusbutton2);
         minusButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +57,7 @@ public class tab2 extends Fragment {
             }
         });
 
-        plusButton2 = (ImageButton) v.findViewById(R.id.plusbutton2);
+        plusButton2 = (Button) v.findViewById(R.id.plusbutton2);
         plusButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +66,7 @@ public class tab2 extends Fragment {
             }
         });
 
-        minusButton3 = (ImageButton) v.findViewById(R.id.minusbutton3);
+        minusButton3 = (Button) v.findViewById(R.id.minusbutton3);
         minusButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +75,7 @@ public class tab2 extends Fragment {
             }
         });
 
-        plusButton3 = (ImageButton) v.findViewById(R.id.plusbutton3);
+        plusButton3 = (Button) v.findViewById(R.id.plusbutton3);
         plusButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

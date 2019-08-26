@@ -5,10 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sixthsenseapp.R;
@@ -19,11 +23,20 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
 public class SetupVerification extends AppCompatActivity {
 
     private ImageView backgroundImage;
     private ImageButton nextButton;
     private ImageButton backButton;
+    private CheckBox acceptTOSBox;
+    private TextView termsOfService;
     private DatabaseReference refUsers;
     private DatabaseReference refUID;
     private DatabaseReference refPatient;
@@ -40,8 +53,52 @@ public class SetupVerification extends AppCompatActivity {
         backgroundImage = findViewById(R.id.backgroundImage);
         nextButton = findViewById(R.id.nextButton);
         backButton = findViewById(R.id.backButton);
+        termsOfService = findViewById(R.id.termsofservice);
+        acceptTOSBox = findViewById(R.id.acceptbox);
 
-        int imageResource = getResources().getIdentifier("@drawable/loginbackground", null, this.getPackageName());
+        nextButton.setVisibility(GONE);
+
+
+        InputStream inputStream = getResources().openRawResource(R.raw.termsofservice);
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+        int i;
+        try {
+            i = inputStream.read();
+            while (i != -1)
+            {
+                byteArrayOutputStream.write(i);
+                i = inputStream.read();
+            }
+            inputStream.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        termsOfService.setText(byteArrayOutputStream.toString());
+        termsOfService.setMovementMethod(new ScrollingMovementMethod());
+
+        acceptTOSBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
+                if ( isChecked )
+                {
+                    nextButton.setVisibility(VISIBLE);
+                }
+                else{
+                    nextButton.setVisibility(GONE);
+                }
+            }
+        });
+
+
+
+
+
+
+        int imageResource = getResources().getIdentifier("@drawable/background_no_logo", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);
 
         patient = new Patient();
