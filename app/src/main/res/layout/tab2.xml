@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF5722"
+    android:backgroundTint="#FF5722"
+    android:backgroundTintMode="add">
+
+
+    <Button
+        android:id="@+id/plusbutton3"
+        android:layout_width="wrap_content"
+        android:layout_height="57dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="132dp"
+        android:layout_marginEnd="177dp"
+        android:layout_marginBottom="100dp"
+        android:contentDescription="TODO" />
+
+    <Button
+        android:id="@+id/minusbutton3"
+        android:layout_width="wrap_content"
+        android:layout_height="54dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="291dp"
+        android:layout_marginBottom="101dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="121dp"
+        android:layout_height="64dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="539dp"
+        android:layout_marginEnd="184dp"
+        android:layout_marginBottom="128dp"
+        android:text="demo" />
+
+    <Button
+        android:id="@+id/plusbutton2"
+        android:layout_width="wrap_content"
+        android:layout_height="57dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="292dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="538dp" />
+
+    <Button
+        android:id="@+id/minusbutton1"
+        android:layout_width="82dp"
+        android:layout_height="63dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginBottom="535dp"
+        android:contentDescription="TODO" />
+
+    <Button
+        android:id="@+id/minusbutton2"
+        android:layout_width="wrap_content"
+        android:layout_height="51dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="193dp"
+        android:layout_marginEnd="130dp"
+        android:layout_marginBottom="539dp" />
+
+    <TextView
+        android:id="@+id/termsofservice"
+        android:layout_width="118dp"
+        android:layout_height="74dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="217dp"
+        android:layout_marginBottom="608dp"
+        android:text="DEMO" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="108dp"
+        android:layout_height="73dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="257dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="557dp"
+        android:text="DEMO" />
+
+    <Button
+        android:id="@+id/plusbutton1"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="105dp"
+        android:layout_marginEnd="224dp"
+        android:layout_marginBottom="537dp" />
+
+</RelativeLayout>
