@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".intervention.SecondaryTreatment"></activity>
         <activity android:name=".intervention.primaryTreatment" />
-        <activity android:name=".setup.SetupUserInfo4" />
+        <activity android:name=".Setup.SetupUserInfo4" />
         <activity android:name=".setup.SetupUserInfo3" />
         <activity android:name=".setup.SetupAddCareGiverComplete" />
         <activity android:name=".setup.SetupVerification" />
@@ -27,7 +27,7 @@
         <activity android:name=".setup.SetupBloodSugar" />
         <activity android:name=".setup.SetupUserType" />
         <activity android:name=".mainMenu.LoginActivity" />
-        <activity android:name=".settings.Tabs" />
+        <activity android:name=".Settings.Tabs" />
         <activity android:name=".intervention.RetestBloodActivity" />
         <activity android:name=".intervention.InterventionActivity" />
         <activity android:name=".intervention.TimerActivity" />

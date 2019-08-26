@@ -1,4 +1,4 @@
-package com.example.sixthsenseapp.settings;
+package com.example.sixthsenseapp.Settings;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
