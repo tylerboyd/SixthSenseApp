@@ -13,7 +13,7 @@ import com.example.sixthsenseapp.mainMenu.LoginActivity;
 import com.example.sixthsenseapp.mainMenu.MainActivity;
 import com.example.sixthsenseapp.R;
 import com.example.sixthsenseapp.intervention.RetestBloodActivity;
-import com.example.sixthsenseapp.Settings.Tabs;
+import com.example.sixthsenseapp.settings.Tabs;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 

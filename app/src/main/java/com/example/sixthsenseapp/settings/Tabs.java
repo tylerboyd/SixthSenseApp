@@ -1,4 +1,4 @@
-package com.example.sixthsenseapp.Settings;
+package com.example.sixthsenseapp.settings;
 
 import android.content.Intent;
 import android.os.Bundle;

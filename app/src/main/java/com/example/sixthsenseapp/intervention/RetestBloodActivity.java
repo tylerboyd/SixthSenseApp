@@ -69,7 +69,7 @@ public class RetestBloodActivity extends AppCompatActivity {
 
 
                 //if Blood sugar is out of range, send to primary treatment
-                Intent intent = new Intent(RetestBloodActivity.this, primaryTreatment.class);
+                Intent intent = new Intent(RetestBloodActivity.this, PrimaryTreatment.class);
                 startActivity(intent);
             }
         });

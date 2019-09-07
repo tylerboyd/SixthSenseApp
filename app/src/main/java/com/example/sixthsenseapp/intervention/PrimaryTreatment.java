@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 
 import com.example.sixthsenseapp.R;
 
-public class primaryTreatment extends AppCompatActivity {
+public class PrimaryTreatment extends AppCompatActivity {
 
     private ImageButton nextButton;
 
@@ -26,7 +26,7 @@ public class primaryTreatment extends AppCompatActivity {
             @Override
             public void onClick(View view){
 
-                Intent intent =  new Intent(primaryTreatment.this, TimerActivity.class);
+                Intent intent =  new Intent(PrimaryTreatment.this, TimerActivity.class);
                 startActivity(intent);
             }
         });

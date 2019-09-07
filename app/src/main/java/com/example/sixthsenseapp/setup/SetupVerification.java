@@ -1,4 +1,4 @@
-package com.example.sixthsenseapp.Setup;
+package com.example.sixthsenseapp.setup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,12 +38,8 @@ public class SetupVerification extends AppCompatActivity {
     private CheckBox acceptTOSBox;
     private TextView termsOfService;
     private DatabaseReference refUsers;
-    private DatabaseReference refUID;
-    private DatabaseReference refPatient;
-    private DatabaseReference refCaregiver;
     private FirebaseAuth mAuth;
     private Patient patient;
-    private Caregiver caregiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

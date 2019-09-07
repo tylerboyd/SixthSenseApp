@@ -1,4 +1,4 @@
-package com.example.sixthsenseapp.Setup;
+package com.example.sixthsenseapp.setup;
 
 import android.content.Intent;
 import android.graphics.Color;

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sixthsenseapp.R;
-import com.example.sixthsenseapp.Setup.SetupWaitTimer;
+import com.example.sixthsenseapp.setup.SetupWaitTimer;
 
 import java.util.Locale;
 

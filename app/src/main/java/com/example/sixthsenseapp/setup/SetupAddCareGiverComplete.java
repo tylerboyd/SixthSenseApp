@@ -1,4 +1,4 @@
-package com.example.sixthsenseapp.Setup;
+package com.example.sixthsenseapp.setup;
 
 import androidx.appcompat.app.AppCompatActivity;
 

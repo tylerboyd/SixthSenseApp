@@ -10,7 +10,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.sixthsenseapp.R;
-import com.example.sixthsenseapp.Setup.SetupUserType;
+import com.example.sixthsenseapp.setup.SetupUserType;
+import com.example.sixthsenseapp.setup.SetupUserType;
 
 public class MainActivity extends AppCompatActivity {
 
