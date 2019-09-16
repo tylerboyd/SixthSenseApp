@@ -13,7 +13,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.sixthsenseapp.R;
-import com.example.sixthsenseapp.intervention.callibrateActivity;
+import com.example.sixthsenseapp.setup.callibrateActivity;
 import com.google.android.material.navigation.NavigationView;
 
 public class MenuActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener

@@ -1,4 +1,4 @@
-package com.example.sixthsenseapp.Settings;
+package com.example.sixthsenseapp.settings;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;

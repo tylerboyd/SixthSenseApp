@@ -20,7 +20,7 @@ public class Tabs extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabs);
-        com.example.sixthsenseapp.Settings.SectionsPagerAdapter sectionsPagerAdapter = new com.example.sixthsenseapp.Settings.SectionsPagerAdapter(this, getSupportFragmentManager());
+        com.example.sixthsenseapp.settings.SectionsPagerAdapter sectionsPagerAdapter = new com.example.sixthsenseapp.settings.SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);

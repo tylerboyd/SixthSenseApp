@@ -1,4 +1,4 @@
-package com.example.sixthsenseapp.intervention;
+package com.example.sixthsenseapp.setup;
 
 import android.app.Activity;
 import android.os.Bundle;

@@ -54,7 +54,6 @@ public class SetupVerification extends AppCompatActivity {
 
         nextButton.setEnabled(false);
 
-
         InputStream inputStream = getResources().openRawResource(R.raw.termsofservice);
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -88,11 +87,6 @@ public class SetupVerification extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
-
 
         int imageResource = getResources().getIdentifier("@drawable/background_no_logo", null, this.getPackageName());
         backgroundImage.setImageResource(imageResource);

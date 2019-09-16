@@ -4,57 +4,50 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.sixthsenseapp.R;
 
-public class SecondaryTreatment extends AppCompatActivity {
+public class HighBloodSugar extends AppCompatActivity {
 
     private ImageButton nextButton;
     private ImageView treatmentType;
-    private String secondaryTreatmentMethod;
+    private String highBloodSugarTreatmentMethod;
 
     private UserInformation uInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_secondary_treatment);
+        setContentView(R.layout.activity_high_blood_sugar);
 
         nextButton = findViewById(R.id.nextButton);
         treatmentType = findViewById(R.id.treatmentType);
 
         Intent i = getIntent();
         uInfo = (UserInformation)i.getSerializableExtra("userInformation");
-        Log.w("hi", "ji");
-        secondaryTreatmentMethod = uInfo.getSecondaryTreatmentMethod();
+        highBloodSugarTreatmentMethod = uInfo.getHighBloodSugarTreatment();
 
-        if(secondaryTreatmentMethod.equals("Sugary Drink")){
-            //TODO: Sugary Drink Asset
+        if(highBloodSugarTreatmentMethod.equals("Insulin Pump")){
+            //TODO: Insert Insulin Pump Asset
         }
-        else if(secondaryTreatmentMethod.equals("Glucose Tablet")){
-
-            int imageResource = getResources().getIdentifier("@drawable/glucosetabletred", null, getPackageName());
-            treatmentType.setImageResource(imageResource);
-        }
-        else if(secondaryTreatmentMethod.equals("Glucose Gel")){
-            int imageResource = getResources().getIdentifier("@drawable/glucosegelred", null, getPackageName());
+        else if(highBloodSugarTreatmentMethod.equals("Insulin Pen")){
+            int imageResource = getResources().getIdentifier("@drawable/redinsulinpen", null, getPackageName());
             treatmentType.setImageResource(imageResource);
         }
         else{
-            //TODO: Other Asset
+            //TODO: OTHER TREATMENT
         }
 
         nextButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
 
-                Intent intent =  new Intent(SecondaryTreatment.this, TimerActivity.class);
+                Intent intent =  new Intent(HighBloodSugar.this, TimerActivity.class);
                 intent.putExtra("userInformation", uInfo);
-                intent.putExtra("originClass", "SecondaryTreatment");
+                intent.putExtra("originClass", "HighBloodSugar");
                 startActivity(intent);
             }
         });

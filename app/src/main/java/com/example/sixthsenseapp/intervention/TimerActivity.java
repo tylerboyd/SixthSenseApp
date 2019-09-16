@@ -1,120 +1,93 @@
 package com.example.sixthsenseapp.intervention;
 
+import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.CountDownTimer;
-
+import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.CountDownTimer;
+import android.os.VibrationEffect;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.os.Vibrator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sixthsenseapp.R;
-import com.example.sixthsenseapp.setup.SetupWaitTimer;
 
 import java.util.Locale;
 
 public class TimerActivity extends AppCompatActivity {
 
-    static SetupWaitTimer setupWaitTimer= new SetupWaitTimer();
-
-    //Needs to get wait time from firebase
-    //private static final long START_TIME_IN_MILLS = 900000;
-    private static final long START_TIME_IN_MILLS = 30000;
-
-    private long mTimerLeftInMills = START_TIME_IN_MILLS;
-    private TextView mTextViewCountDown;
-    private CountDownTimer mCountDownTimer;
-    private boolean mTimerRunning;
-    private long mTimeLeftInMillis;
-    private long mEndTime;
+    private TextView timerText;
+    private CountDownTimer demo;
+    private ImageButton nextButton;
+    private long minutesLeft;
+    private long secondsLeft;
+    private int timeLength;
+    private int duration;
+    private String originClass;
+    private UserInformation uInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
+        timerText = findViewById(R.id.timerText);
+        nextButton = findViewById(R.id.nextButton);
 
-        mTextViewCountDown = findViewById(R.id.timer);
-    }
+        nextButton.setEnabled(false);
 
-    private void startTimer() {
-        mEndTime = System.currentTimeMillis() + mTimeLeftInMillis;
+        Intent i = getIntent();
+        uInfo = (UserInformation)i.getSerializableExtra("userInformation");
+        originClass = (String)i.getSerializableExtra("originClass");
+        timeLength = uInfo.getInterventionWaitTime();
 
-        mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
+        startTimer();
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onTick(long millisUntilFinished) {
-                mTimeLeftInMillis = millisUntilFinished;
-                updateCountDownText();
-            }
-
-            @Override
-            public void onFinish() {
-                mTimerRunning = false;
-                mTextViewCountDown.setText("Finished");
+            public void onClick(View v) {
                 Intent intent = new Intent(TimerActivity.this, InterventionActivity.class);
+                intent.putExtra("originClass", originClass);
+                intent.putExtra("userInformation", uInfo);
                 startActivity(intent);
             }
-        }.start();
+        });
 
-        mTimerRunning = true;
     }
 
-    private void updateCountDownText() {
-        int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
-        int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
+    private void startTimer(){
 
-        String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+        duration = timeLength * 60000;
 
-        Log.d("timer", ""+mTextViewCountDown);
+        demo = new CountDownTimer(duration, 1000) {
 
-        mTextViewCountDown.setText(timeLeftFormatted);
-    }
+            public void onTick(long millisUntilFinished) {
+                minutesLeft = (millisUntilFinished / (60 * 1000) % 60);
+                secondsLeft = (millisUntilFinished / 1000 % 60);
 
+                String remainingTimeFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutesLeft, secondsLeft);
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-
-        editor.putLong("millisLeft", mTimeLeftInMillis);
-        editor.putBoolean("timerRunning", mTimerRunning);
-        editor.putLong("endTime", mEndTime);
-
-        editor.apply();
-
-        if (mCountDownTimer != null) {
-            mCountDownTimer.cancel();
-        }
-    }
-
-    @Override
-    protected void onResume(){
-        super.onResume();
-        Log.d("dsfs", "RESUMED");
-
-        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
-
-        mTimeLeftInMillis = prefs.getLong("millisLeft", mTimerLeftInMills);
-        mTimerRunning = prefs.getBoolean("timerRunning", false);
-
-        updateCountDownText();
-
-        if (mTimerRunning) {
-            mEndTime = prefs.getLong("endTime", 0);
-            mTimeLeftInMillis = mEndTime - System.currentTimeMillis();
-            startTimer();
-
-            if (mTimeLeftInMillis < 0) {
-                mTimeLeftInMillis = 0;
-                mTimerRunning = false;
-                updateCountDownText();
+                timerText.setText(remainingTimeFormatted);
             }
-        }
-        else {
-            startTimer();
-        }
+
+            public void onFinish() {
+
+                Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                // Vibrate for 500 milliseconds
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    v.vibrate(VibrationEffect.createOneShot(1000, VibrationEffect.DEFAULT_AMPLITUDE));
+                } else {
+                    //deprecated in API 26
+                    v.vibrate(500);
+                }
+
+                nextButton.setEnabled(true);
+
+            }
+        }.start();
     }
 }
+
+

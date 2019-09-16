@@ -4,6 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/cal_activate"
-    tools:context=".intervention.callibrateActivity">
+    tools:context=".setup.callibrateActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

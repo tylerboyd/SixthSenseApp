@@ -1,4 +1,4 @@
-package com.example.sixthsenseapp.Settings;
+package com.example.sixthsenseapp.settings;
 
 import android.content.Context;
 import androidx.annotation.Nullable;

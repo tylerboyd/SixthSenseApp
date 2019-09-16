@@ -1,10 +1,10 @@
-package com.example.sixthsenseapp.intervention;
+package com.example.sixthsenseapp.setup;
 
-import android.os.Bundle;
+        import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
+        import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.sixthsenseapp.R;
+        import com.example.sixthsenseapp.R;
 
 public class CalibratingActivity extends AppCompatActivity {
 
