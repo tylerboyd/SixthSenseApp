@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.sixthsenseapp.R;
 
@@ -15,6 +16,8 @@ public class SecondaryTreatment extends AppCompatActivity {
 
     private ImageButton nextButton;
     private ImageView treatmentType;
+    private ImageView otherBox;
+    private TextView otherText;
     private String secondaryTreatmentMethod;
 
     private UserInformation uInfo;
@@ -26,14 +29,18 @@ public class SecondaryTreatment extends AppCompatActivity {
 
         nextButton = findViewById(R.id.nextButton);
         treatmentType = findViewById(R.id.treatmentType);
+        otherBox = findViewById(R.id.otherBox);
+        otherText = findViewById(R.id.otherText);
 
         Intent i = getIntent();
         uInfo = (UserInformation)i.getSerializableExtra("userInformation");
-        Log.w("hi", "ji");
         secondaryTreatmentMethod = uInfo.getSecondaryTreatmentMethod();
 
+        otherBox.setVisibility(View.INVISIBLE);
+
         if(secondaryTreatmentMethod.equals("Sugary Drink")){
-            //TODO: Sugary Drink Asset
+            int imageResource = getResources().getIdentifier("@drawable/redsugarydrink", null, getPackageName());
+            treatmentType.setImageResource(imageResource);
         }
         else if(secondaryTreatmentMethod.equals("Glucose Tablet")){
 
@@ -45,7 +52,11 @@ public class SecondaryTreatment extends AppCompatActivity {
             treatmentType.setImageResource(imageResource);
         }
         else{
-            //TODO: Other Asset
+            //TODO: Other Treatment
+            otherText.setText(secondaryTreatmentMethod);
+            otherBox.setVisibility(View.VISIBLE);
+            int imageResource = getResources().getIdentifier("@drawable/redothertreatment", null, getPackageName());
+            treatmentType.setImageResource(imageResource);
         }
 
         nextButton.setOnClickListener(new View.OnClickListener(){

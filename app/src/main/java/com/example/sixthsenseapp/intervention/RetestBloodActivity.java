@@ -28,19 +28,15 @@ public class RetestBloodActivity extends AppCompatActivity {
     private EditText bloodSugarField;
     private ImageButton nextButton;
     private double bloodSugarValue;
-
     private float bloodSugarUpperLimit;
     private float bloodSugarLowerLimit;
-
+    private boolean proceed = false;
     private UserInformation uInfo;
-
     private FirebaseDatabase mFirebaseDatabase;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener m;
     private DatabaseReference ref;
     private String userID;
-
-    private boolean proceed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,8 +108,8 @@ public class RetestBloodActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else{
-                    //TODO: Implement All good screen
-                    Log.w("BLOODSUGAR", "You're all good");
+                    Intent intent = new Intent(RetestBloodActivity.this, FineActivity.class);
+                    startActivity(intent);
                 }
             }
         });

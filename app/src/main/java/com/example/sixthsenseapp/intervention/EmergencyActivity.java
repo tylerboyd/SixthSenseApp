@@ -37,7 +37,7 @@ public class EmergencyActivity extends AppCompatActivity {
         emergencyContactName = uInfo.getEmergencyContactName();
         emergencyContactNumber = uInfo.getEmergencyContactNumber();
 
-        emergencyContactNameField.setText("EmergencyActivity Contact: " + emergencyContactName);
+        emergencyContactNameField.setText("Emergency Contact: " + emergencyContactName);
         emergencyContactNumberField.setText("Contact Number: " + emergencyContactNumber);
 
         nextButton.setOnClickListener(new View.OnClickListener(){

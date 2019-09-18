@@ -31,7 +31,9 @@ public class HighBloodSugar extends AppCompatActivity {
         highBloodSugarTreatmentMethod = uInfo.getHighBloodSugarTreatment();
 
         if(highBloodSugarTreatmentMethod.equals("Insulin Pump")){
-            //TODO: Insert Insulin Pump Asset
+            //TODO: InsuLin Pump Asset
+            int imageResource = getResources().getIdentifier("@drawable/redinsulinpen", null, getPackageName());
+            treatmentType.setImageResource(imageResource);
         }
         else if(highBloodSugarTreatmentMethod.equals("Insulin Pen")){
             int imageResource = getResources().getIdentifier("@drawable/redinsulinpen", null, getPackageName());
