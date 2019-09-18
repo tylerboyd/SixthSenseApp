@@ -44,7 +44,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/termsofservice"
+        android:id="@+id/lowBlood"
         android:layout_width="371dp"
         android:layout_height="530dp"
         android:layout_marginStart="8dp"

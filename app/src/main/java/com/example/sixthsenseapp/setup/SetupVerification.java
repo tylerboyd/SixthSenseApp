@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -27,9 +26,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
-
 public class SetupVerification extends AppCompatActivity {
 
     private ImageView backgroundImage;
@@ -49,7 +45,7 @@ public class SetupVerification extends AppCompatActivity {
         backgroundImage = findViewById(R.id.backgroundImage);
         nextButton = findViewById(R.id.nextButton);
         backButton = findViewById(R.id.backButton);
-        termsOfService = findViewById(R.id.termsofservice);
+        termsOfService = findViewById(R.id.lowBlood);
         acceptTOSBox = findViewById(R.id.acceptbox);
 
         nextButton.setEnabled(false);
