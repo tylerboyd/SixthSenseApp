@@ -27,7 +27,7 @@ public class tab1 extends Fragment {
     Boolean stateAutoActivate;
     Boolean stateNightLight;
 
-    private int minutes = 15;
+    private int minutes = 0;
     private int hours = 0;
 
     @Nullable
@@ -36,39 +36,55 @@ public class tab1 extends Fragment {
         View v = inflater.inflate(R.layout.tab1, container, false);
 
         startTime = v.findViewById(R.id.starttime);
-        button1 = (Button) v.findViewById(R.id.buttonMinus);
+        button1 = v.findViewById(R.id.buttonMinus);
+        switch1 = v.findViewById(R.id.switch1);
+        switch2 = v.findViewById(R.id.switch2);
+
+        startTime.setText(hours + ":" + minutes);
+
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                minutes = minutes - 5;
-                if(minutes <= 0)
+                if(hours != 0 && minutes == 0)
                 {
-                    minutes = 0;
-                    hours = hours - 1;
+                    hours--;
                 }
-                if(hours <= 0)
+                else if(hours == 0 && minutes == 0)
                 {
-                    hours = 24;
+                    hours = 23;
+                }
+
+                minutes = minutes - 5;
+
+                if(minutes < 0)
+                {
+                    minutes = 55;
                 }
                 startTime.setText(hours + ":" + minutes);
-                Toast toast = Toast.makeText(v.getContext(), "Timer Minus 5 min. Hours:" +hours + "Minutes" + minutes, Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(v.getContext(), "Timer Minus 5 min. Hours: " +hours + " Minutes" + minutes, Toast.LENGTH_LONG);
                 toast.show();
             }
         });
 
-        button2 = (Button) v.findViewById(R.id.buttonPlus);
+        button2 = v.findViewById(R.id.buttonPlus);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                minutes = minutes + 5;
-                if(minutes >= 60)
+
+                if(hours != 23 && minutes == 55)
                 {
-                    minutes = 0;
-                    hours = hours + 1;
+                    hours++;
                 }
-                if(hours >= 24)
+                else if(hours == 23 && minutes == 55)
                 {
                     hours = 0;
+                }
+
+                minutes = minutes + 5;
+
+                if(minutes == 60)
+                {
+                    minutes = 0;
                 }
                 startTime.setText(hours + ":" + minutes);
                 Toast toast = Toast.makeText(v.getContext(), "Timer Plus 5 min. Hours:" +hours + "Minutes" + minutes, Toast.LENGTH_LONG);
@@ -76,8 +92,6 @@ public class tab1 extends Fragment {
             }
         });
 
-
-        Switch switch1 = (Switch) v.findViewById(R.id.switch1);
         switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -92,7 +106,6 @@ public class tab1 extends Fragment {
             }
         });
 
-        Switch switch2 = (Switch) v.findViewById(R.id.switch2);
         switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -110,5 +123,4 @@ public class tab1 extends Fragment {
 
         return v;
     }
-
 }

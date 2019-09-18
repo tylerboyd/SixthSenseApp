@@ -48,28 +48,6 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
         mAuth = LoginActivity.getFirebaseAuth();
 
-        /*
-        logOutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                mAuth.getInstance().signOut();
-                Toast.makeText(Dashboard.this, "Successfully logged out.", Toast.LENGTH_LONG).show();
-
-                Intent intent = new Intent(Dashboard.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        settingsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Dashboard.this, Tabs.class);
-                startActivity(intent);
-            }
-        });
-        */
-
         interventionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

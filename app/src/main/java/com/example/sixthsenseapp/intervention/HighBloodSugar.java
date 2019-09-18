@@ -37,8 +37,7 @@ public class HighBloodSugar extends AppCompatActivity {
         otherBox.setVisibility(View.INVISIBLE);
 
         if(highBloodSugarTreatmentMethod.equals("Insulin Pump")){
-            //TODO: InsuLin Pump Asset
-            int imageResource = getResources().getIdentifier("", null, getPackageName());
+            int imageResource = getResources().getIdentifier("@drawable/redinsulinpump", null, getPackageName());
             treatmentType.setImageResource(imageResource);
         }
         else if(highBloodSugarTreatmentMethod.equals("Insulin Pen")){

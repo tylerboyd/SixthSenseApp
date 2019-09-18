@@ -45,8 +45,7 @@ public class PrimaryTreatment extends AppCompatActivity {
             treatmentType.setImageResource(imageResource);
         }
         else if(primaryTreatmentMethod.equals("Confectionery")){
-            //TODO: Confectionery asset
-            int imageResource = getResources().getIdentifier("", null, getPackageName());
+            int imageResource = getResources().getIdentifier("@drawable/redconfectionery", null, getPackageName());
             treatmentType.setImageResource(imageResource);
         }
         else{
