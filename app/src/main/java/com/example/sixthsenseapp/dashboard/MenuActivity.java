@@ -1,4 +1,4 @@
-package com.example.sixthsenseapp.mainMenu;
+package com.example.sixthsenseapp.dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -5,19 +5,17 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.sixthsenseapp.R;
 import com.example.sixthsenseapp.setup.SetupUserType;
-import com.example.sixthsenseapp.setup.SetupUserType;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageView backgroundImage;
-    private Button loginButton;
-    private Button setupButton;
+    private ImageButton loginButton;
+    private ImageButton setupButton;
 
     @Override
     public void onStart() {
@@ -29,12 +27,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        backgroundImage = findViewById(R.id.backgroundImage);
         loginButton = findViewById(R.id.loginButton);
         setupButton = findViewById(R.id.setupButton);
-
-        int imageResource = getResources().getIdentifier("@drawable/startscreen", null, this.getPackageName());
-        backgroundImage.setImageResource(imageResource);
 
         loginButton.setOnClickListener(new View.OnClickListener(){
             @Override

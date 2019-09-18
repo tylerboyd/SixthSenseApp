@@ -22,7 +22,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private ImageView backgroundImage;
     private EditText emailField;
     private EditText passwordField;
     private ImageButton loginButton;
@@ -38,28 +37,22 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        backgroundImage = findViewById(R.id.backgroundImage);
         emailField = findViewById(R.id.emailField);
         passwordField = findViewById(R.id.passwordField);
         loginButton = findViewById(R.id.loginButton);
         errorMessage = findViewById(R.id.errorMessage);
-
-        int imageResource = getResources().getIdentifier("@drawable/loginbackground", null, this.getPackageName());
-        backgroundImage.setImageResource(imageResource);
 
         loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 enteredEmail = emailField.getText().toString();
                 enteredPassword = passwordField.getText().toString();
-                validateData(enteredEmail, enteredPassword);
-                //Intent intent =  new Intent(LoginActivity.this, Dashboard.class);
-                //startActivity(intent);
+                validateData();
             }
         });
     }
 
-    private void validateData(String userEmail, String userPassword){
+    private void validateData(){
         mAuth.signInWithEmailAndPassword(enteredEmail, enteredPassword)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override

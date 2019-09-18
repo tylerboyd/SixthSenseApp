@@ -19,7 +19,6 @@ public class SecondaryTreatment extends AppCompatActivity {
     private ImageView otherBox;
     private TextView otherText;
     private String secondaryTreatmentMethod;
-
     private UserInformation uInfo;
 
     @Override
@@ -52,7 +51,6 @@ public class SecondaryTreatment extends AppCompatActivity {
             treatmentType.setImageResource(imageResource);
         }
         else{
-            //TODO: Other Treatment
             otherText.setText(secondaryTreatmentMethod);
             otherBox.setVisibility(View.VISIBLE);
             int imageResource = getResources().getIdentifier("@drawable/redothertreatment", null, getPackageName());
@@ -62,7 +60,6 @@ public class SecondaryTreatment extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-
                 Intent intent =  new Intent(SecondaryTreatment.this, TimerActivity.class);
                 intent.putExtra("userInformation", uInfo);
                 intent.putExtra("originClass", "SecondaryTreatment");

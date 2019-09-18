@@ -1,6 +1,5 @@
 package com.example.sixthsenseapp.intervention;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -19,7 +18,6 @@ public class PrimaryTreatment extends AppCompatActivity {
     private ImageView otherBox;
     private TextView otherText;
     private String primaryTreatmentMethod;
-
     private UserInformation uInfo;
 
     @Override
@@ -48,9 +46,10 @@ public class PrimaryTreatment extends AppCompatActivity {
         }
         else if(primaryTreatmentMethod.equals("Confectionery")){
             //TODO: Confectionery asset
+            int imageResource = getResources().getIdentifier("", null, getPackageName());
+            treatmentType.setImageResource(imageResource);
         }
         else{
-            //TODO: Display Other Treatment Asset
             otherText.setText(primaryTreatmentMethod);
             otherBox.setVisibility(View.VISIBLE);
             int imageResource = getResources().getIdentifier("@drawable/redothertreatment", null, getPackageName());
