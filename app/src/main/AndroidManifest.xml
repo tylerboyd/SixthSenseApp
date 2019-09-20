@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/sixthsenseicon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".intervention.FineActivity"></activity>
+        <activity android:name=".intervention.CalculatedTreatment"></activity>
+        <activity android:name=".intervention.FineActivity" />
         <activity android:name=".intervention.EmergencyActivity" />
         <activity android:name=".intervention.HighBloodSugar" />
         <activity android:name=".setup.SetupUserInfo4" />

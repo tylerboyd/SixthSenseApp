@@ -54,12 +54,13 @@ public class TimerActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     private void startTimer(){
 
-        duration = timeLength * 60000;
+        //duration = timeLength * 60000;
+
+        duration = 1000;
 
         demo = new CountDownTimer(duration, 1000) {
 
@@ -84,7 +85,6 @@ public class TimerActivity extends AppCompatActivity {
                 }
 
                 nextButton.setEnabled(true);
-
             }
         }.start();
     }

@@ -53,7 +53,14 @@ public class InterventionActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else if(originClass.equals("HighBloodSugar")){
-                    //TODO: Handle next screen for High Blood Sugar second treatment
+                    Intent intent =  new Intent(InterventionActivity.this, CalculatedTreatment.class);
+                    intent.putExtra("userInformation", uInfo);
+                    startActivity(intent);
+                }
+                else if(originClass.equals("CalculatedTreatment")){
+                    Intent intent =  new Intent(InterventionActivity.this, EmergencyActivity.class);
+                    intent.putExtra("userInformation", uInfo);
+                    startActivity(intent);
                 }
             }
         });

@@ -58,7 +58,6 @@ public class RetestBloodActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 readData(dataSnapshot);
-                Log.w("fb", "data read");
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -76,7 +75,7 @@ public class RetestBloodActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                     String userinput = bloodSugarField.getText().toString().trim();
 
-                    if(!bloodSugarField.getText().toString().isEmpty() && proceed == true){
+                    if(!bloodSugarField.getText().toString().isEmpty()){
 
                         bloodSugarValue = Double.parseDouble(userinput);
                         nextButton.setEnabled(true);
@@ -96,20 +95,21 @@ public class RetestBloodActivity extends AppCompatActivity {
             public void onClick(View view){
                 bloodSugarUpperLimit = uInfo.getBloodSugarHighLimit();
                 bloodSugarLowerLimit = uInfo.getBloodSugarLowLimit();
-
-                if(bloodSugarValue > bloodSugarUpperLimit){
-                    Intent intent = new Intent(RetestBloodActivity.this, HighBloodSugar.class);
-                    intent.putExtra("userInformation", uInfo);
-                    startActivity(intent);
-                }
-                else if(bloodSugarValue <= bloodSugarLowerLimit){
-                    Intent intent = new Intent(RetestBloodActivity.this, PrimaryTreatment.class);
-                    intent.putExtra("userInformation", uInfo);
-                    startActivity(intent);
-                }
-                else{
-                    Intent intent = new Intent(RetestBloodActivity.this, FineActivity.class);
-                    startActivity(intent);
+                if(proceed == true){
+                    if(bloodSugarValue > bloodSugarUpperLimit){
+                        Intent intent = new Intent(RetestBloodActivity.this, HighBloodSugar.class);
+                        intent.putExtra("userInformation", uInfo);
+                        startActivity(intent);
+                    }
+                    else if(bloodSugarValue <= bloodSugarLowerLimit){
+                        Intent intent = new Intent(RetestBloodActivity.this, PrimaryTreatment.class);
+                        intent.putExtra("userInformation", uInfo);
+                        startActivity(intent);
+                    }
+                    else{
+                        Intent intent = new Intent(RetestBloodActivity.this, FineActivity.class);
+                        startActivity(intent);
+                    }
                 }
             }
         });
