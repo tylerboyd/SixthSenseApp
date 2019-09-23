@@ -9,7 +9,7 @@
     tools:openDrawer="start">
 
     <include
-        layout="@layout/nav_app_bar_settings"
+        layout="@layout/nav_app_bar_tab4"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

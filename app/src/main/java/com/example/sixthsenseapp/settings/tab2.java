@@ -1,127 +1,301 @@
 package com.example.sixthsenseapp.settings;
 
 import android.content.Intent;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import android.view.LayoutInflater;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sixthsenseapp.R;
+import com.example.sixthsenseapp.dashboard.Dashboard;
 import com.example.sixthsenseapp.intervention.UserInformation;
+import com.example.sixthsenseapp.mainMenu.MainActivity;
+import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class tab2 extends Fragment {
+public class tab2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Button minusButton1;
-    private Button plusButton1;
-    private Button minusButton2;
-    private Button plusButton2;
-    private Button minusButton3;
-    private Button plusButton3;
+    private Button minusButtonLow;
+    private Button plusButtonLow;
+    private Button minusButtonHigh;
+    private Button plusButtonHigh;
+    private Button waitTimerMinus;
+    private Button waitTimerPlus;
+
+    private boolean proceed = false;
+
+    private Button toolboxButton;
+    private Button accountButton;
+    private Button monitorButton;
 
     private TextView lowBS;
     private TextView highBS;
+    private TextView waitInterval;
 
-    String textLow;
-    String textHigh;
+    private String textLowBS;
+    private String textHighBS;
+    private String waitTimer;
 
-    private String originClass;
+    private float highEnd;
+    private float lowEnd;
+    private int waitInter;
+//12:57 close
     private UserInformation uInfo;
+    private FirebaseDatabase mFirebaseDatabase;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener m;
+    private DatabaseReference ref;
+    private String userID;
 
-    float highEnd;
-    float lowEnd;
-
-
-
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.tab2, container, false);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.nav_activity_tab2);
 
-        lowBS = v.findViewById(R.id.lowBlood);
-        highBS = v.findViewById(R.id.highBlood);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setVisibility(View.GONE);
+        getSupportActionBar().setTitle("SETTINGS");
 
-        /* ---Commented Out Section For Getting Blood Sugar Levels---
-        Intent i = getActivity().getIntent();
+        lowBS = findViewById(R.id.lowbloodrange);
+        highBS = findViewById(R.id.highbloodrange);
 
-        originClass = (String)i.getSerializableExtra("originClass");
-        uInfo = (UserInformation)i.getSerializableExtra("userInformation");
+        mAuth = FirebaseAuth.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        ref = mFirebaseDatabase.getReference();
+        FirebaseUser user = mAuth.getCurrentUser();
+        userID = user.getUid();
 
-        highEnd = uInfo.getBloodSugarHighLimit();
-        lowEnd = uInfo.getBloodSugarLowLimit();
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                readData(dataSnapshot);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        textLow = String.valueOf(lowEnd);
-        textHigh = String.valueOf(highEnd);
+            }
+        });
 
-        lowBS.setText(textLow);
-        highBS.setText(textHigh);
-        */
+        //lowEnd = uInfo.getBloodSugarLowLimit();
+        //highEnd = uInfo.getBloodSugarHighLimit();
+        //waitInter = uInfo.getInterventionWaitTime();
 
-        minusButton1 = (Button) v.findViewById(R.id.minusbutton1);
-        minusButton1.setOnClickListener(new View.OnClickListener() {
+        //textLowBS = String.valueOf(lowEnd);
+        //textHighBS = String.valueOf(highEnd);
+
+
+
+        toolboxButton = findViewById(R.id.promptbutton);
+        accountButton = findViewById(R.id.accountbutton);
+        monitorButton = findViewById(R.id.monitorbutton);
+        waitInterval = findViewById(R.id.editText3);
+
+        toolboxButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(v.getContext(), "Reduce Minimum", Toast.LENGTH_LONG);
-                toast.show();
+                Intent intent = new Intent(tab2.this, tab3.class);
+                startActivity(intent);
+            }
+        });
+
+        accountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(tab2.this, tab4.class);
+                startActivity(intent);
+            }
+        });
+
+        monitorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(tab2.this, tab1.class);
+                startActivity(intent);
             }
         });
 
 
-        plusButton1 = (Button) v.findViewById(R.id.plusbutton1);
-        plusButton1.setOnClickListener(new View.OnClickListener() {
+
+        minusButtonLow = findViewById(R.id.minusbuttonlow);
+        minusButtonLow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(v.getContext(), "Increase Minimum", Toast.LENGTH_LONG);
-                toast.show();
+                //lowEnd = lowEnd--;
+                //textLowBS = String.valueOf(lowEnd);
+                //lowBS.setText(textLowBS);
             }
         });
 
-        minusButton2 = (Button) v.findViewById(R.id.minusbutton2);
-        minusButton2.setOnClickListener(new View.OnClickListener() {
+        plusButtonLow = findViewById(R.id.plusbuttonlow);
+        plusButtonLow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(v.getContext(), "Reduce Maximum", Toast.LENGTH_LONG);
-                toast.show();
+                //lowEnd = lowEnd++;
+                //textLowBS = String.valueOf(lowEnd);
+                //lowBS.setText(textLowBS);
             }
         });
 
-        plusButton2 = (Button) v.findViewById(R.id.plusbutton2);
-        plusButton2.setOnClickListener(new View.OnClickListener() {
+        minusButtonHigh = findViewById(R.id.minusbuttonhigh);
+        minusButtonHigh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(v.getContext(), "Increase Maximum", Toast.LENGTH_LONG);
-                toast.show();
+                //highEnd = highEnd--;
+                //textHighBS = String.valueOf(highEnd);
+                //highBS.setText(textHighBS);
             }
         });
 
-        minusButton3 = (Button) v.findViewById(R.id.minusbutton3);
-        minusButton3.setOnClickListener(new View.OnClickListener() {
+        plusButtonHigh = findViewById(R.id.plusbuttonhigh);
+        plusButtonHigh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(v.getContext(), "Decrease Timer", Toast.LENGTH_LONG);
-                toast.show();
+                //highEnd = highEnd++;
+                //textHighBS = String.valueOf(highEnd);
+                //highBS.setText(textHighBS);
             }
         });
 
-        plusButton3 = (Button) v.findViewById(R.id.plusbutton3);
-        plusButton3.setOnClickListener(new View.OnClickListener() {
+        waitTimerMinus = findViewById(R.id.waittimerminus);
+        waitTimerMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(v.getContext(), "Increase Timer", Toast.LENGTH_LONG);
-                toast.show();
+                //waitInter = waitInter--;
+                //waitInterval.setText(waitInter);
             }
         });
 
+        waitTimerPlus = findViewById(R.id.waittimerplus);
+        waitTimerPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //waitInter = waitInter++;
+                //waitInterval.setText(waitInter);
+            }
+        });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
 
-        return v;
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if(id == R.id.nav_dashboard)
+        {
+            //Intent intent = new Intent(Fill Dashboard Connection Here);
+            //startActivity(intent);
+        }
+        if(id == R.id.nav_calibrate)
+        {
+            //Create Toast Here
+        }
+        if(id == R.id.nav_toolbox)
+        {
+            //Create Toast Here
+        }
+        if(id == R.id.nav_settings)
+        {
+            //Intent intent = new Intent(Fill Settings Connection Here);
+            //startActivity(intent);
+        }
+        if(id == R.id.nav_logout)
+        {
+            //Run Logout Activity Here
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_dashboard) {
+            Intent intent = new Intent(this, Dashboard.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_calibrate) {
+            Toast.makeText(this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
+        }
+        else if (id == R.id.nav_toolbox) {
+            Toast.makeText(this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
+        }
+        else if (id == R.id.nav_settings) {
+            Intent intent = new Intent(this, tab1.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_logout) {
+            mAuth.getInstance().signOut();
+            Toast.makeText(tab2.this, "Successfully logged out.", Toast.LENGTH_LONG).show();
+
+            Intent intent = new Intent(tab2.this, MainActivity.class);
+            startActivity(intent);
+        }
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
+    private void readData(DataSnapshot dataSnapshot){
+        for(DataSnapshot ds : dataSnapshot.getChildren()){
+
+            uInfo = new UserInformation();
+            uInfo.setBloodSugarHighLimit(ds.child(userID).child("patient").getValue(UserInformation.class).getBloodSugarHighLimit());
+            uInfo.setBloodSugarLowLimit(ds.child(userID).child("patient").getValue(UserInformation.class).getBloodSugarLowLimit());
+            uInfo.setPrimaryTreatmentMethod(ds.child(userID).child("patient").getValue(UserInformation.class).getPrimaryTreatmentMethod());
+            uInfo.setSecondaryTreatmentMethod(ds.child(userID).child("patient").getValue(UserInformation.class).getSecondaryTreatmentMethod());
+            uInfo.setHighBloodSugarTreatment(ds.child(userID).child("patient").getValue(UserInformation.class).getHighBloodSugarTreatment());
+            uInfo.setEmergencyContactName(ds.child(userID).child("patient").getValue(UserInformation.class).getEmergencyContactName());
+            uInfo.setEmergencyContactNumber(ds.child(userID).child("patient").getValue(UserInformation.class).getEmergencyContactNumber());
+            uInfo.setInterventionWaitTime(ds.child(userID).child("patient").getValue(UserInformation.class).getInterventionWaitTime());
+
+            proceed = true;
+        }
     }
 }

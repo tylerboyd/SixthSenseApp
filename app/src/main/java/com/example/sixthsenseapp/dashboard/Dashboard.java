@@ -8,10 +8,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -19,7 +17,7 @@ import com.example.sixthsenseapp.mainMenu.LoginActivity;
 import com.example.sixthsenseapp.mainMenu.MainActivity;
 import com.example.sixthsenseapp.R;
 import com.example.sixthsenseapp.intervention.RetestBloodActivity;
-import com.example.sixthsenseapp.settings.Tabs;
+import com.example.sixthsenseapp.settings.tab1;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -133,7 +131,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             Toast.makeText(this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
         }
         else if (id == R.id.nav_settings) {
-            Intent intent = new Intent(this, Tabs.class);
+            Intent intent = new Intent(this, tab1.class);
             startActivity(intent);
         }
         else if (id == R.id.nav_logout) {

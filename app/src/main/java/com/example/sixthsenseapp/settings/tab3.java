@@ -1,19 +1,28 @@
 package com.example.sixthsenseapp.settings;
 
+import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import android.view.LayoutInflater;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.sixthsenseapp.R;
+import com.example.sixthsenseapp.dashboard.Dashboard;
+import com.example.sixthsenseapp.mainMenu.MainActivity;
+import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
-public class tab3 extends Fragment {
+public class tab3 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Switch careCircle;
     private Switch bloodSugar;
@@ -22,6 +31,10 @@ public class tab3 extends Fragment {
     private Switch preScript;
     private Switch achievements;
 
+    private Button promptsButton;
+    private Button accountButton;
+    private Button monitorButton;
+
     Boolean careCircleOn;
     Boolean bloodSugarOn;
     Boolean insuCalcOn;
@@ -29,12 +42,55 @@ public class tab3 extends Fragment {
     Boolean preScriptOn;
     Boolean achievementsOn;
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.tab3, container, false);
+    private FirebaseAuth mAuth;
 
-        Switch careCircle = (Switch) v.findViewById(R.id.carecircle);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.nav_activity_tab3);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setVisibility(View.GONE);
+        getSupportActionBar().setTitle("SETTINGS");
+        setContentView(R.layout.tab3);
+
+        promptsButton = findViewById(R.id.promptbutton);
+        accountButton = findViewById(R.id.accountbutton);
+        monitorButton = findViewById(R.id.monitorbutton);
+
+        promptsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(tab3.this, tab2.class);
+                startActivity(intent);
+            }
+        });
+
+        accountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(tab3.this, tab4.class);
+                startActivity(intent);
+            }
+        });
+
+        monitorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(tab3.this, tab1.class);
+                startActivity(intent);
+            }
+        });
+
+        careCircle = (Switch) findViewById(R.id.carecircle);
         careCircle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -49,7 +105,7 @@ public class tab3 extends Fragment {
             }
         });
 
-        Switch bloodSugar = (Switch) v.findViewById(R.id.bloodsugar);
+        bloodSugar = (Switch) findViewById(R.id.bloodsugar);
         bloodSugar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -64,7 +120,7 @@ public class tab3 extends Fragment {
             }
         });
 
-        Switch insuCalc = (Switch) v.findViewById(R.id.insucalc);
+        insuCalc = (Switch) findViewById(R.id.insucalc);
         insuCalc.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -79,7 +135,7 @@ public class tab3 extends Fragment {
             }
         });
 
-        Switch library = (Switch) v.findViewById(R.id.library);
+        library = (Switch) findViewById(R.id.library);
         library.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -94,7 +150,7 @@ public class tab3 extends Fragment {
             }
         });
 
-        Switch preScript = (Switch) v.findViewById(R.id.prescript);
+        preScript = (Switch) findViewById(R.id.prescript);
         preScript.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -109,7 +165,7 @@ public class tab3 extends Fragment {
             }
         });
 
-        Switch achievements = (Switch) v.findViewById(R.id.achievements);
+        achievements = (Switch) findViewById(R.id.achievements);
         achievements.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -124,6 +180,115 @@ public class tab3 extends Fragment {
             }
         });
 
-        return v;
+        promptsButton = findViewById(R.id.promptbutton);
+        accountButton = findViewById(R.id.monitorbutton);
+        monitorButton = findViewById(R.id.accountbutton);
+
+        promptsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(tab3.this, tab2.class);
+                startActivity(intent);
+            }
+        });
+
+        accountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(tab3.this, tab4.class);
+                startActivity(intent);
+            }
+        });
+
+        monitorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(tab3.this, tab1.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if(id == R.id.nav_dashboard)
+        {
+            //Intent intent = new Intent(Fill Dashboard Connection Here);
+            //startActivity(intent);
+        }
+        if(id == R.id.nav_calibrate)
+        {
+            //Create Toast Here
+        }
+        if(id == R.id.nav_toolbox)
+        {
+            //Create Toast Here
+        }
+        if(id == R.id.nav_settings)
+        {
+            //Intent intent = new Intent(Fill Settings Connection Here);
+            //startActivity(intent);
+        }
+        if(id == R.id.nav_logout)
+        {
+            //Run Logout Activity Here
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_dashboard) {
+            Intent intent = new Intent(this, Dashboard.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_calibrate) {
+            Toast.makeText(this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
+        }
+        else if (id == R.id.nav_toolbox) {
+            Toast.makeText(this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
+        }
+        else if (id == R.id.nav_settings) {
+            Intent intent = new Intent(this, tab1.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_logout) {
+            mAuth.getInstance().signOut();
+            Toast.makeText(tab3.this, "Successfully logged out.", Toast.LENGTH_LONG).show();
+
+            Intent intent = new Intent(tab3.this, MainActivity.class);
+            startActivity(intent);
+        }
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }

@@ -30,7 +30,6 @@
         <activity android:name=".setup.SetupPrimaryTreatment" />
         <activity android:name=".setup.SetupBloodSugar" />
         <activity android:name=".setup.SetupUserType" />
-        <activity android:name=".settings.Tabs" />
         <activity android:name=".intervention.RetestBloodActivity" />
         <activity android:name=".intervention.InterventionActivity" />
         <activity android:name=".intervention.TimerActivity" />
@@ -38,6 +37,10 @@
         <activity android:name=".intervention.PrimaryTreatment" />
         <activity android:name=".intervention.SnackReminderActivity" />
         <activity android:name=".mainMenu.LoginActivity" />
+        <activity android:name=".settings.tab1" />
+        <activity android:name=".settings.tab2" />
+        <activity android:name=".settings.tab3" />
+        <activity android:name=".settings.tab4" />
         <activity android:name=".mainMenu.MainActivity"> <!-- Keep .MainActivity on this line to load into the main screen on startup -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

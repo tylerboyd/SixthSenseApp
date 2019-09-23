@@ -1,27 +1,81 @@
 package com.example.sixthsenseapp.settings;
 
+import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import android.view.LayoutInflater;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.sixthsenseapp.R;
+import com.example.sixthsenseapp.dashboard.Dashboard;
+import com.example.sixthsenseapp.mainMenu.MainActivity;
+import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
-public class tab4 extends Fragment {
+public class tab4 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Button updateButton;
+    private Button monitorButton;
+    private Button toolboxButton;
+    private Button promptsButton;
 
-    @Nullable
+    private FirebaseAuth mAuth;
+
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.tab4, container, false);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.nav_activity_tab4);
 
-        updateButton = (Button) v.findViewById(R.id.buttonUpdate);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setVisibility(View.GONE);
+        getSupportActionBar().setTitle("SETTINGS");
+
+        promptsButton = findViewById(R.id.promptbutton);
+        toolboxButton = findViewById(R.id.toolboxbutton);
+        monitorButton = findViewById(R.id.monitorbutton);
+
+        promptsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(tab4.this, tab2.class);
+                startActivity(intent);
+            }
+        });
+
+        toolboxButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(tab4.this, tab3.class);
+                startActivity(intent);
+            }
+        });
+
+        monitorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(tab4.this, tab1.class);
+                startActivity(intent);
+            }
+        });
+
+        updateButton = findViewById(R.id.buttonUpdate);
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,7 +84,88 @@ public class tab4 extends Fragment {
             }
         });
 
-        return v;
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if(id == R.id.nav_dashboard)
+        {
+            //Intent intent = new Intent(Fill Dashboard Connection Here);
+            //startActivity(intent);
+        }
+        if(id == R.id.nav_calibrate)
+        {
+            //Create Toast Here
+        }
+        if(id == R.id.nav_toolbox)
+        {
+            //Create Toast Here
+        }
+        if(id == R.id.nav_settings)
+        {
+            //Intent intent = new Intent(Fill Settings Connection Here);
+            //startActivity(intent);
+        }
+        if(id == R.id.nav_logout)
+        {
+            //Run Logout Activity Here
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_dashboard) {
+            Intent intent = new Intent(this, Dashboard.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_calibrate) {
+            Toast.makeText(this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
+        }
+        else if (id == R.id.nav_toolbox) {
+            Toast.makeText(this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
+        }
+        else if (id == R.id.nav_settings) {
+            Intent intent = new Intent(this, tab1.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_logout) {
+            mAuth.getInstance().signOut();
+            Toast.makeText(tab4.this, "Successfully logged out.", Toast.LENGTH_LONG).show();
+
+            Intent intent = new Intent(tab4.this, MainActivity.class);
+            startActivity(intent);
+        }
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }
 
