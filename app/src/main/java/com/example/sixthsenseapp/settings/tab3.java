@@ -60,7 +60,7 @@ public class tab3 extends AppCompatActivity implements NavigationView.OnNavigati
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setVisibility(View.GONE);
         getSupportActionBar().setTitle("SETTINGS");
-        setContentView(R.layout.tab3);
+
 
         promptsButton = findViewById(R.id.promptbutton);
         accountButton = findViewById(R.id.accountbutton);
@@ -180,33 +180,6 @@ public class tab3 extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
-        promptsButton = findViewById(R.id.promptbutton);
-        accountButton = findViewById(R.id.monitorbutton);
-        monitorButton = findViewById(R.id.accountbutton);
-
-        promptsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(tab3.this, tab2.class);
-                startActivity(intent);
-            }
-        });
-
-        accountButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(tab3.this, tab4.class);
-                startActivity(intent);
-            }
-        });
-
-        monitorButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(tab3.this, tab1.class);
-                startActivity(intent);
-            }
-        });
 
     }
 

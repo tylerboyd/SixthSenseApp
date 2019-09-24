@@ -4,43 +4,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/loginbackground"
     tools:context=".setup.SetupAddCareGiverComplete">
 
-    <ImageView
-        android:id="@+id/backgroundImage"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="centerCrop"
+    <ImageButton
+        android:id="@+id/addCaregiverButton"
+        android:layout_width="107dp"
+        android:layout_height="107dp"
+        android:layout_marginBottom="228dp"
+        android:background="@drawable/addcaregiver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/background_light" />
+        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/nextButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="107dp"
+        android:layout_height="107dp"
+        android:layout_marginBottom="68dp"
         android:background="@drawable/next_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.836"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/backgroundImage"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/addCaregiverButton"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="105dp"
-        android:layout_height="94dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/backgroundImage"
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="237dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="296dp"
+        android:layout_marginEnd="82dp"
+        android:text="data entry complete"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="286dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="59dp"
+        android:text="you can adjust or update these details in the application settings"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="326dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="42dp"
+        android:text="add another caregiver to the carecirlce"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addCaregiverButton" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="225dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginEnd="94dp"
+        android:text="continue to diabetic setup"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nextButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,23 +1,45 @@
 package com.example.sixthsenseapp.setup;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.sixthsenseapp.R;
+import com.example.sixthsenseapp.dashboard.Dashboard;
 
 public class SetupComplete extends AppCompatActivity {
 
-    private ImageView backgroundImage;
+    private ImageButton calibrateButton;
+    private ImageButton continueButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_complete);
 
-        backgroundImage = findViewById(R.id.backgroundImage);
+        calibrateButton = findViewById(R.id.calibratebutton);
+        continueButton = findViewById(R.id.continuebutton);
 
-        int imageResource = getResources().getIdentifier("@drawable/setupcomplete", null, this.getPackageName());
-        backgroundImage.setImageResource(imageResource);
+        calibrateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = Toast.makeText(SetupComplete.this, "Feature NOt Yet Implemented", Toast.LENGTH_LONG);
+                toast.show();
+            }
+        });
+
+        continueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SetupComplete.this, Dashboard.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
