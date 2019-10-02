@@ -14,6 +14,7 @@ public class CalculatedTreatment extends AppCompatActivity {
 
     private ImageButton nextButton;
     private UserInformation uInfo;
+    private String originClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +25,27 @@ public class CalculatedTreatment extends AppCompatActivity {
 
         Intent i = getIntent();
         uInfo = (UserInformation)i.getSerializableExtra("userInformation");
+        originClass = (String)i.getSerializableExtra("originClass");
 
         nextButton.setOnClickListener(new View.OnClickListener(){
 
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CalculatedTreatment.this, TimerActivity.class);
-                intent.putExtra("userInformation", uInfo);
-                intent.putExtra("originClass", "CalculatedTreatment");
-                startActivity(intent);
+
+                if(originClass.equals("HighBloodSugar")){
+                    Intent intent = new Intent(CalculatedTreatment.this, TimerActivity.class);
+                    intent.putExtra("userInformation", uInfo);
+                    intent.putExtra("originClass", "CalculatedTreatment1");
+                    startActivity(intent);
+                }
+                else if(originClass.equals("CalculatedTreatment1")){
+                    Intent intent = new Intent(CalculatedTreatment.this, TimerActivity.class);
+                    intent.putExtra("userInformation", uInfo);
+                    intent.putExtra("originClass", "CalculatedTreatment2");
+                    startActivity(intent);
+                }
+
             }
         });
     }

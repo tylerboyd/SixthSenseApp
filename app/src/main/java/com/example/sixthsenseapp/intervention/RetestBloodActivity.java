@@ -34,9 +34,9 @@ public class RetestBloodActivity extends AppCompatActivity {
     private UserInformation uInfo;
     private FirebaseDatabase mFirebaseDatabase;
     private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener m;
     private DatabaseReference ref;
     private String userID;
+    private String originClass = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +52,16 @@ public class RetestBloodActivity extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
         userID = user.getUid();
 
+        Intent i = getIntent();
+        originClass = (String)i.getSerializableExtra("originClass");
+        uInfo = (UserInformation)i.getSerializableExtra("userInformation");
+
         nextButton.setEnabled(false);
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                readData(dataSnapshot);
+                    readData(dataSnapshot);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -96,23 +100,40 @@ public class RetestBloodActivity extends AppCompatActivity {
                 bloodSugarUpperLimit = uInfo.getBloodSugarHighLimit();
                 bloodSugarLowerLimit = uInfo.getBloodSugarLowLimit();
                 if(proceed == true){
-                    if(bloodSugarValue > bloodSugarUpperLimit){
-                        Intent intent = new Intent(RetestBloodActivity.this, HighBloodSugar.class);
-                        intent.putExtra("userInformation", uInfo);
-                        startActivity(intent);
+                    if(originClass == null)
+                    {
+                        if(bloodSugarValue > bloodSugarUpperLimit){
+                            Intent intent = new Intent(RetestBloodActivity.this, HighBloodSugar.class);
+                            intent.putExtra("userInformation", uInfo);
+                            startActivity(intent);
+                        }
+                        else if(bloodSugarValue <= bloodSugarLowerLimit){
+                            Intent intent = new Intent(RetestBloodActivity.this, PrimaryTreatment.class);
+                            intent.putExtra("userInformation", uInfo);
+                            startActivity(intent);
+                        }
+                        else{
+                            Intent intent = new Intent(RetestBloodActivity.this, FineActivity.class);
+                            startActivity(intent);
+                        }
                     }
-                    else if(bloodSugarValue <= bloodSugarLowerLimit){
-                        Intent intent = new Intent(RetestBloodActivity.this, PrimaryTreatment.class);
+                    else {
+                        Intent intent = new Intent(RetestBloodActivity.this, InterventionActivity.class);
+                        intent.putExtra("originClass", originClass);
                         intent.putExtra("userInformation", uInfo);
-                        startActivity(intent);
-                    }
-                    else{
-                        Intent intent = new Intent(RetestBloodActivity.this, FineActivity.class);
                         startActivity(intent);
                     }
                 }
             }
         });
+    }
+
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        nextButton.setEnabled(false);
+
     }
 
     private void readData(DataSnapshot dataSnapshot){

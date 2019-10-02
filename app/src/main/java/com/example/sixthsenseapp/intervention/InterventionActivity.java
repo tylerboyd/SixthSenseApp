@@ -55,9 +55,16 @@ public class InterventionActivity extends AppCompatActivity {
                 else if(originClass.equals("HighBloodSugar")){
                     Intent intent =  new Intent(InterventionActivity.this, CalculatedTreatment.class);
                     intent.putExtra("userInformation", uInfo);
+                    intent.putExtra("originClass", originClass);
                     startActivity(intent);
                 }
-                else if(originClass.equals("CalculatedTreatment")){
+                else if(originClass.equals("CalculatedTreatment1")){
+                    Intent intent =  new Intent(InterventionActivity.this, CalculatedTreatment.class);
+                    intent.putExtra("userInformation", uInfo);
+                    intent.putExtra("originClass", originClass);
+                    startActivity(intent);
+                }
+                else if(originClass.equals("CalculatedTreatment2")){
                     Intent intent =  new Intent(InterventionActivity.this, EmergencyActivity.class);
                     intent.putExtra("userInformation", uInfo);
                     startActivity(intent);

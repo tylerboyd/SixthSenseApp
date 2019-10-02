@@ -49,7 +49,7 @@ public class TimerActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TimerActivity.this, InterventionActivity.class);
+                Intent intent = new Intent(TimerActivity.this, RetestBloodActivity.class);
                 intent.putExtra("originClass", originClass);
                 intent.putExtra("userInformation", uInfo);
                 startActivity(intent);
@@ -60,10 +60,10 @@ public class TimerActivity extends AppCompatActivity {
     private void startTimer(){
 
         //change back to 60000 for 1 minute of partial time for calculation
-        duration = timeLength * 20000;
+        //duration = timeLength * 60000;
 
         //Set to this for testing interventions
-        //duration = 1000;
+        duration = 1000;
 
         demo = new CountDownTimer(duration, 1000) {
 
