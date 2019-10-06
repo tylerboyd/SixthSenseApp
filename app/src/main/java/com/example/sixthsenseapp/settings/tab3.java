@@ -17,6 +17,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.sixthsenseapp.R;
+import com.example.sixthsenseapp.dashboard.Calibrate;
 import com.example.sixthsenseapp.dashboard.Dashboard;
 import com.example.sixthsenseapp.mainMenu.MainActivity;
 import com.google.android.material.navigation.NavigationView;
@@ -58,7 +59,6 @@ public class tab3 extends AppCompatActivity implements NavigationView.OnNavigati
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setVisibility(View.GONE);
         getSupportActionBar().setTitle("SETTINGS");
 
 
@@ -238,7 +238,8 @@ public class tab3 extends AppCompatActivity implements NavigationView.OnNavigati
             startActivity(intent);
         }
         else if (id == R.id.nav_calibrate) {
-            Toast.makeText(this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(tab3.this, Calibrate.class);
+            startActivity(intent);
         }
         else if (id == R.id.nav_toolbox) {
             Toast.makeText(this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();

@@ -14,7 +14,7 @@
         android:layout_height="25dp"
         android:layout_marginStart="96dp"
         android:backgroundTintMode="add"
-        android:text="mnol/L"
+        android:text="mmol/L"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lowbloodnumber" />
@@ -24,13 +24,13 @@
         android:layout_width="82dp"
         android:layout_height="36dp"
         android:layout_marginEnd="59dp"
-        android:text="mnol/L"
+        android:text="mmol/L"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/highbloodnumber" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/primaryTreatmentIcon"
         android:layout_width="123dp"
         android:layout_height="90dp"
 
@@ -38,13 +38,14 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="9dp"
         android:scaleType="fitCenter"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@+id/secondaryTreatmentIcon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        app:srcCompat="@drawable/tabletsecond" />
+        app:srcCompat="@drawable/tabletsecond"
+        tools:visibility="visible" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/secondaryTreatmentIcon"
         android:layout_width="123dp"
         android:layout_height="90dp"
         android:layout_marginStart="9dp"
@@ -53,12 +54,12 @@
         android:backgroundTintMode="screen"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toStartOf="@+id/imageView4"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/primaryTreatmentIcon"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
         app:srcCompat="@drawable/gelsecond" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/highBloodSugarTreatmentIcon"
         android:layout_width="123dp"
         android:layout_height="90dp"
         android:layout_marginStart="9dp"
@@ -67,7 +68,7 @@
         android:backgroundTintMode="screen"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/secondaryTreatmentIcon"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
         app:srcCompat="@drawable/needlesecond" />
 
@@ -85,36 +86,35 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/primaryText"
         android:layout_width="96dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="1dp"
-        android:text="glucose tablet"
+        android:text="Primary"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/primaryTreatmentIcon" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/secondaryText"
         android:layout_width="96dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="46dp"
-        android:text="glucose gel"
+        android:text="Secondary"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintStart_toEndOf="@+id/primaryText"
+        app:layout_constraintTop_toBottomOf="@+id/secondaryTreatmentIcon" />
 
     <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
+        android:id="@+id/highText"
+        android:layout_width="96dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="59dp"
-        android:layout_marginTop="1dp"
-        android:text="Insulin pen"
+        android:layout_marginStart="184dp"
+        android:text="High BS"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintStart_toEndOf="@+id/primaryText"
+        app:layout_constraintTop_toBottomOf="@+id/secondaryTreatmentIcon" />
 
 
     <EditText
@@ -167,11 +167,11 @@
         android:text="waiting time "
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText3"
+        app:layout_constraintBottom_toTopOf="@+id/waitTimeText"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/waitTimeText"
         android:layout_width="158dp"
         android:layout_height="wrap_content"
 
@@ -195,7 +195,7 @@
         android:text="minutes"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/waitTimeText" />
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -207,17 +207,6 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/promptbutton"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="70dp"
-        android:text="personalise"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <Button
         android:id="@+id/promptbutton"
@@ -343,11 +332,10 @@
         android:id="@+id/imageView9"
         android:layout_width="89dp"
         android:layout_height="82dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toStartOf="@+id/imageButton"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
         app:srcCompat="@drawable/mansecond"
+        tools:layout_editor_absoluteY="444dp"
         tools:srcCompat="@drawable/mansecond" />
 
 

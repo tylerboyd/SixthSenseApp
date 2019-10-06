@@ -3,7 +3,6 @@ package com.example.sixthsenseapp.settings;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -13,21 +12,19 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sixthsenseapp.R;
+import com.example.sixthsenseapp.dashboard.Calibrate;
 import com.example.sixthsenseapp.dashboard.Dashboard;
 import com.example.sixthsenseapp.intervention.UserInformation;
 import com.example.sixthsenseapp.mainMenu.MainActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
+import java.text.DecimalFormat;
 
 public class tab2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -38,8 +35,6 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
     private Button waitTimerMinus;
     private Button waitTimerPlus;
 
-    private boolean proceed = false;
-
     private Button toolboxButton;
     private Button accountButton;
     private Button monitorButton;
@@ -47,21 +42,25 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
     private TextView lowBS;
     private TextView highBS;
     private TextView waitInterval;
+    private TextView primaryTextField;
+    private TextView secondaryTextField;
+    private TextView highBSTextField;
 
     private String textLowBS;
     private String textHighBS;
-    private String waitTimer;
+    private String primaryText;
+    private String secondaryText;
+    private String highBSText;
+
+    private ImageView p;
 
     private float highEnd;
     private float lowEnd;
     private int waitInter;
-//12:57 close
+
     private UserInformation uInfo;
-    private FirebaseDatabase mFirebaseDatabase;
+
     private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener m;
-    private DatabaseReference ref;
-    private String userID;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -77,42 +76,44 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setVisibility(View.GONE);
         getSupportActionBar().setTitle("SETTINGS");
 
-        lowBS = findViewById(R.id.lowbloodrange);
-        highBS = findViewById(R.id.highbloodrange);
+        Intent i = getIntent();
+        uInfo = (UserInformation)i.getSerializableExtra("userInformation");
 
-        mAuth = FirebaseAuth.getInstance();
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        ref = mFirebaseDatabase.getReference();
-        FirebaseUser user = mAuth.getCurrentUser();
-        userID = user.getUid();
-
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                readData(dataSnapshot);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        //lowEnd = uInfo.getBloodSugarLowLimit();
-        //highEnd = uInfo.getBloodSugarHighLimit();
-        //waitInter = uInfo.getInterventionWaitTime();
-
-        //textLowBS = String.valueOf(lowEnd);
-        //textHighBS = String.valueOf(highEnd);
-
-
-
+        lowBS = findViewById(R.id.lowbloodnumber);
+        highBS = findViewById(R.id.highbloodnumber);
         toolboxButton = findViewById(R.id.promptbutton);
         accountButton = findViewById(R.id.accountbutton);
         monitorButton = findViewById(R.id.monitorbutton);
-        waitInterval = findViewById(R.id.editText3);
+        waitInterval = findViewById(R.id.waitTimeText);
+        primaryTextField = findViewById(R.id.primaryText);
+        secondaryTextField = findViewById(R.id.secondaryText);
+        highBSTextField = findViewById(R.id.highText);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        lowEnd = uInfo.getBloodSugarLowLimit();
+        highEnd = uInfo.getBloodSugarHighLimit();
+        waitInter = uInfo.getInterventionWaitTime();
+        primaryText = uInfo.getPrimaryTreatmentMethod();
+        secondaryText = uInfo.getSecondaryTreatmentMethod();
+        highBSText = uInfo.getHighBloodSugarTreatment();
+
+        textLowBS = String.valueOf(lowEnd);
+        textHighBS = String.valueOf(highEnd);
+
+        lowBS.setText(textLowBS);
+        highBS.setText(textHighBS);
+        waitInterval.setText(""+waitInter);
+        primaryTextField.setText(primaryText);
+        secondaryTextField.setText(secondaryText);
+        highBSTextField.setText(highBSText);
+
+
+        p = findViewById(R.id.primaryTreatmentIcon);
+        p.setVisibility(View.INVISIBLE);
+
 
         toolboxButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,9 +145,10 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
         minusButtonLow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //lowEnd = lowEnd--;
-                //textLowBS = String.valueOf(lowEnd);
-                //lowBS.setText(textLowBS);
+                lowEnd -= 0.1;
+                lowEnd = roundFloat(lowEnd);
+                textLowBS = String.valueOf(lowEnd);
+                lowBS.setText(textLowBS);
             }
         });
 
@@ -154,9 +156,10 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
         plusButtonLow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //lowEnd = lowEnd++;
-                //textLowBS = String.valueOf(lowEnd);
-                //lowBS.setText(textLowBS);
+                lowEnd += 0.1;
+                lowEnd = roundFloat(lowEnd);
+                textLowBS = String.valueOf(lowEnd);
+                lowBS.setText(textLowBS);
             }
         });
 
@@ -164,9 +167,10 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
         minusButtonHigh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //highEnd = highEnd--;
-                //textHighBS = String.valueOf(highEnd);
-                //highBS.setText(textHighBS);
+                highEnd -= 0.1;
+                highEnd = roundFloat(highEnd);
+                textHighBS = String.valueOf(highEnd);
+                highBS.setText(textHighBS);
             }
         });
 
@@ -174,9 +178,10 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
         plusButtonHigh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //highEnd = highEnd++;
-                //textHighBS = String.valueOf(highEnd);
-                //highBS.setText(textHighBS);
+                highEnd += 0.1;
+                highEnd = roundFloat(highEnd);
+                textHighBS = String.valueOf(highEnd);
+                highBS.setText(textHighBS);
             }
         });
 
@@ -184,8 +189,11 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
         waitTimerMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //waitInter = waitInter--;
-                //waitInterval.setText(waitInter);
+                waitInter--;
+                if(waitInter < 0){
+                    waitInter = 0;
+                }
+                waitInterval.setText(""+waitInter);
             }
         });
 
@@ -193,8 +201,8 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
         waitTimerPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //waitInter = waitInter++;
-                //waitInterval.setText(waitInter);
+                waitInter++;
+                waitInterval.setText(""+waitInter);
             }
         });
 
@@ -255,7 +263,8 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
             startActivity(intent);
         }
         else if (id == R.id.nav_calibrate) {
-            Toast.makeText(this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(tab2.this, Calibrate.class);
+            startActivity(intent);
         }
         else if (id == R.id.nav_toolbox) {
             Toast.makeText(this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
@@ -282,20 +291,9 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
 
     }
 
-    private void readData(DataSnapshot dataSnapshot){
-        for(DataSnapshot ds : dataSnapshot.getChildren()){
-
-            uInfo = new UserInformation();
-            uInfo.setBloodSugarHighLimit(ds.child(userID).child("patient").getValue(UserInformation.class).getBloodSugarHighLimit());
-            uInfo.setBloodSugarLowLimit(ds.child(userID).child("patient").getValue(UserInformation.class).getBloodSugarLowLimit());
-            uInfo.setPrimaryTreatmentMethod(ds.child(userID).child("patient").getValue(UserInformation.class).getPrimaryTreatmentMethod());
-            uInfo.setSecondaryTreatmentMethod(ds.child(userID).child("patient").getValue(UserInformation.class).getSecondaryTreatmentMethod());
-            uInfo.setHighBloodSugarTreatment(ds.child(userID).child("patient").getValue(UserInformation.class).getHighBloodSugarTreatment());
-            uInfo.setEmergencyContactName(ds.child(userID).child("patient").getValue(UserInformation.class).getEmergencyContactName());
-            uInfo.setEmergencyContactNumber(ds.child(userID).child("patient").getValue(UserInformation.class).getEmergencyContactNumber());
-            uInfo.setInterventionWaitTime(ds.child(userID).child("patient").getValue(UserInformation.class).getInterventionWaitTime());
-
-            proceed = true;
-        }
+    private float roundFloat(float d)
+    {
+        DecimalFormat twoDForm = new DecimalFormat("#.#");
+        return Float.valueOf(twoDForm.format(d));
     }
 }

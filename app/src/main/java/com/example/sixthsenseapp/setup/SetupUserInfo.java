@@ -15,7 +15,6 @@ import com.example.sixthsenseapp.R;
 
 public class SetupUserInfo extends AppCompatActivity {
 
-    private ImageView backgroundImage;
     private ImageButton nextButton;
     private ImageButton backButton;
     private EditText firstNameField;
@@ -33,16 +32,12 @@ public class SetupUserInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_user_info);
 
-        backgroundImage = findViewById(R.id.backgroundImage);
         nextButton = findViewById(R.id.nextButton);
         backButton = findViewById(R.id.backButton);
         firstNameField = findViewById(R.id.firstNameField);
         lastNameField = findViewById(R.id.lastNameField);
         emailAddressField = findViewById(R.id.emailField);
         phoneNumberField = findViewById(R.id.phoneNumberField);
-
-        int imageResource = getResources().getIdentifier("@drawable/loginbackground", null, this.getPackageName());
-        backgroundImage.setImageResource(imageResource);
 
         nextButton.setEnabled(false);
 

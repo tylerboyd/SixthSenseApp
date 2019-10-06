@@ -17,7 +17,6 @@ import com.example.sixthsenseapp.R;
 
 public class SetupUserInfo4 extends AppCompatActivity {
 
-    private ImageView backgroundImage;
     private ImageButton nextButton;
     private ImageButton backButton;
     private CheckBox addCaregiver;
@@ -32,16 +31,12 @@ public class SetupUserInfo4 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_user_info4);
 
-        backgroundImage = findViewById(R.id.backgroundImage);
         emergencyNameField = findViewById(R.id.emergencyNameField);
         emergencyNumberField = findViewById(R.id.emergencyNumberField);
         nextButton = findViewById(R.id.nextButton);
         backButton = findViewById(R.id.backButton);
         addCaregiver = findViewById(R.id.addCaregiver);
         addEmergencyContact = findViewById(R.id.addEmergencyContact);
-
-        int imageResource = getResources().getIdentifier("@drawable/loginbackground", null, this.getPackageName());
-        backgroundImage.setImageResource(imageResource);
 
         if(SetupUserType.getUserType().equals("User")){
             addCaregiver.setVisibility(View.VISIBLE);

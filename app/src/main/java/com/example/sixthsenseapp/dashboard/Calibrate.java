@@ -7,10 +7,10 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -18,44 +18,34 @@ import android.widget.Toast;
 import com.example.sixthsenseapp.mainMenu.LoginActivity;
 import com.example.sixthsenseapp.mainMenu.MainActivity;
 import com.example.sixthsenseapp.R;
-import com.example.sixthsenseapp.intervention.RetestBloodActivity;
+
 import com.example.sixthsenseapp.settings.tab1;
-import com.example.sixthsenseapp.settings.tab4;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Calibrate extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    //private Button logOutButton;
-    //private Button settingsButton;
-    private ImageButton interventionButton;
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+
+    private ImageButton connect;
+    private ImageButton demo;
 
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nav_activity_dashboard);
+        setContentView(R.layout.nav_activity_calibrate);
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
 
-        //logOutButton = findViewById(R.id.logoutButton);
-        //settingsButton = findViewById(R.id.buttonsetting);
-        interventionButton = findViewById(R.id.interventionButton);
-
         mAuth = LoginActivity.getFirebaseAuth();
 
-        interventionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Dashboard.this, RetestBloodActivity.class);
-                startActivity(intent);
-            }
-        });
+        connect = findViewById(R.id.connectButton);
+        demo = findViewById(R.id.viewDemoButton);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -66,9 +56,22 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        getSupportActionBar().setTitle("DASHBOARD");
+        getSupportActionBar().setTitle("CALIBRATE");
+        
 
+        connect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Calibrate.this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
+            }
+        });
 
+        demo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Calibrate.this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 
@@ -123,25 +126,25 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         int id = item.getItemId();
 
         if (id == R.id.nav_dashboard) {
-            Intent intent = new Intent(this, Dashboard.class);
+            Intent intent = new Intent(Calibrate.this, Dashboard.class);
             startActivity(intent);
         }
         else if (id == R.id.nav_calibrate) {
-            Intent intent = new Intent(Dashboard.this, Calibrate.class);
+            Intent intent = new Intent(Calibrate.this, Calibrate.class);
             startActivity(intent);
         }
         else if (id == R.id.nav_toolbox) {
             Toast.makeText(this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
         }
         else if (id == R.id.nav_settings) {
-            Intent intent = new Intent(this, tab1.class);
+            Intent intent = new Intent(Calibrate.this, tab1.class);
             startActivity(intent);
         }
         else if (id == R.id.nav_logout) {
             mAuth.getInstance().signOut();
-            Toast.makeText(Dashboard.this, "Successfully logged out.", Toast.LENGTH_LONG).show();
+            Toast.makeText(Calibrate.this, "Successfully logged out.", Toast.LENGTH_LONG).show();
 
-            Intent intent = new Intent(Dashboard.this, MainActivity.class);
+            Intent intent = new Intent(Calibrate.this, MainActivity.class);
             startActivity(intent);
         }
 

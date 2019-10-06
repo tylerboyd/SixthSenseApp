@@ -30,7 +30,7 @@
         app:srcCompat="@drawable/textbox" />
 
     <ImageView
-        android:id="@+id/textBox3"
+        android:id="@+id/textBox2"
         android:layout_width="279dp"
         android:layout_height="37dp"
         android:layout_marginBottom="8dp"
@@ -60,10 +60,10 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="@+id/textBox3"
-        app:layout_constraintEnd_toEndOf="@+id/textBox3"
-        app:layout_constraintStart_toStartOf="@+id/textBox3"
-        app:layout_constraintTop_toTopOf="@+id/textBox3" />
+        app:layout_constraintBottom_toBottomOf="@+id/textBox2"
+        app:layout_constraintEnd_toEndOf="@+id/textBox2"
+        app:layout_constraintStart_toStartOf="@+id/textBox2"
+        app:layout_constraintTop_toTopOf="@+id/textBox2" />
 
     <TextView
         android:id="@+id/errorMessage"

@@ -3,12 +3,14 @@ package com.example.sixthsenseapp.settings;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -18,10 +20,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sixthsenseapp.R;
+import com.example.sixthsenseapp.dashboard.Calibrate;
 import com.example.sixthsenseapp.dashboard.Dashboard;
+import com.example.sixthsenseapp.intervention.UserInformation;
 import com.example.sixthsenseapp.mainMenu.MainActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class tab1 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -42,7 +52,11 @@ public class tab1 extends AppCompatActivity implements NavigationView.OnNavigati
     private int minutes = 0;
     private int hours = 0;
 
+    private UserInformation uInfo;
+    private FirebaseDatabase mFirebaseDatabase;
     private FirebaseAuth mAuth;
+    private DatabaseReference ref;
+    private String userID;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,22 +67,40 @@ public class tab1 extends AppCompatActivity implements NavigationView.OnNavigati
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setVisibility(View.GONE);
         getSupportActionBar().setTitle("SETTINGS");
+
+        mAuth = FirebaseAuth.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        ref = mFirebaseDatabase.getReference();
+        FirebaseUser user = mAuth.getCurrentUser();
+        userID = user.getUid();
 
         toolboxButton = findViewById(R.id.accountbutton);
         accountButton = findViewById(R.id.monitorbutton);
         promptsButton = findViewById(R.id.promptbutton);
 
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                readData(dataSnapshot);
+                Log.d("db", "READ");
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         toolboxButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tab1.this, tab3.class);
+                intent.putExtra("userInformation", uInfo);
                 startActivity(intent);
             }
         });
@@ -77,6 +109,7 @@ public class tab1 extends AppCompatActivity implements NavigationView.OnNavigati
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tab1.this, tab4.class);
+                intent.putExtra("userInformation", uInfo);
                 startActivity(intent);
             }
         });
@@ -85,6 +118,7 @@ public class tab1 extends AppCompatActivity implements NavigationView.OnNavigati
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tab1.this, tab2.class);
+                intent.putExtra("userInformation", uInfo);
                 startActivity(intent);
             }
         });
@@ -233,7 +267,8 @@ public class tab1 extends AppCompatActivity implements NavigationView.OnNavigati
             startActivity(intent);
         }
         else if (id == R.id.nav_calibrate) {
-            Toast.makeText(this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(tab1.this, Calibrate.class);
+            startActivity(intent);
         }
         else if (id == R.id.nav_toolbox) {
             Toast.makeText(this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
@@ -258,5 +293,20 @@ public class tab1 extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
+
+    private void readData(DataSnapshot dataSnapshot){
+        for(DataSnapshot ds : dataSnapshot.getChildren()){
+
+            uInfo = new UserInformation();
+            uInfo.setBloodSugarHighLimit(ds.child(userID).child("patient").getValue(UserInformation.class).getBloodSugarHighLimit());
+            uInfo.setBloodSugarLowLimit(ds.child(userID).child("patient").getValue(UserInformation.class).getBloodSugarLowLimit());
+            uInfo.setPrimaryTreatmentMethod(ds.child(userID).child("patient").getValue(UserInformation.class).getPrimaryTreatmentMethod());
+            uInfo.setSecondaryTreatmentMethod(ds.child(userID).child("patient").getValue(UserInformation.class).getSecondaryTreatmentMethod());
+            uInfo.setHighBloodSugarTreatment(ds.child(userID).child("patient").getValue(UserInformation.class).getHighBloodSugarTreatment());
+            uInfo.setEmergencyContactName(ds.child(userID).child("patient").getValue(UserInformation.class).getEmergencyContactName());
+            uInfo.setEmergencyContactNumber(ds.child(userID).child("patient").getValue(UserInformation.class).getEmergencyContactNumber());
+            uInfo.setInterventionWaitTime(ds.child(userID).child("patient").getValue(UserInformation.class).getInterventionWaitTime());
+        }
     }
 }
