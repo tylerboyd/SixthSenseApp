@@ -8,206 +8,192 @@
     android:backgroundTint="#FFFFFF"
     android:backgroundTintMode="add">
 
-    <ImageButton
-        android:id="@+id/buttonInfo3"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:drawable/ic_menu_info_details"
-        android:backgroundTintMode="screen"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Switch
-        android:id="@+id/carecircle"
-        android:layout_width="261dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="76dp"
-        android:text="Care Circle"
-        android:textAlignment="gravity"
-        app:layout_constraintBottom_toTopOf="@+id/promptbutton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout4" />
-
-    <Switch
-        android:id="@+id/bloodsugar"
-        android:layout_width="261dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-
-
-        android:layout_marginBottom="16dp"
-        android:checked="true"
-        android:text="My Blood Sugar"
-        android:textAlignment="gravity"
-        app:layout_constraintBottom_toTopOf="@+id/insucalc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout4" />
-
-    <Switch
-        android:id="@+id/insucalc"
-        android:layout_width="261dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="13dp"
-        android:checked="true"
-        android:text="Insulin Calculator"
-        android:textAlignment="gravity"
-        app:layout_constraintBottom_toTopOf="@+id/prescript"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout4" />
-
-    <Switch
-        android:id="@+id/prescript"
-        android:layout_width="261dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="20dp"
-        android:checked="true"
-        android:text="Prescriptions"
-        android:textAlignment="gravity"
-        app:layout_constraintBottom_toTopOf="@+id/library"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout4" />
-
-    <Switch
-        android:id="@+id/library"
-        android:layout_width="261dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="19dp"
-        android:text="Library"
-        android:textAlignment="gravity"
-        app:layout_constraintBottom_toTopOf="@+id/achievements"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout4" />
-
-    <Switch
-        android:id="@+id/achievements"
-        android:layout_width="261dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="13dp"
-        android:text="Achievements"
-        android:textAlignment="gravity"
-        app:layout_constraintBottom_toTopOf="@+id/carecircle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout4" />
-
-    <TextView
-        android:id="@+id/textView16"
+    <ImageView
+        android:id="@+id/editT1DCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="16dp"
-        android:text="edit T1D toolbox"
-        android:textColor="@android:color/black"
-        android:textSize="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/promptbutton"
-        android:layout_width="412dp"
-        android:layout_height="wrap_content"
-        android:background="@color/lightred"
-        android:text="edit prompts"
-        app:layout_constraintBottom_toTopOf="@+id/accountbutton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/accountbutton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:background="@color/gray"
-        android:text="edit / add account"
-        app:layout_constraintBottom_toTopOf="@+id/monitorbutton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/monitorbutton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/blue"
-        android:text="my monitor"
+        android:adjustViewBounds="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.004"
+        app:srcCompat="@drawable/settings_t1dtoolbox_card" />
 
-    <LinearLayout
+    <Button
+        android:id="@+id/editAddButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@drawable/settings_editadd_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myMonitorCard"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myMonitorCard"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
 
+    <Button
+        android:id="@+id/myMonitorButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@drawable/settings_mymonitor_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myMonitorCard"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myMonitorCard"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
 
-        android:id="@+id/linearLayout4"
-        android:layout_width="62dp"
+    <Button
+        android:id="@+id/editPromptsButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@drawable/settings_edit_prompts_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
+    <ImageView
+        android:id="@+id/myBloodSugarBar"
+        android:layout_width="327dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editT1DCard"
+        app:layout_constraintEnd_toEndOf="@+id/editT1DCard"
+        app:layout_constraintStart_toStartOf="@+id/editT1DCard"
+        app:layout_constraintTop_toTopOf="@+id/editT1DCard"
+        app:layout_constraintVertical_bias="0.102"
+        app:srcCompat="@drawable/settings_my_blood_sugar_bar" />
+
+    <ImageView
+        android:id="@+id/insulinCalcBar"
+        android:layout_width="327dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editT1DCard"
+        app:layout_constraintEnd_toEndOf="@+id/editT1DCard"
+        app:layout_constraintStart_toStartOf="@+id/editT1DCard"
+        app:layout_constraintTop_toTopOf="@+id/editT1DCard"
+        app:layout_constraintVertical_bias="0.24000001"
+        app:srcCompat="@drawable/settings_insulin_calculator_bar" />
+
+    <ImageView
+        android:id="@+id/prescriptionsBar"
+        android:layout_width="327dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editT1DCard"
+        app:layout_constraintEnd_toEndOf="@+id/editT1DCard"
+        app:layout_constraintStart_toStartOf="@+id/editT1DCard"
+        app:layout_constraintTop_toTopOf="@+id/editT1DCard"
+        app:layout_constraintVertical_bias="0.38"
+        app:srcCompat="@drawable/settings_prescription_bar" />
+
+    <ImageView
+        android:id="@+id/libraryBar"
+        android:layout_width="327dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editT1DCard"
+        app:layout_constraintEnd_toEndOf="@+id/editT1DCard"
+        app:layout_constraintStart_toStartOf="@+id/editT1DCard"
+        app:layout_constraintTop_toTopOf="@+id/editT1DCard"
+        app:layout_constraintVertical_bias="0.52"
+        app:srcCompat="@drawable/settings_library_bar" />
+
+    <ImageView
+        android:id="@+id/achievementsBar"
+        android:layout_width="327dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editT1DCard"
+        app:layout_constraintEnd_toEndOf="@+id/editT1DCard"
+        app:layout_constraintStart_toStartOf="@+id/editT1DCard"
+        app:layout_constraintTop_toTopOf="@+id/editT1DCard"
+        app:layout_constraintVertical_bias="0.65999997"
+        app:srcCompat="@drawable/settings_achievements_bar" />
+
+    <ImageView
+        android:id="@+id/careCircleBar"
+        android:layout_width="327dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editT1DCard"
+        app:layout_constraintEnd_toEndOf="@+id/editT1DCard"
+        app:layout_constraintStart_toStartOf="@+id/editT1DCard"
+        app:layout_constraintTop_toTopOf="@+id/editT1DCard"
+        app:layout_constraintVertical_bias="0.8"
+        app:srcCompat="@drawable/settings_care_circle_bar" />
+
+    <Switch
+        android:id="@+id/bloodSugarSwitch"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginBottom="76dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/promptbutton"
-        app:layout_constraintStart_toStartOf="parent">
+        android:thumbTint="@color/white"
+        android:trackTint="#b2912f"
+        app:layout_constraintBottom_toBottomOf="@+id/myBloodSugarBar"
+        app:layout_constraintEnd_toEndOf="@+id/myBloodSugarBar"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="@+id/myBloodSugarBar"
+        app:layout_constraintTop_toTopOf="@+id/myBloodSugarBar" />
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+    <Switch
+        android:id="@+id/insulinCalculatorSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:thumbTint="@color/white"
+        android:trackTint="#b2912f"
+        app:layout_constraintBottom_toBottomOf="@+id/insulinCalcBar"
+        app:layout_constraintEnd_toEndOf="@+id/insulinCalcBar"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="@+id/insulinCalcBar"
+        app:layout_constraintTop_toTopOf="@+id/insulinCalcBar" />
 
-            android:layout_marginTop="40dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/fingersecond" />
+    <Switch
+        android:id="@+id/prescriptionsSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:thumbTint="@color/white"
+        android:trackTint="#b2912f"
+        app:layout_constraintBottom_toBottomOf="@+id/prescriptionsBar"
+        app:layout_constraintEnd_toEndOf="@+id/prescriptionsBar"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="@+id/prescriptionsBar"
+        app:layout_constraintTop_toTopOf="@+id/prescriptionsBar" />
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/secondneedels" />
+    <Switch
+        android:id="@+id/librarySwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:thumbTint="@color/white"
+        android:trackTint="#b2912f"
+        app:layout_constraintBottom_toBottomOf="@+id/libraryBar"
+        app:layout_constraintEnd_toEndOf="@+id/libraryBar"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="@+id/libraryBar"
+        app:layout_constraintTop_toTopOf="@+id/libraryBar" />
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/drugsecond" />
+    <Switch
+        android:id="@+id/achievementsSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:thumbTint="@color/white"
+        android:trackTint="#b2912f"
+        app:layout_constraintBottom_toBottomOf="@+id/achievementsBar"
+        app:layout_constraintEnd_toEndOf="@+id/achievementsBar"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="@+id/achievementsBar"
+        app:layout_constraintTop_toTopOf="@+id/achievementsBar" />
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-
-            android:layout_marginTop="25dp"
-
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/book" />
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="25dp"
-            android:scaleType="fitCenter"
-
-            app:srcCompat="@drawable/cupsecond" />
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="25dp"
-
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/secondlink" />
-
-
-    </LinearLayout>
+    <Switch
+        android:id="@+id/careCircleSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:thumbTint="@color/white"
+        android:trackTint="#b2912f"
+        app:layout_constraintBottom_toBottomOf="@+id/careCircleBar"
+        app:layout_constraintEnd_toEndOf="@+id/careCircleBar"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="@+id/careCircleBar"
+        app:layout_constraintTop_toTopOf="@+id/careCircleBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

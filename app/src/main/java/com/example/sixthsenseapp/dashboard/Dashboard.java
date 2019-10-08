@@ -1,5 +1,6 @@
 package com.example.sixthsenseapp.dashboard;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,12 +10,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.sixthsenseapp.intervention.UserInformation;
 import com.example.sixthsenseapp.mainMenu.LoginActivity;
 import com.example.sixthsenseapp.mainMenu.MainActivity;
 import com.example.sixthsenseapp.R;
@@ -23,17 +26,26 @@ import com.example.sixthsenseapp.settings.tab1;
 import com.example.sixthsenseapp.settings.tab4;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    //private Button logOutButton;
-    //private Button settingsButton;
     private ImageButton interventionButton;
-
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
 
+    private UserInformation uInfo;
+    private FirebaseDatabase mFirebaseDatabase;
     private FirebaseAuth mAuth;
+    private DatabaseReference ref;
+    private String userID;
+
+    private boolean isDataRead = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,17 +55,23 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
 
-        //logOutButton = findViewById(R.id.logoutButton);
-        //settingsButton = findViewById(R.id.buttonsetting);
         interventionButton = findViewById(R.id.interventionButton);
 
-        mAuth = LoginActivity.getFirebaseAuth();
+        mAuth = FirebaseAuth.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        ref = mFirebaseDatabase.getReference();
+        FirebaseUser user = mAuth.getCurrentUser();
+        userID = user.getUid();
 
         interventionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Dashboard.this, RetestBloodActivity.class);
-                startActivity(intent);
+                //Begin Intervention Process
+                if(isDataRead == true){
+                    Intent intent = new Intent(Dashboard.this, RetestBloodActivity.class);
+                    intent.putExtra("userInformation", uInfo);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -63,12 +81,23 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
+            drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
         getSupportActionBar().setTitle("DASHBOARD");
 
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                readData(dataSnapshot);
+                Log.d("db", "READ");
 
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
@@ -123,19 +152,26 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         int id = item.getItemId();
 
         if (id == R.id.nav_dashboard) {
-            Intent intent = new Intent(this, Dashboard.class);
-            startActivity(intent);
+            if(isDataRead == true) {
+                Intent intent = new Intent(this, Dashboard.class);
+                startActivity(intent);
+            }
         }
         else if (id == R.id.nav_calibrate) {
-            Intent intent = new Intent(Dashboard.this, Calibrate.class);
-            startActivity(intent);
+            if(isDataRead == true) {
+                Intent intent = new Intent(Dashboard.this, Calibrate.class);
+                startActivity(intent);
+            }
         }
         else if (id == R.id.nav_toolbox) {
             Toast.makeText(this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
         }
         else if (id == R.id.nav_settings) {
-            Intent intent = new Intent(this, tab1.class);
-            startActivity(intent);
+            if(isDataRead == true) {
+                Intent intent = new Intent(this, tab1.class);
+                intent.putExtra("userInformation", uInfo);
+                startActivity(intent);
+            }
         }
         else if (id == R.id.nav_logout) {
             mAuth.getInstance().signOut();
@@ -153,5 +189,22 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
+
+    private void readData(DataSnapshot dataSnapshot){
+        for(DataSnapshot ds : dataSnapshot.getChildren()){
+
+            uInfo = new UserInformation();
+            uInfo.setBloodSugarHighLimit(ds.child(userID).child("patient").getValue(UserInformation.class).getBloodSugarHighLimit());
+            uInfo.setBloodSugarLowLimit(ds.child(userID).child("patient").getValue(UserInformation.class).getBloodSugarLowLimit());
+            uInfo.setPrimaryTreatmentMethod(ds.child(userID).child("patient").getValue(UserInformation.class).getPrimaryTreatmentMethod());
+            uInfo.setSecondaryTreatmentMethod(ds.child(userID).child("patient").getValue(UserInformation.class).getSecondaryTreatmentMethod());
+            uInfo.setHighBloodSugarTreatment(ds.child(userID).child("patient").getValue(UserInformation.class).getHighBloodSugarTreatment());
+            uInfo.setEmergencyContactName(ds.child(userID).child("patient").getValue(UserInformation.class).getEmergencyContactName());
+            uInfo.setEmergencyContactNumber(ds.child(userID).child("patient").getValue(UserInformation.class).getEmergencyContactNumber());
+            uInfo.setInterventionWaitTime(ds.child(userID).child("patient").getValue(UserInformation.class).getInterventionWaitTime());
+
+            isDataRead = true;
+        }
     }
 }

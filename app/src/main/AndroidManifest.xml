@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/sixthsenseicon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".setup.SetupAddEmergencyContact"></activity>
+        <activity android:name=".setup.SetupAskCaregiver"></activity>
+        <activity android:name=".setup.SetupAddEmergencyContact" />
         <activity android:name=".intervention.CalculatedTreatment" />
         <activity android:name=".intervention.FineActivity" />
         <activity android:name=".intervention.EmergencyActivity" />

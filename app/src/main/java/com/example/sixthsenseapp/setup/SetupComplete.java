@@ -28,8 +28,8 @@ public class SetupComplete extends AppCompatActivity {
         calibrateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(SetupComplete.this, "Feature NOt Yet Implemented", Toast.LENGTH_LONG);
-                toast.show();
+                Toast.makeText(SetupComplete.this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
+
             }
         });
 

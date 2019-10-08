@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.sixthsenseapp.R;
 import com.example.sixthsenseapp.dashboard.Calibrate;
 import com.example.sixthsenseapp.dashboard.Dashboard;
+import com.example.sixthsenseapp.intervention.UserInformation;
 import com.example.sixthsenseapp.mainMenu.MainActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,11 +31,15 @@ public class tab4 extends AppCompatActivity implements NavigationView.OnNavigati
 
     private FirebaseAuth mAuth;
 
+    private UserInformation uInfo;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_activity_tab4);
+
+        Intent i = getIntent();
+        uInfo = (UserInformation)i.getSerializableExtra("userInformation");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -47,14 +52,15 @@ public class tab4 extends AppCompatActivity implements NavigationView.OnNavigati
         navigationView.setNavigationItemSelectedListener(this);
         getSupportActionBar().setTitle("SETTINGS");
 
-        promptsButton = findViewById(R.id.promptbutton);
-        toolboxButton = findViewById(R.id.toolboxbutton);
-        monitorButton = findViewById(R.id.monitorbutton);
+        promptsButton = findViewById(R.id.promptsButton);
+        toolboxButton = findViewById(R.id.toolboxButton);
+        monitorButton = findViewById(R.id.myMonitorButton);
 
         promptsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tab4.this, tab2.class);
+                intent.putExtra("userInformation", uInfo);
                 startActivity(intent);
             }
         });
@@ -63,6 +69,7 @@ public class tab4 extends AppCompatActivity implements NavigationView.OnNavigati
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tab4.this, tab3.class);
+                intent.putExtra("userInformation", uInfo);
                 startActivity(intent);
             }
         });
@@ -71,15 +78,16 @@ public class tab4 extends AppCompatActivity implements NavigationView.OnNavigati
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tab4.this, tab1.class);
+                intent.putExtra("userInformation", uInfo);
                 startActivity(intent);
             }
         });
 
-        updateButton = findViewById(R.id.buttonUpdate);
+        updateButton = findViewById(R.id.updateButton);
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(v.getContext(), "Posting Account Updates", Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(v.getContext(), "Feature Not Implemented", Toast.LENGTH_LONG);
                 toast.show();
             }
         });

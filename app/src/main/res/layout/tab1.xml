@@ -1,202 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#078C97"
-    android:backgroundTint="#3F51B5"
     android:backgroundTintMode="add">
 
-    <Button
+    <ImageView
+        android:id="@+id/myMonitorCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editPromptsButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/settings_mymonitor_card" />
+
+    <ImageView
+        android:id="@+id/plusMinusBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.857"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.375"
+        app:srcCompat="@drawable/plusminusborder" />
+
+    <ImageButton
         android:id="@+id/buttonMinus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="199dp"
-        android:layout_marginEnd="124dp"
-        android:layout_marginBottom="436dp"
+        android:background="@drawable/minus"
         android:backgroundTintMode="screen"
-        android:text="@string/minus" />
+        app:layout_constraintBottom_toBottomOf="@+id/plusMinusBorder"
+        app:layout_constraintEnd_toEndOf="@+id/plusMinusBorder"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="@+id/plusMinusBorder"
+        app:layout_constraintTop_toTopOf="@+id/plusMinusBorder" />
 
-    <Button
+    <ImageButton
         android:id="@+id/buttonPlus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="289dp"
-        android:layout_marginEnd="34dp"
-        android:layout_marginBottom="436dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/plus"
         android:backgroundTintMode="screen"
-        android:text="@string/plus" />
+        app:layout_constraintBottom_toBottomOf="@+id/plusMinusBorder"
+        app:layout_constraintEnd_toEndOf="@+id/plusMinusBorder"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="@+id/plusMinusBorder" />
 
+
+    <Button
+        android:id="@+id/editPromptsButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@drawable/settings_edit_prompts_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <Button
+        android:id="@+id/t1dButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+
+        android:background="@drawable/setting_t1dtoolbox_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
+
+    <Button
+        android:id="@+id/editAddButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@drawable/settings_editadd_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myMonitorCard"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myMonitorCard"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/clocktime"
-        android:layout_width="115dp"
-        android:layout_height="67dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="235dp"
-        android:layout_marginTop="179dp"
-        android:layout_marginEnd="61dp"
-        android:layout_marginBottom="485dp"
-        android:ems="10"
-        android:inputType="time" />
-
-
-    <Button
-        android:id="@+id/promptbutton"
-        android:layout_width="412dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginBottom="84dp"
-        android:background="@color/lightred"
-        android:text="edit prompts" />
-
-    <Button
-        android:id="@+id/accountbutton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-
-        android:layout_marginStart="-7dp"
-        android:layout_marginBottom="42dp"
-        android:background="#F1DB15"
-        android:text="edit T1D toolbox" />
-
-    <Button
-        android:id="@+id/monitorbutton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="-2dp"
-        android:layout_marginBottom="2dp"
-        android:background="@color/gray"
-        android:text="edit/add account" />
-    <ImageButton
-        android:id="@+id/buttonInfo"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="2dp"
-        android:background="@android:drawable/ic_menu_info_details"
-        android:backgroundTintMode="screen"
-        android:src="@android:drawable/ic_menu_info_details"/>
-
-    <EditText
         android:id="@+id/starttime"
         android:layout_width="189dp"
         android:layout_height="105dp"
-        android:layout_alignTop="@+id/clocktime"
-        android:layout_alignEnd="@+id/clocktime"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="187dp"
-        android:layout_marginTop="-39dp"
-        android:layout_marginEnd="-26dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@android:color/transparent"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="0:00"
+        android:text="00:00"
         android:textAlignment="center"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:textSize="60dp" />
+        android:textSize="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.234" />
 
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="152dp"
-        android:text="My Monitor"
-        android:textSize="25dp" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="131dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="243dp"
-        android:layout_marginEnd="37dp"
-        android:text="@string/auto_on"
-        android:textSize="18dp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="78dp"
-        android:layout_height="wrap_content"
-
-        android:layout_alignTop="@+id/textView3"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="237dp"
-        android:text="@string/nightlight"
-        android:textSize="18dp" />
-
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="331dp"
         android:layout_height="46dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="378dp"
-        android:background="#D3D3D3"
-        android:orientation="horizontal">
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#50FFFFFF"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.532">
 
         <Switch
-            android:id="@+id/switch2"
-            android:layout_width="50dp"
-            android:layout_height="42dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="241dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="57dp"
-            android:layout_marginBottom="4dp"
+            android:id="@+id/autoActivationSwitch"
+            android:layout_width="56dp"
+            android:layout_height="43dp"
             android:checked="true"
             android:switchMinWidth="56dp"
             android:textOff="OFF"
-            android:textOn="ON" />
+            android:textOn="ON"
+            android:thumbTint="#FFFFFF"
+            android:trackTint="#239793"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.666" />
 
 
         <Switch
-            android:id="@+id/switch1"
+            android:id="@+id/nightlightSwitch"
             android:layout_width="56dp"
             android:layout_height="43dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="52dp"
-            android:layout_marginEnd="223dp"
-            android:layout_marginBottom="-6dp"
             android:checked="true"
-            android:textOff="OFF" />
+            android:switchMinWidth="56dp"
+            android:textOff="OFF"
+            android:thumbTint="@color/white"
+            android:trackTint="#239793"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.461" />
 
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="183dp"
-        android:layout_height="209dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="91dp"
-        app:srcCompat="@drawable/sun" />
-</RelativeLayout>
+        android:id="@+id/nightlight"
+        android:layout_width="149dp"
+        android:layout_height="143dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.256"
+        app:srcCompat="@drawable/nightlight" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="84dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="nightlight"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.199"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.602" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="136dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="auto activation"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.857"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.602" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

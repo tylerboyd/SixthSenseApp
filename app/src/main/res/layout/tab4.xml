@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00E4E1E1"
@@ -9,102 +11,124 @@
     android:foregroundTint="#00E4E1E1">
 
 
-    <Button
-        android:id="@+id/toolboxbutton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-
-        android:layout_marginStart="-7dp"
-        android:layout_marginBottom="42dp"
-        android:background="#F5E349"
-        android:text="edit T1D Toolbox" />
-
-    <Button
-        android:id="@+id/promptbutton"
-        android:layout_width="412dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginBottom="84dp"
-        android:background="@color/lightred"
-        android:text="edit prompts" />
-
-    <Button
-        android:id="@+id/monitorbutton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="-2dp"
-        android:layout_marginBottom="2dp"
-        android:background="@color/blue"
-        android:text="my monitor" />
-
-    <EditText
-        android:id="@+id/inputName"
-        android:layout_width="214dp"
-        android:layout_height="87dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="93dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginBottom="565dp"
-        android:hint="Name"
-        android:inputType="text" />
-
-    <EditText
-        android:id="@+id/inputPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="86dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="96dp"
-        android:layout_marginEnd="107dp"
-        android:layout_marginBottom="345dp"
-        android:hint="Password"
-        android:inputType="textPassword" />
-
-
-    <Button
-        android:id="@+id/buttonUpdate"
+    <ImageView
+        android:id="@+id/addEditCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="156dp"
-        android:layout_marginEnd="167dp"
-        android:layout_marginBottom="280dp"
-        android:text="Update" />
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/settings_addedit_card" />
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="96dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="93dp"
-        android:layout_marginEnd="105dp"
-        android:layout_marginBottom="446dp"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress" />
+    <Button
+        android:id="@+id/myMonitorButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@drawable/settings_mymonitor_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myMonitorCard"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myMonitorCard"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <Button
+        android:id="@+id/toolboxButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@drawable/setting_t1dtoolbox_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myMonitorCard"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myMonitorCard"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/promptsButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@drawable/settings_edit_prompts_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myMonitorCard"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myMonitorCard"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
+
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/updateText"
         android:layout_width="wrap_content"
         android:layout_height="34dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="117dp"
-        android:layout_marginEnd="129dp"
-        android:layout_marginBottom="672dp"
-        android:text="Update Account Details" />
-</RelativeLayout>
+        android:layout_marginStart="8dp"
+        android:text="Edit Login Details"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/addEditCard"
+        app:layout_constraintEnd_toEndOf="@+id/addEditCard"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="@+id/addEditCard"
+        app:layout_constraintTop_toTopOf="@+id/addEditCard"
+        app:layout_constraintVertical_bias="0.19999999" />
+
+    <ImageView
+        android:id="@+id/textBox"
+        android:layout_width="279dp"
+        android:layout_height="37dp"
+        app:layout_constraintBottom_toBottomOf="@+id/addEditCard"
+        app:layout_constraintEnd_toEndOf="@+id/addEditCard"
+        app:layout_constraintStart_toStartOf="@+id/addEditCard"
+        app:layout_constraintTop_toTopOf="@+id/addEditCard"
+        app:layout_constraintVertical_bias="0.35000002"
+        app:srcCompat="@drawable/textbox" />
+
+    <EditText
+        android:id="@+id/emailField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="@+id/textBox"
+        app:layout_constraintEnd_toEndOf="@+id/textBox"
+        app:layout_constraintStart_toStartOf="@+id/textBox"
+        app:layout_constraintTop_toTopOf="@+id/textBox" />
+
+    <ImageView
+        android:id="@+id/textBox2"
+        android:layout_width="279dp"
+        android:layout_height="37dp"
+        app:layout_constraintBottom_toBottomOf="@+id/addEditCard"
+        app:layout_constraintEnd_toEndOf="@+id/addEditCard"
+        app:layout_constraintStart_toStartOf="@+id/addEditCard"
+        app:layout_constraintTop_toTopOf="@+id/addEditCard"
+        app:srcCompat="@drawable/textbox" />
+
+    <EditText
+        android:id="@+id/passwordField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/textBox2"
+        app:layout_constraintEnd_toEndOf="@+id/textBox2"
+        app:layout_constraintStart_toStartOf="@+id/textBox2"
+        app:layout_constraintTop_toTopOf="@+id/textBox2" />
+
+    <Button
+        android:id="@+id/updateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/settings_update_info_button"
+        app:layout_constraintBottom_toBottomOf="@+id/addEditCard"
+        app:layout_constraintEnd_toEndOf="@+id/addEditCard"
+        app:layout_constraintStart_toStartOf="@+id/addEditCard"
+        app:layout_constraintTop_toTopOf="@+id/addEditCard"
+        app:layout_constraintVertical_bias="0.75" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

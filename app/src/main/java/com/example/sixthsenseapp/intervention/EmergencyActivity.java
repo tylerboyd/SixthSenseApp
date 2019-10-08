@@ -4,21 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sixthsenseapp.R;
 import com.example.sixthsenseapp.dashboard.Dashboard;
+import com.example.sixthsenseapp.setup.SetupVerification;
 
 public class EmergencyActivity extends AppCompatActivity {
 
     private ImageButton nextButton;
-    private TextView emergencyContactNameField;
-    private TextView emergencyContactNumberField;
+    private ImageButton call111Button;
+    private ImageButton callContactButton;
 
-    private String emergencyContactName;
-    private String emergencyContactNumber;
 
     private UserInformation uInfo;
 
@@ -27,25 +28,38 @@ public class EmergencyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency);
 
-        nextButton = findViewById(R.id.nextButton);
-        emergencyContactNameField = findViewById(R.id.emergencyContactName);
-        emergencyContactNumberField = findViewById(R.id.emergencyContactNumber);
+        nextButton = findViewById(R.id.okButton);
+        call111Button = findViewById(R.id.call111Button);
+        callContactButton = findViewById(R.id.callContactButton);
 
         Intent i = getIntent();
         uInfo = (UserInformation)i.getSerializableExtra("userInformation");
 
-        emergencyContactName = uInfo.getEmergencyContactName();
-        emergencyContactNumber = uInfo.getEmergencyContactNumber();
-
-        emergencyContactNameField.setText("Emergency Contact: " + emergencyContactName);
-        emergencyContactNumberField.setText("Contact Number: " + emergencyContactNumber);
-
-        nextButton.setOnClickListener(new View.OnClickListener(){
+        nextButton.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View view){
+            public boolean onLongClick(View view){
 
                 Intent intent =  new Intent(EmergencyActivity.this, Dashboard.class);
                 startActivity(intent);
+
+                return true;
+            }
+        });
+
+
+        call111Button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+
+                Toast.makeText(EmergencyActivity.this, "Festure not yet Implemented.", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        callContactButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+
+                Toast.makeText(EmergencyActivity.this, "Festure not yet Implemented.", Toast.LENGTH_LONG).show();
             }
         });
 

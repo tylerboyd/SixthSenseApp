@@ -15,7 +15,6 @@ import com.example.sixthsenseapp.R;
 
 public class SetupHighBloodSugar extends AppCompatActivity {
 
-    private ImageView backgroundImage;
     private ImageButton nextButton;
     private ImageButton backButton;
     private ImageButton insulinPumpButton;
@@ -28,15 +27,11 @@ public class SetupHighBloodSugar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_high_blood_sugar);
 
-        backgroundImage = findViewById(R.id.backgroundImage);
         nextButton = findViewById(R.id.nextButton);
         backButton = findViewById(R.id.backButton);
         insulinPumpButton = findViewById(R.id.insulinPump);
         insulinPenButton = findViewById(R.id.insulinPen);
         otherText = findViewById(R.id.other);
-
-        int imageResource = getResources().getIdentifier("@drawable/setuphighbloodsugar", null, this.getPackageName());
-        backgroundImage.setImageResource(imageResource);
 
         nextButton.setEnabled(false);
 

@@ -17,11 +17,10 @@ import java.text.DecimalFormat;
 
 public class SetupBloodSugar extends AppCompatActivity {
 
-    private ImageView backgroundImage;
-    private Button addUpperLimit;
-    private Button subtractUpperLimit;
-    private Button addLowerLimit;
-    private Button subtractLowerLimit;
+    private ImageButton addUpperLimit;
+    private ImageButton subtractUpperLimit;
+    private ImageButton addLowerLimit;
+    private ImageButton subtractLowerLimit;
     private ImageButton nextButton;
     private ImageButton backButton;
     private TextView upperLimitText;
@@ -35,7 +34,6 @@ public class SetupBloodSugar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_blood_sugar);
 
-        backgroundImage = findViewById(R.id.backgroundImage);
         addUpperLimit = findViewById(R.id.addUpperLimit);
         subtractUpperLimit = findViewById(R.id.subtractUpperLimit);
         addLowerLimit = findViewById(R.id.addLowerLimit);
@@ -45,9 +43,6 @@ public class SetupBloodSugar extends AppCompatActivity {
         upperLimitText = findViewById(R.id.upperLimit);
         lowerLimitText = findViewById(R.id.lowerLimit);
         errorMessage = findViewById(R.id.errorMessage);
-
-        int imageResource = getResources().getIdentifier("@drawable/bloodsugarsetup", null, this.getPackageName());
-        backgroundImage.setImageResource(imageResource);
 
         nextButton.setEnabled(false);
 

@@ -3,18 +3,18 @@ package com.example.sixthsenseapp.settings;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,37 +26,33 @@ import com.example.sixthsenseapp.intervention.UserInformation;
 import com.example.sixthsenseapp.mainMenu.MainActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
+import java.util.Locale;
 
 public class tab1 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Button button1;
-    private Button button2;
+    private ImageButton addTimeButton;
+    private ImageButton subtractTimeButton;
     private Button toolboxButton;
     private Button accountButton;
     private Button promptsButton;
-
+    private ImageView nightlightImage;
     private TextView startTime;
 
     private Switch switch1;
     private Switch switch2;
 
-    Boolean stateAutoActivate;
-    Boolean stateNightLight;
+    private UserInformation uInfo;
+
+    boolean stateAutoActivate;
+    boolean stateNightLight;
 
     private int minutes = 0;
     private int hours = 0;
 
-    private UserInformation uInfo;
-    private FirebaseDatabase mFirebaseDatabase;
+    private String formattedTime;
+
     private FirebaseAuth mAuth;
-    private DatabaseReference ref;
-    private String userID;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,27 +70,22 @@ public class tab1 extends AppCompatActivity implements NavigationView.OnNavigati
         getSupportActionBar().setTitle("SETTINGS");
 
         mAuth = FirebaseAuth.getInstance();
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        ref = mFirebaseDatabase.getReference();
-        FirebaseUser user = mAuth.getCurrentUser();
-        userID = user.getUid();
 
-        toolboxButton = findViewById(R.id.accountbutton);
-        accountButton = findViewById(R.id.monitorbutton);
-        promptsButton = findViewById(R.id.promptbutton);
+        toolboxButton = findViewById(R.id.t1dButton);
+        accountButton = findViewById(R.id.editAddButton);
+        promptsButton = findViewById(R.id.editPromptsButton);
+        startTime = findViewById(R.id.starttime);
+        addTimeButton = findViewById(R.id.buttonMinus);
+        subtractTimeButton = findViewById(R.id.buttonPlus);
+        switch1 = findViewById(R.id.nightlightSwitch);
+        switch2 = findViewById(R.id.autoActivationSwitch);
+        nightlightImage = findViewById(R.id.nightlight);
 
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                readData(dataSnapshot);
-                Log.d("db", "READ");
+        formattedTime = String.format(Locale.getDefault(), "%02d:%02d", hours, minutes);
+        startTime.setText(formattedTime);
 
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+        Intent i = getIntent();
+        uInfo = (UserInformation)i.getSerializableExtra("userInformation");
 
         toolboxButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,15 +114,7 @@ public class tab1 extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
-
-        startTime = findViewById(R.id.starttime);
-        button1 = findViewById(R.id.buttonMinus);
-        switch1 = findViewById(R.id.switch1);
-        switch2 = findViewById(R.id.switch2);
-
-        startTime.setText(hours + ":" + minutes);
-
-        button1.setOnClickListener(new View.OnClickListener() {
+        addTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(hours != 0 && minutes == 0)
@@ -149,14 +132,13 @@ public class tab1 extends AppCompatActivity implements NavigationView.OnNavigati
                 {
                     minutes = 55;
                 }
-                startTime.setText(hours + ":" + minutes);
-                Toast toast = Toast.makeText(v.getContext(), "Timer Minus 5 min. Hours: " +hours + " Minutes" + minutes, Toast.LENGTH_LONG);
-                toast.show();
+                formattedTime = String.format(Locale.getDefault(), "%02d:%02d", hours, minutes);
+                startTime.setText(formattedTime);
             }
         });
 
-        button2 = findViewById(R.id.buttonPlus);
-        button2.setOnClickListener(new View.OnClickListener() {
+
+        subtractTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -175,22 +157,23 @@ public class tab1 extends AppCompatActivity implements NavigationView.OnNavigati
                 {
                     minutes = 0;
                 }
-                startTime.setText(hours + ":" + minutes);
-                Toast toast = Toast.makeText(v.getContext(), "Timer Plus 5 min. Hours:" +hours + "Minutes" + minutes, Toast.LENGTH_LONG);
-                toast.show();
+                formattedTime = String.format(Locale.getDefault(), "%02d:%02d", hours, minutes);
+                startTime.setText(formattedTime);
             }
         });
 
         switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    Toast toast = Toast.makeText(buttonView.getContext(), "ON", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(buttonView.getContext(), "Turned nightlight on", Toast.LENGTH_LONG);
                     toast.show();
                     stateAutoActivate = true;
+                    nightlightImage.setImageResource(R.drawable.nightlight);
                 } else {
-                    Toast toast = Toast.makeText(buttonView.getContext(), "OFF", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(buttonView.getContext(), "Turned nightlight off", Toast.LENGTH_LONG);
                     toast.show();
                     stateAutoActivate = false;
+                    nightlightImage.setImageResource(R.drawable.nightlightdisabled);
                 }
             }
         });
@@ -198,12 +181,12 @@ public class tab1 extends AppCompatActivity implements NavigationView.OnNavigati
         switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    Toast toast = Toast.makeText(buttonView.getContext(), "ON", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(buttonView.getContext(), "Auto activation enabled", Toast.LENGTH_LONG);
                     toast.show();
                     stateNightLight = true;
 
                 } else {
-                    Toast toast = Toast.makeText(buttonView.getContext(), "OFF", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(buttonView.getContext(), "Auto activation disabled", Toast.LENGTH_LONG);
                     toast.show();
                     stateNightLight = false;
                 }
@@ -280,7 +263,6 @@ public class tab1 extends AppCompatActivity implements NavigationView.OnNavigati
         else if (id == R.id.nav_logout) {
             mAuth.getInstance().signOut();
             Toast.makeText(tab1.this, "Successfully logged out.", Toast.LENGTH_LONG).show();
-
             Intent intent = new Intent(tab1.this, MainActivity.class);
             startActivity(intent);
         }
@@ -293,20 +275,5 @@ public class tab1 extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
-    }
-
-    private void readData(DataSnapshot dataSnapshot){
-        for(DataSnapshot ds : dataSnapshot.getChildren()){
-
-            uInfo = new UserInformation();
-            uInfo.setBloodSugarHighLimit(ds.child(userID).child("patient").getValue(UserInformation.class).getBloodSugarHighLimit());
-            uInfo.setBloodSugarLowLimit(ds.child(userID).child("patient").getValue(UserInformation.class).getBloodSugarLowLimit());
-            uInfo.setPrimaryTreatmentMethod(ds.child(userID).child("patient").getValue(UserInformation.class).getPrimaryTreatmentMethod());
-            uInfo.setSecondaryTreatmentMethod(ds.child(userID).child("patient").getValue(UserInformation.class).getSecondaryTreatmentMethod());
-            uInfo.setHighBloodSugarTreatment(ds.child(userID).child("patient").getValue(UserInformation.class).getHighBloodSugarTreatment());
-            uInfo.setEmergencyContactName(ds.child(userID).child("patient").getValue(UserInformation.class).getEmergencyContactName());
-            uInfo.setEmergencyContactNumber(ds.child(userID).child("patient").getValue(UserInformation.class).getEmergencyContactNumber());
-            uInfo.setInterventionWaitTime(ds.child(userID).child("patient").getValue(UserInformation.class).getInterventionWaitTime());
-        }
     }
 }

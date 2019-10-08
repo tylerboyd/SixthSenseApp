@@ -32,7 +32,6 @@ public class SetupUserInfo3 extends AppCompatActivity {
         gpNameField = findViewById(R.id.gpNameField);
         gpNumberField = findViewById(R.id.gpNumberField);
 
-
         nextButton.setEnabled(false);
 
         gpNameField.addTextChangedListener(new TextWatcher() {
@@ -76,7 +75,7 @@ public class SetupUserInfo3 extends AppCompatActivity {
                 gpName = gpNameField.getText().toString();
                 gpNumber = gpNumberField.getText().toString();
 
-                Intent intent = new Intent(SetupUserInfo3.this, SetupUserInfo4.class);
+                Intent intent = new Intent(SetupUserInfo3.this, SetupAddEmergencyContact.class);
                 startActivity(intent);
             }
         });

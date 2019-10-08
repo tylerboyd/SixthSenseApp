@@ -18,9 +18,7 @@ import java.util.List;
 
 public class SetupAddCaregiver extends AppCompatActivity {
 
-    private ImageView backgroundImage;
     private ImageButton nextButton;
-    private ImageButton backButton;
     private EditText firstNameField;
     private EditText lastNameField;
     private EditText phoneNumberField;
@@ -36,16 +34,11 @@ public class SetupAddCaregiver extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_add_caregiver);
 
-        backgroundImage = findViewById(R.id.backgroundImage);
         nextButton = findViewById(R.id.nextButton);
-        backButton = findViewById(R.id.backButton);
         firstNameField = findViewById(R.id.firstNameField);
         lastNameField = findViewById(R.id.lastNameField);
         phoneNumberField = findViewById(R.id.phoneNumberField);
         emailField = findViewById(R.id.emailField);
-
-        int imageResource = getResources().getIdentifier("@drawable/setupaddcaregiver", null, this.getPackageName());
-        backgroundImage.setImageResource(imageResource);
 
         nextButton.setEnabled(false);
 
@@ -136,15 +129,6 @@ public class SetupAddCaregiver extends AppCompatActivity {
                 careCircle.add(caregiver);
 
                 Intent intent = new Intent(SetupAddCaregiver.this, SetupAddCareGiverComplete.class);
-                startActivity(intent);
-            }
-        });
-
-        backButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-
-                Intent intent = new Intent(SetupAddCaregiver.this, SetupUserInfo4.class);
                 startActivity(intent);
             }
         });

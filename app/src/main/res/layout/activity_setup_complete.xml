@@ -60,7 +60,7 @@
         android:layout_marginStart="87dp"
         android:layout_marginTop="14dp"
         android:layout_marginEnd="85dp"
-        android:text="you can now adjust or further"
+        android:text="you can adjust or further"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,12 +84,16 @@
         android:layout_height="46dp"
         android:layout_marginStart="73dp"
         android:layout_marginEnd="73dp"
+        android:layout_marginBottom="8dp"
         android:text="calibrate the monitor for use with prompts"
         android:textAlignment="center"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calibratebutton" />
+        app:layout_constraintTop_toBottomOf="@+id/calibratebutton"
+        app:layout_constraintVertical_bias="0.023" />
 
     <TextView
         android:id="@+id/textView19"

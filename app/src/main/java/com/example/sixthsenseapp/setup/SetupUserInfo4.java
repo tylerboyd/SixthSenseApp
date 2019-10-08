@@ -19,8 +19,6 @@ public class SetupUserInfo4 extends AppCompatActivity {
 
     private ImageButton nextButton;
     private ImageButton backButton;
-    private CheckBox addCaregiver;
-    private CheckBox addEmergencyContact;
     private EditText emergencyNameField;
     private EditText emergencyNumberField;
     private static String emergencyName = "";
@@ -35,18 +33,8 @@ public class SetupUserInfo4 extends AppCompatActivity {
         emergencyNumberField = findViewById(R.id.emergencyNumberField);
         nextButton = findViewById(R.id.nextButton);
         backButton = findViewById(R.id.backButton);
-        addCaregiver = findViewById(R.id.addCaregiver);
-        addEmergencyContact = findViewById(R.id.addEmergencyContact);
 
-        if(SetupUserType.getUserType().equals("User")){
-            addCaregiver.setVisibility(View.VISIBLE);
-        }
-        else if(SetupUserType.getUserType().equals("Caregiver")){
-            addCaregiver.setVisibility(View.INVISIBLE);
-        }
-
-        emergencyNameField.setVisibility(View.INVISIBLE);
-        emergencyNumberField.setVisibility(View.INVISIBLE);
+        nextButton.setEnabled(false);
 
         emergencyNameField.addTextChangedListener(new TextWatcher() {
             @Override
@@ -82,24 +70,6 @@ public class SetupUserInfo4 extends AppCompatActivity {
             }
         });
 
-        addEmergencyContact.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(addEmergencyContact.isChecked()){
-                    emergencyNameField.setVisibility(View.VISIBLE);
-                    emergencyNumberField.setVisibility(View.VISIBLE);
-                    nextButton.setEnabled(false);
-                }
-                else{
-                    emergencyNameField.setVisibility(View.INVISIBLE);
-                    emergencyNumberField.setVisibility(View.INVISIBLE);
-                    nextButton.setEnabled(true);
-                }
-            }
-        });
-
-
-
         nextButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -108,14 +78,8 @@ public class SetupUserInfo4 extends AppCompatActivity {
                 emergencyNumber = emergencyNumberField.getText().toString();
 
                 if(SetupUserType.getUserType().equals("User")){
-                    if(addCaregiver.isChecked()){
-                        Intent intent = new Intent(SetupUserInfo4.this, SetupAddCaregiver.class);
-                        startActivity(intent);
-                    }
-                    else{
-                        Intent intent = new Intent(SetupUserInfo4.this, SetupBloodSugar.class);
-                        startActivity(intent);
-                    }
+                    Intent intent = new Intent(SetupUserInfo4.this, SetupAskCaregiver.class);
+                    startActivity(intent);
                 }
                 else if(SetupUserType.getUserType().equals("Caregiver")){
                     Intent intent = new Intent(SetupUserInfo4.this, SetupAddCaregiver.class);

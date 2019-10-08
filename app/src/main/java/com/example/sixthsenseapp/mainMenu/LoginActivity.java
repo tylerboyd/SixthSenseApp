@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                         else{
                             Toast.makeText(getApplicationContext(), "Login failed.", Toast.LENGTH_LONG).show();
                             errorMessage.setTextColor(Color.RED);
-                            errorMessage.setText("Failed to Logjn.");
+                            errorMessage.setText("Failed to Login.");
                         }
                     }
                 });

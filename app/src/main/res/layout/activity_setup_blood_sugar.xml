@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/background_light" />
+        app:srcCompat="@drawable/bloodsugarsetup" />
 
     <ImageButton
         android:id="@+id/nextButton"
@@ -45,53 +45,51 @@
         app:layout_constraintTop_toTopOf="@+id/backgroundImage"
         app:layout_constraintVertical_bias="1.0" />
 
-    <Button
+    <ImageButton
         android:id="@+id/addUpperLimit"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.759"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.756" />
+        android:layout_width="38dp"
+        android:layout_height="21.5dp"
+        android:background="@drawable/plus"
+        app:layout_constraintBottom_toBottomOf="@+id/lowerLimitBorder2"
+        app:layout_constraintEnd_toEndOf="@+id/lowerLimitBorder2"
+        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintStart_toStartOf="@+id/lowerLimitBorder2"
+        app:layout_constraintTop_toTopOf="@+id/lowerLimitBorder2"
+        app:layout_constraintVertical_bias="0.65999997" />
 
-    <Button
+    <ImageButton
         android:id="@+id/subtractUpperLimit"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.62"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.756" />
+        android:layout_width="38dp"
+        android:layout_height="22dp"
+        android:background="@drawable/minus"
+        app:layout_constraintBottom_toBottomOf="@+id/lowerLimitBorder2"
+        app:layout_constraintEnd_toEndOf="@+id/lowerLimitBorder2"
+        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintStart_toStartOf="@+id/lowerLimitBorder2"
+        app:layout_constraintTop_toTopOf="@+id/lowerLimitBorder2" />
 
-    <Button
+    <ImageButton
         android:id="@+id/subtractLowerLimit"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.238"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.756" />
+        android:layout_width="38dp"
+        android:layout_height="22dp"
+        android:background="@drawable/minus"
+        app:layout_constraintBottom_toBottomOf="@+id/lowerLimitBorder"
+        app:layout_constraintEnd_toEndOf="@+id/lowerLimitBorder"
+        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintStart_toStartOf="@+id/lowerLimitBorder"
+        app:layout_constraintTop_toTopOf="@+id/lowerLimitBorder" />
 
-    <Button
+    <ImageButton
         android:id="@+id/addLowerLimit"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.376"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.756" />
+        android:layout_width="38dp"
+        android:layout_height="21.5dp"
+        android:background="@drawable/plus"
+        app:layout_constraintBottom_toBottomOf="@+id/lowerLimitBorder"
+        app:layout_constraintEnd_toEndOf="@+id/lowerLimitBorder"
+        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintStart_toStartOf="@+id/lowerLimitBorder"
+        app:layout_constraintTop_toTopOf="@+id/lowerLimitBorder" />
 
     <TextView
         android:id="@+id/lowerLimit"
@@ -141,5 +139,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.873" />
+
+    <ImageView
+        android:id="@+id/lowerLimitBorder"
+        android:layout_width="85dp"
+        android:layout_height="27dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.74"
+        app:srcCompat="@drawable/plusminusborder" />
+
+    <ImageView
+        android:id="@+id/lowerLimitBorder2"
+        android:layout_width="85dp"
+        android:layout_height="27dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.71"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.74"
+        app:srcCompat="@drawable/plusminusborder" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

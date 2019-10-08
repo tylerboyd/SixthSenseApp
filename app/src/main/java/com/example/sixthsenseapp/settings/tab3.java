@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.sixthsenseapp.R;
 import com.example.sixthsenseapp.dashboard.Calibrate;
 import com.example.sixthsenseapp.dashboard.Dashboard;
+import com.example.sixthsenseapp.intervention.UserInformation;
 import com.example.sixthsenseapp.mainMenu.MainActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,12 +37,14 @@ public class tab3 extends AppCompatActivity implements NavigationView.OnNavigati
     private Button accountButton;
     private Button monitorButton;
 
-    Boolean careCircleOn;
-    Boolean bloodSugarOn;
-    Boolean insuCalcOn;
-    Boolean libraryOn;
-    Boolean preScriptOn;
-    Boolean achievementsOn;
+    private UserInformation uInfo;
+
+    boolean careCircleOn;
+    boolean bloodSugarOn;
+    boolean insuCalcOn;
+    boolean libraryOn;
+    boolean preScriptOn;
+    boolean achievementsOn;
 
     private FirebaseAuth mAuth;
 
@@ -49,6 +52,9 @@ public class tab3 extends AppCompatActivity implements NavigationView.OnNavigati
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_activity_tab3);
+
+        Intent i = getIntent();
+        uInfo = (UserInformation)i.getSerializableExtra("userInformation");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -62,14 +68,21 @@ public class tab3 extends AppCompatActivity implements NavigationView.OnNavigati
         getSupportActionBar().setTitle("SETTINGS");
 
 
-        promptsButton = findViewById(R.id.promptbutton);
-        accountButton = findViewById(R.id.accountbutton);
-        monitorButton = findViewById(R.id.monitorbutton);
+        promptsButton = findViewById(R.id.editPromptsButton);
+        accountButton = findViewById(R.id.editAddButton);
+        monitorButton = findViewById(R.id.myMonitorButton);
+        careCircle =  findViewById(R.id.careCircleSwitch);
+        bloodSugar =  findViewById(R.id.bloodSugarSwitch);
+        insuCalc =  findViewById(R.id.insulinCalculatorSwitch);
+        library =  findViewById(R.id.librarySwitch);
+        preScript = findViewById(R.id.prescriptionsSwitch);
+        achievements = findViewById(R.id.achievementsSwitch);
 
         promptsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tab3.this, tab2.class);
+                intent.putExtra("userInformation", uInfo);
                 startActivity(intent);
             }
         });
@@ -78,6 +91,7 @@ public class tab3 extends AppCompatActivity implements NavigationView.OnNavigati
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tab3.this, tab4.class);
+                intent.putExtra("userInformation", uInfo);
                 startActivity(intent);
             }
         });
@@ -86,11 +100,12 @@ public class tab3 extends AppCompatActivity implements NavigationView.OnNavigati
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tab3.this, tab1.class);
+                intent.putExtra("userInformation", uInfo);
                 startActivity(intent);
             }
         });
 
-        careCircle = (Switch) findViewById(R.id.carecircle);
+
         careCircle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -105,7 +120,7 @@ public class tab3 extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
-        bloodSugar = (Switch) findViewById(R.id.bloodsugar);
+
         bloodSugar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -120,7 +135,6 @@ public class tab3 extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
-        insuCalc = (Switch) findViewById(R.id.insucalc);
         insuCalc.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -135,7 +149,6 @@ public class tab3 extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
-        library = (Switch) findViewById(R.id.library);
         library.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -150,7 +163,6 @@ public class tab3 extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
-        preScript = (Switch) findViewById(R.id.prescript);
         preScript.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -165,7 +177,6 @@ public class tab3 extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
-        achievements = (Switch) findViewById(R.id.achievements);
         achievements.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {

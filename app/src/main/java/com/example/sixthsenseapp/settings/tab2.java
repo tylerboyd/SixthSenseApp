@@ -12,6 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,12 +29,12 @@ import java.text.DecimalFormat;
 
 public class tab2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Button minusButtonLow;
-    private Button plusButtonLow;
-    private Button minusButtonHigh;
-    private Button plusButtonHigh;
-    private Button waitTimerMinus;
-    private Button waitTimerPlus;
+    private ImageButton minusButtonLow;
+    private ImageButton plusButtonLow;
+    private ImageButton minusButtonHigh;
+    private ImageButton plusButtonHigh;
+    private ImageButton waitTimerMinus;
+    private ImageButton waitTimerPlus;
 
     private Button toolboxButton;
     private Button accountButton;
@@ -46,17 +47,22 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
     private TextView secondaryTextField;
     private TextView highBSTextField;
 
+    private ImageView primaryTreatmentIcon;
+    private ImageView secondaryTreatmentIcon;
+    private ImageView highBloodSugarIcon;
+
     private String textLowBS;
     private String textHighBS;
     private String primaryText;
     private String secondaryText;
     private String highBSText;
 
-    private ImageView p;
+    private DrawerLayout drawer;
+    private NavigationView navigationView;
 
     private float highEnd;
     private float lowEnd;
-    private int waitInter;
+    private int waitTime;
 
     private UserInformation uInfo;
 
@@ -69,33 +75,43 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
-        getSupportActionBar().setTitle("SETTINGS");
 
         Intent i = getIntent();
         uInfo = (UserInformation)i.getSerializableExtra("userInformation");
 
         lowBS = findViewById(R.id.lowbloodnumber);
         highBS = findViewById(R.id.highbloodnumber);
-        toolboxButton = findViewById(R.id.promptbutton);
-        accountButton = findViewById(R.id.accountbutton);
-        monitorButton = findViewById(R.id.monitorbutton);
+        toolboxButton = findViewById(R.id.t1dButton);
+        accountButton = findViewById(R.id.editAddButton);
+        monitorButton = findViewById(R.id.myMonitorButton);
         waitInterval = findViewById(R.id.waitTimeText);
         primaryTextField = findViewById(R.id.primaryText);
         secondaryTextField = findViewById(R.id.secondaryText);
         highBSTextField = findViewById(R.id.highText);
+        minusButtonLow = findViewById(R.id.lowerLimitSubtract);
+        plusButtonLow = findViewById(R.id.lowerLimitAdd);
+        minusButtonHigh = findViewById(R.id.upperLimitSubtract);
+        plusButtonHigh = findViewById(R.id.upperLimitAdd);
+        waitTimerMinus = findViewById(R.id.waitingTimeSubtract);
+        waitTimerPlus = findViewById(R.id.waitingTimeAdd);
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        primaryTreatmentIcon = findViewById(R.id.primaryTreatmentIcon);
+        secondaryTreatmentIcon = findViewById(R.id.secondaryTreatmentIcon);
+        highBloodSugarIcon = findViewById(R.id.highBloodSugarTreatmentIcon);
 
         mAuth = FirebaseAuth.getInstance();
 
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
+        getSupportActionBar().setTitle("SETTINGS");
+
         lowEnd = uInfo.getBloodSugarLowLimit();
         highEnd = uInfo.getBloodSugarHighLimit();
-        waitInter = uInfo.getInterventionWaitTime();
+        waitTime = uInfo.getInterventionWaitTime();
         primaryText = uInfo.getPrimaryTreatmentMethod();
         secondaryText = uInfo.getSecondaryTreatmentMethod();
         highBSText = uInfo.getHighBloodSugarTreatment();
@@ -105,20 +121,59 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
 
         lowBS.setText(textLowBS);
         highBS.setText(textHighBS);
-        waitInterval.setText(""+waitInter);
+        waitInterval.setText(""+ waitTime);
         primaryTextField.setText(primaryText);
         secondaryTextField.setText(secondaryText);
         highBSTextField.setText(highBSText);
 
+        if(primaryText.equals("Glucose Tablet")){
+            primaryTreatmentIcon.setImageResource(R.drawable.tabletsecond);
+        }
+        else if(primaryText.equals("Confectionery")){
+            //TODO: Fix Asset
+            primaryTreatmentIcon.setImageResource(R.drawable.redconfectionery);
+        }
+        else if(primaryText.equals("Sugary Drink")){
+            //TODO: Fix Asset
+            primaryTreatmentIcon.setImageResource(R.drawable.redsugarydrink);
+        }
+        else {
+            //TODO: Other Asset
+            //primaryTreatmentIcon.setImageResource(R.drawable.redsugarydrink);
+        }
 
-        p = findViewById(R.id.primaryTreatmentIcon);
-        p.setVisibility(View.INVISIBLE);
+        if(secondaryText.equals("Glucose Tablet")){
+            secondaryTreatmentIcon.setImageResource(R.drawable.tabletsecond);
+        }
+        else if(secondaryText.equals("Glucose Gel")){
+            secondaryTreatmentIcon.setImageResource(R.drawable.gelsecond);
+        }
+        else if(secondaryText.equals("Sugary Drink")){
+            //TODO: Fix Asset
+            secondaryTreatmentIcon.setImageResource(R.drawable.redsugarydrink);
+        }
+        else {
+            //TODO: Other Asset
+            //secondaryTreatmentIcon.setImageResource(R.drawable.redsugarydrink);
+        }
 
+        if(highBSText.equals("Insulin Pump")){
+            //TODO: Fix Asset
+            highBloodSugarIcon.setImageResource(R.drawable.redinsulinpump);
+        }
+        else if(highBSText.equals("Insulin Pen")){
+            highBloodSugarIcon.setImageResource(R.drawable.needlesecond);
+        }
+        else {
+            //TODO: Other Asset
+            //highBloodSugarIcon.setImageResource(R.drawable.redsugarydrink);
+        }
 
         toolboxButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tab2.this, tab3.class);
+                intent.putExtra("userInformation", uInfo);
                 startActivity(intent);
             }
         });
@@ -127,6 +182,7 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tab2.this, tab4.class);
+                intent.putExtra("userInformation", uInfo);
                 startActivity(intent);
             }
         });
@@ -135,13 +191,11 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(tab2.this, tab1.class);
+                intent.putExtra("userInformation", uInfo);
                 startActivity(intent);
             }
         });
 
-
-
-        minusButtonLow = findViewById(R.id.minusbuttonlow);
         minusButtonLow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -152,7 +206,6 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
-        plusButtonLow = findViewById(R.id.plusbuttonlow);
         plusButtonLow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,7 +216,6 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
-        minusButtonHigh = findViewById(R.id.minusbuttonhigh);
         minusButtonHigh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -174,7 +226,6 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
-        plusButtonHigh = findViewById(R.id.plusbuttonhigh);
         plusButtonHigh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -185,24 +236,22 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
-        waitTimerMinus = findViewById(R.id.waittimerminus);
         waitTimerMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                waitInter--;
-                if(waitInter < 0){
-                    waitInter = 0;
+                waitTime--;
+                if(waitTime < 0){
+                    waitTime = 0;
                 }
-                waitInterval.setText(""+waitInter);
+                waitInterval.setText(""+ waitTime);
             }
         });
 
-        waitTimerPlus = findViewById(R.id.waittimerplus);
         waitTimerPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                waitInter++;
-                waitInterval.setText(""+waitInter);
+                waitTime++;
+                waitInterval.setText(""+ waitTime);
             }
         });
 
