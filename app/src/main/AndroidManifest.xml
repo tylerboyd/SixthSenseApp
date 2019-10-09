@@ -6,12 +6,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/sixthsenseicon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/sixthsenseicon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".setup.SetupAskCaregiver"></activity>
+        <activity android:name=".dashboard.T1DToolbox"></activity>
+        <activity android:name=".setup.SetupAskCaregiver" />
         <activity android:name=".setup.SetupAddEmergencyContact" />
         <activity android:name=".intervention.CalculatedTreatment" />
         <activity android:name=".intervention.FineActivity" />

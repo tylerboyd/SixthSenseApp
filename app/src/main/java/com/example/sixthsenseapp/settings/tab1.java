@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.example.sixthsenseapp.R;
 import com.example.sixthsenseapp.dashboard.Calibrate;
 import com.example.sixthsenseapp.dashboard.Dashboard;
+import com.example.sixthsenseapp.dashboard.T1DToolbox;
 import com.example.sixthsenseapp.intervention.UserInformation;
 import com.example.sixthsenseapp.mainMenu.MainActivity;
 import com.google.android.material.navigation.NavigationView;
@@ -48,7 +49,7 @@ public class tab1 extends AppCompatActivity implements NavigationView.OnNavigati
     boolean stateNightLight;
 
     private int minutes = 0;
-    private int hours = 0;
+    private int hours = 18;
 
     private String formattedTime;
 
@@ -126,32 +127,31 @@ public class tab1 extends AppCompatActivity implements NavigationView.OnNavigati
                     hours = 23;
                 }
 
-                minutes = minutes - 5;
+                minutes = minutes - 15;
 
                 if(minutes < 0)
                 {
-                    minutes = 55;
+                    minutes = 45;
                 }
                 formattedTime = String.format(Locale.getDefault(), "%02d:%02d", hours, minutes);
                 startTime.setText(formattedTime);
             }
         });
 
-
         subtractTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(hours != 23 && minutes == 55)
+                if(hours != 23 && minutes == 45)
                 {
                     hours++;
                 }
-                else if(hours == 23 && minutes == 55)
+                else if(hours == 23 && minutes == 45)
                 {
                     hours = 0;
                 }
 
-                minutes = minutes + 5;
+                minutes = minutes + 15;
 
                 if(minutes == 60)
                 {
@@ -205,41 +205,6 @@ public class tab1 extends AppCompatActivity implements NavigationView.OnNavigati
         }
     }
 
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if(id == R.id.nav_dashboard)
-        {
-            //Intent intent = new Intent(Fill Dashboard Connection Here);
-            //startActivity(intent);
-        }
-        if(id == R.id.nav_calibrate)
-        {
-            //Create Toast Here
-        }
-        if(id == R.id.nav_toolbox)
-        {
-            //Create Toast Here
-        }
-        if(id == R.id.nav_settings)
-        {
-            //Intent intent = new Intent(Fill Settings Connection Here);
-            //startActivity(intent);
-        }
-        if(id == R.id.nav_logout)
-        {
-            //Run Logout Activity Here
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -254,7 +219,8 @@ public class tab1 extends AppCompatActivity implements NavigationView.OnNavigati
             startActivity(intent);
         }
         else if (id == R.id.nav_toolbox) {
-            Toast.makeText(this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(tab1.this, T1DToolbox.class);
+            startActivity(intent);
         }
         else if (id == R.id.nav_settings) {
             Intent intent = new Intent(this, tab1.class);

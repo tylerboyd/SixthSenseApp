@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -42,7 +41,6 @@ public class SecondaryTreatment extends AppCompatActivity {
             treatmentType.setImageResource(imageResource);
         }
         else if(secondaryTreatmentMethod.equals("Glucose Tablet")){
-
             int imageResource = getResources().getIdentifier("@drawable/glucosetabletred", null, getPackageName());
             treatmentType.setImageResource(imageResource);
         }

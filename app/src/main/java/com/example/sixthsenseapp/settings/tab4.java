@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.sixthsenseapp.R;
 import com.example.sixthsenseapp.dashboard.Calibrate;
 import com.example.sixthsenseapp.dashboard.Dashboard;
+import com.example.sixthsenseapp.dashboard.T1DToolbox;
 import com.example.sixthsenseapp.intervention.UserInformation;
 import com.example.sixthsenseapp.mainMenu.MainActivity;
 import com.google.android.material.navigation.NavigationView;
@@ -91,7 +92,6 @@ public class tab4 extends AppCompatActivity implements NavigationView.OnNavigati
                 toast.show();
             }
         });
-
     }
 
     @Override
@@ -102,41 +102,6 @@ public class tab4 extends AppCompatActivity implements NavigationView.OnNavigati
         } else {
             super.onBackPressed();
         }
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if(id == R.id.nav_dashboard)
-        {
-            //Intent intent = new Intent(Fill Dashboard Connection Here);
-            //startActivity(intent);
-        }
-        if(id == R.id.nav_calibrate)
-        {
-            //Create Toast Here
-        }
-        if(id == R.id.nav_toolbox)
-        {
-            //Create Toast Here
-        }
-        if(id == R.id.nav_settings)
-        {
-            //Intent intent = new Intent(Fill Settings Connection Here);
-            //startActivity(intent);
-        }
-        if(id == R.id.nav_logout)
-        {
-            //Run Logout Activity Here
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -153,7 +118,8 @@ public class tab4 extends AppCompatActivity implements NavigationView.OnNavigati
             startActivity(intent);
         }
         else if (id == R.id.nav_toolbox) {
-            Toast.makeText(this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(tab4.this, T1DToolbox.class);
+            startActivity(intent);
         }
         else if (id == R.id.nav_settings) {
             Intent intent = new Intent(this, tab1.class);

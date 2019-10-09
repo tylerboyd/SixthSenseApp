@@ -71,7 +71,5 @@ public class InterventionActivity extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 }

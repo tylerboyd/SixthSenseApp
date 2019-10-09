@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.example.sixthsenseapp.R;
 import com.example.sixthsenseapp.dashboard.Calibrate;
 import com.example.sixthsenseapp.dashboard.Dashboard;
+import com.example.sixthsenseapp.dashboard.T1DToolbox;
 import com.example.sixthsenseapp.intervention.UserInformation;
 import com.example.sixthsenseapp.mainMenu.MainActivity;
 import com.google.android.material.navigation.NavigationView;
@@ -35,6 +36,7 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
     private ImageButton plusButtonHigh;
     private ImageButton waitTimerMinus;
     private ImageButton waitTimerPlus;
+    private ImageButton personaliseButton;
 
     private Button toolboxButton;
     private Button accountButton;
@@ -94,6 +96,7 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
         plusButtonHigh = findViewById(R.id.upperLimitAdd);
         waitTimerMinus = findViewById(R.id.waitingTimeSubtract);
         waitTimerPlus = findViewById(R.id.waitingTimeAdd);
+        personaliseButton = findViewById(R.id.personaliseButton);
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         primaryTreatmentIcon = findViewById(R.id.primaryTreatmentIcon);
@@ -127,46 +130,39 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
         highBSTextField.setText(highBSText);
 
         if(primaryText.equals("Glucose Tablet")){
-            primaryTreatmentIcon.setImageResource(R.drawable.tabletsecond);
+            primaryTreatmentIcon.setImageResource(R.drawable.settings_glucose_tablet_icon);
         }
         else if(primaryText.equals("Confectionery")){
-            //TODO: Fix Asset
-            primaryTreatmentIcon.setImageResource(R.drawable.redconfectionery);
+            primaryTreatmentIcon.setImageResource(R.drawable.settings_confectionery_icon);
         }
         else if(primaryText.equals("Sugary Drink")){
-            //TODO: Fix Asset
-            primaryTreatmentIcon.setImageResource(R.drawable.redsugarydrink);
+            primaryTreatmentIcon.setImageResource(R.drawable.settings_sugary_drink_icon);
         }
         else {
-            //TODO: Other Asset
-            //primaryTreatmentIcon.setImageResource(R.drawable.redsugarydrink);
+            primaryTreatmentIcon.setImageResource(R.drawable.settings_other_icon);
         }
 
         if(secondaryText.equals("Glucose Tablet")){
-            secondaryTreatmentIcon.setImageResource(R.drawable.tabletsecond);
+            secondaryTreatmentIcon.setImageResource(R.drawable.settings_glucose_tablet_icon);
         }
         else if(secondaryText.equals("Glucose Gel")){
-            secondaryTreatmentIcon.setImageResource(R.drawable.gelsecond);
+            secondaryTreatmentIcon.setImageResource(R.drawable.settings_glucose_gel_icon);
         }
         else if(secondaryText.equals("Sugary Drink")){
-            //TODO: Fix Asset
-            secondaryTreatmentIcon.setImageResource(R.drawable.redsugarydrink);
+            secondaryTreatmentIcon.setImageResource(R.drawable.settings_sugary_drink_icon);
         }
         else {
-            //TODO: Other Asset
-            //secondaryTreatmentIcon.setImageResource(R.drawable.redsugarydrink);
+            secondaryTreatmentIcon.setImageResource(R.drawable.settings_other_icon);
         }
 
         if(highBSText.equals("Insulin Pump")){
-            //TODO: Fix Asset
-            highBloodSugarIcon.setImageResource(R.drawable.redinsulinpump);
+            highBloodSugarIcon.setImageResource(R.drawable.settings_insulin_pump_icon);
         }
         else if(highBSText.equals("Insulin Pen")){
-            highBloodSugarIcon.setImageResource(R.drawable.needlesecond);
+            highBloodSugarIcon.setImageResource(R.drawable.settings_insulin_pen_icon);
         }
         else {
-            //TODO: Other Asset
-            //highBloodSugarIcon.setImageResource(R.drawable.redsugarydrink);
+            highBloodSugarIcon.setImageResource(R.drawable.settings_other_icon);
         }
 
         toolboxButton.setOnClickListener(new View.OnClickListener() {
@@ -201,6 +197,11 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
             public void onClick(View v) {
                 lowEnd -= 0.1;
                 lowEnd = roundFloat(lowEnd);
+
+                if(lowEnd < 0.1f){
+                    lowEnd = 0f;
+                }
+
                 textLowBS = String.valueOf(lowEnd);
                 lowBS.setText(textLowBS);
             }
@@ -221,6 +222,11 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
             public void onClick(View v) {
                 highEnd -= 0.1;
                 highEnd = roundFloat(highEnd);
+
+                if(highEnd < 0.1f){
+                    highEnd = 0f;
+                }
+
                 textHighBS = String.valueOf(highEnd);
                 highBS.setText(textHighBS);
             }
@@ -255,6 +261,12 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
+        personaliseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "Feature Not Implemented", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
@@ -265,41 +277,6 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
         } else {
             super.onBackPressed();
         }
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if(id == R.id.nav_dashboard)
-        {
-            //Intent intent = new Intent(Fill Dashboard Connection Here);
-            //startActivity(intent);
-        }
-        if(id == R.id.nav_calibrate)
-        {
-            //Create Toast Here
-        }
-        if(id == R.id.nav_toolbox)
-        {
-            //Create Toast Here
-        }
-        if(id == R.id.nav_settings)
-        {
-            //Intent intent = new Intent(Fill Settings Connection Here);
-            //startActivity(intent);
-        }
-        if(id == R.id.nav_logout)
-        {
-            //Run Logout Activity Here
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -316,7 +293,8 @@ public class tab2 extends AppCompatActivity implements NavigationView.OnNavigati
             startActivity(intent);
         }
         else if (id == R.id.nav_toolbox) {
-            Toast.makeText(this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(tab2.this, T1DToolbox.class);
+            startActivity(intent);
         }
         else if (id == R.id.nav_settings) {
             Intent intent = new Intent(this, tab1.class);

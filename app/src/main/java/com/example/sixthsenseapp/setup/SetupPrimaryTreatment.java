@@ -8,7 +8,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
 import com.example.sixthsenseapp.R;
 
@@ -55,7 +54,6 @@ public class SetupPrimaryTreatment extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
         glucoseTabletButton.setOnClickListener(new View.OnClickListener(){
             @Override

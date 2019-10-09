@@ -33,18 +33,20 @@ public class SetupAddEmergencyContact extends AppCompatActivity {
         addContactButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                //TODO: Add Enabled Icon
                 nextButton.setEnabled(true);
                 addContact = true;
+                addContactButton.setBackgroundResource(R.drawable.add_emergency_contact_button_enabled);
+                dontAddContactButton.setBackgroundResource(R.drawable.add_emergency_contact_button_just_me_disabled);
             }
         });
 
         dontAddContactButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                //TODO: Add Enabled Icon
                 nextButton.setEnabled(true);
                 addContact = false;
+                addContactButton.setBackgroundResource(R.drawable.add_emergency_contact_button_disabled);
+                dontAddContactButton.setBackgroundResource(R.drawable.add_emergency_contact_just_me_enabled);
             }
         });
 

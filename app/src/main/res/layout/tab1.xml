@@ -11,13 +11,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
+        android:background="@drawable/bluecard"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editPromptsButton"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/settings_mymonitor_card" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/titleText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="568dp"
+        android:text="my monitor"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/editAddButton"
+        app:layout_constraintEnd_toEndOf="@+id/myMonitorCard"
+        app:layout_constraintStart_toStartOf="@+id/myMonitorCard"
+        app:layout_constraintTop_toTopOf="@+id/myMonitorCard"
+        app:layout_constraintVertical_bias="0.01999998" />
 
     <ImageView
         android:id="@+id/plusMinusBorder"

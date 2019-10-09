@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.sixthsenseapp.R;
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        //Back Button disabled on Main screen
+        //Back Button disabled on Main screen to prevent illegal account access
         Toast.makeText(getApplicationContext(), "Cannot go back, you are not logged in.", Toast.LENGTH_LONG).show();
     }
 }

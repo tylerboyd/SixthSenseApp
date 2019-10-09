@@ -8,14 +8,12 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sixthsenseapp.R;
 
 public class SetupSecondaryTreatment extends AppCompatActivity {
 
-    private ImageView backgroundImage;
     private ImageButton nextButton;
     private ImageButton backButton;
     private ImageButton glucoseTabletButton;
@@ -29,16 +27,12 @@ public class SetupSecondaryTreatment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_secondary_treatment);
 
-        backgroundImage = findViewById(R.id.backgroundImage);
         nextButton = findViewById(R.id.nextButton);
         backButton = findViewById(R.id.backButton);
         glucoseTabletButton = findViewById(R.id.glucoseTablet);
         glucoseGelButton = findViewById(R.id.glucoseGel);
         sugaryDrinkButton = findViewById(R.id.sugaryDrink);
         otherText = findViewById(R.id.other);
-
-        int imageResource = getResources().getIdentifier("@drawable/secondarytreatmentsetup", null, this.getPackageName());
-        backgroundImage.setImageResource(imageResource);
 
         nextButton.setEnabled(false);
 

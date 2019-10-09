@@ -10,9 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.sixthsenseapp.mainMenu.LoginActivity;
@@ -24,7 +22,6 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Calibrate extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -57,7 +54,6 @@ public class Calibrate extends AppCompatActivity implements NavigationView.OnNav
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
         getSupportActionBar().setTitle("CALIBRATE");
-        
 
         connect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +68,6 @@ public class Calibrate extends AppCompatActivity implements NavigationView.OnNav
                 Toast.makeText(Calibrate.this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
             }
         });
-
     }
 
     @Override
@@ -83,41 +78,6 @@ public class Calibrate extends AppCompatActivity implements NavigationView.OnNav
         } else {
             super.onBackPressed();
         }
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if(id == R.id.nav_dashboard)
-        {
-            //Intent intent = new Intent(Fill Dashboard Connection Here);
-            //startActivity(intent);
-        }
-        if(id == R.id.nav_calibrate)
-        {
-            //Create Toast Here
-        }
-        if(id == R.id.nav_toolbox)
-        {
-            //Create Toast Here
-        }
-        if(id == R.id.nav_settings)
-        {
-            //Intent intent = new Intent(Fill Settings Connection Here);
-            //startActivity(intent);
-        }
-        if(id == R.id.nav_logout)
-        {
-            //Run Logout Activity Here
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -134,7 +94,8 @@ public class Calibrate extends AppCompatActivity implements NavigationView.OnNav
             startActivity(intent);
         }
         else if (id == R.id.nav_toolbox) {
-            Toast.makeText(this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(Calibrate.this, T1DToolbox.class);
+            startActivity(intent);
         }
         else if (id == R.id.nav_settings) {
             Intent intent = new Intent(Calibrate.this, tab1.class);

@@ -54,9 +54,8 @@ public class SetupVerification extends AppCompatActivity {
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
-        int i;
         try {
-            i = inputStream.read();
+            int i = inputStream.read();
             while (i != -1)
             {
                 byteArrayOutputStream.write(i);
@@ -64,7 +63,6 @@ public class SetupVerification extends AppCompatActivity {
             }
             inputStream.close();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         termsOfService.setText(byteArrayOutputStream.toString());
@@ -118,7 +116,6 @@ public class SetupVerification extends AppCompatActivity {
                                                 refUsers.child(UID).child("caregivers").child("caregiver_" + i).setValue(SetupAddCaregiver.getCareCircle().get(i));
                                             }
                                         }
-
 
                                     Intent intent = new Intent(SetupVerification.this, SetupComplete.class);
                                     startActivity(intent);

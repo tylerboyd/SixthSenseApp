@@ -12,13 +12,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
+        android:background="@drawable/settings_editprompts_card"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.004"
-        app:srcCompat="@drawable/settings_editprompts_card" />
+        app:layout_constraintVertical_bias="0.004" />
 
     <Button
         android:id="@+id/t1dButton"
@@ -210,7 +210,7 @@
         app:layout_constraintEnd_toEndOf="@+id/editPromptsCard"
         app:layout_constraintStart_toStartOf="@+id/editPromptsCard"
         app:layout_constraintTop_toTopOf="@+id/editPromptsCard"
-        app:layout_constraintVertical_bias="0.48000002"
+        app:layout_constraintVertical_bias="0.38"
         app:srcCompat="@drawable/settings_interventions_container" />
 
     <ImageView
@@ -225,7 +225,7 @@
         app:layout_constraintStart_toStartOf="@+id/interventionsContainer"
         app:layout_constraintTop_toTopOf="@+id/interventionsContainer"
         app:layout_constraintVertical_bias="0.6"
-        app:srcCompat="@drawable/tabletsecond"
+        app:srcCompat="@drawable/settings_glucose_tablet_icon"
         tools:visibility="visible" />
 
     <TextView
@@ -253,7 +253,7 @@
         app:layout_constraintStart_toStartOf="@+id/interventionsContainer"
         app:layout_constraintTop_toTopOf="@+id/interventionsContainer"
         app:layout_constraintVertical_bias="0.6"
-        app:srcCompat="@drawable/gelsecond" />
+        app:srcCompat="@drawable/settings_glucose_gel_icon" />
 
     <TextView
         android:id="@+id/secondaryText"
@@ -281,7 +281,7 @@
         app:layout_constraintStart_toStartOf="@+id/interventionsContainer"
         app:layout_constraintTop_toTopOf="@+id/interventionsContainer"
         app:layout_constraintVertical_bias="0.6"
-        app:srcCompat="@drawable/needlesecond" />
+        app:srcCompat="@drawable/settings_insulin_pen_icon" />
 
     <ImageView
         android:id="@+id/waitingTimeContainer"
@@ -292,22 +292,22 @@
         app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="@+id/editPromptsCard"
         app:layout_constraintTop_toTopOf="@+id/editPromptsCard"
-        app:layout_constraintVertical_bias="0.8"
+        app:layout_constraintVertical_bias="0.62"
         app:srcCompat="@drawable/settings_waittime_container" />
 
     <TextView
         android:id="@+id/highText"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="13dp"
         android:text="High BS"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="@+id/interventionsContainer"
         app:layout_constraintEnd_toEndOf="@+id/interventionsContainer"
-        app:layout_constraintHorizontal_bias="0.895"
+        app:layout_constraintHorizontal_bias="0.96"
         app:layout_constraintStart_toStartOf="@+id/interventionsContainer"
         app:layout_constraintTop_toTopOf="@+id/interventionsContainer"
-        app:layout_constraintVertical_bias="0.95" />
+        app:layout_constraintVertical_bias="0.942" />
 
 
     <EditText
@@ -388,7 +388,7 @@
         app:layout_constraintHorizontal_bias="0.846"
         app:layout_constraintStart_toStartOf="@+id/editPromptsCard"
         app:layout_constraintTop_toTopOf="@+id/editPromptsCard"
-        app:layout_constraintVertical_bias="0.8"
+        app:layout_constraintVertical_bias="0.62"
         app:srcCompat="@drawable/settings_personalise_container" />
 
     <ImageView
@@ -416,6 +416,34 @@
         app:layout_constraintStart_toStartOf="@+id/personaliseContainer"
         app:layout_constraintTop_toTopOf="@+id/personaliseContainer"
         app:layout_constraintVertical_bias="0.050000012" />
+
+    <ImageButton
+        android:id="@+id/personaliseButton"
+        android:layout_width="76dp"
+        android:layout_height="76dp"
+        android:background="@drawable/settings_personalise_plus"
+        app:layout_constraintBottom_toBottomOf="@+id/personaliseContainer"
+        app:layout_constraintEnd_toEndOf="@+id/personaliseContainer"
+        app:layout_constraintHorizontal_bias="0.81"
+        app:layout_constraintStart_toStartOf="@+id/personaliseContainer"
+        app:layout_constraintTop_toTopOf="@+id/personaliseContainer"
+        app:layout_constraintVertical_bias="0.87" />
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="edit prompts"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/t1dButton"
+        app:layout_constraintEnd_toEndOf="@+id/editPromptsCard"
+        app:layout_constraintStart_toStartOf="@+id/editPromptsCard"
+        app:layout_constraintTop_toTopOf="@+id/editPromptsCard"
+        app:layout_constraintVertical_bias="0.00999999" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

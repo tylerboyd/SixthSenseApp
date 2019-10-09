@@ -1,25 +1,21 @@
 package com.example.sixthsenseapp.intervention;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sixthsenseapp.R;
 import com.example.sixthsenseapp.dashboard.Dashboard;
-import com.example.sixthsenseapp.setup.SetupVerification;
 
 public class EmergencyActivity extends AppCompatActivity {
 
     private ImageButton nextButton;
     private ImageButton call111Button;
     private ImageButton callContactButton;
-
 
     private UserInformation uInfo;
 
@@ -46,7 +42,6 @@ public class EmergencyActivity extends AppCompatActivity {
             }
         });
 
-
         call111Button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -62,8 +57,5 @@ public class EmergencyActivity extends AppCompatActivity {
                 Toast.makeText(EmergencyActivity.this, "Festure not yet Implemented.", Toast.LENGTH_LONG).show();
             }
         });
-
-
-
     }
 }

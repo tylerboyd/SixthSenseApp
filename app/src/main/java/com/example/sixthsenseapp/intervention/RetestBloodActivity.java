@@ -4,12 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -128,12 +125,10 @@ public class RetestBloodActivity extends AppCompatActivity {
         });
     }
 
-
     @Override
     public void onResume(){
         super.onResume();
         nextButton.setEnabled(false);
-
     }
 
     private void readData(DataSnapshot dataSnapshot){

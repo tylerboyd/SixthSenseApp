@@ -11,7 +11,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sixthsenseapp.R;
@@ -107,12 +106,12 @@ public class SetupUserInfo2 extends AppCompatActivity {
                     }
                     else{
                         errorMessage.setTextColor(Color.RED);
-                        errorMessage.setText("Passwords do not match!");
+                        errorMessage.setText("Passwords do not match.");
                     }
                 }
                 else{
                     errorMessage.setTextColor(Color.RED);
-                    errorMessage.setText("Password must be at least 8 characters!");
+                    errorMessage.setText("Password must be at least 8 characters.");
                 }
             }
         });

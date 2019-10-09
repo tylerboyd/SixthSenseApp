@@ -43,7 +43,6 @@ public class TimerActivity extends AppCompatActivity {
         originClass = (String)i.getSerializableExtra("originClass");
         timeLength = uInfo.getInterventionWaitTime();
 
-
         startTimer();
 
         nextButton.setOnClickListener(new View.OnClickListener() {
@@ -60,10 +59,10 @@ public class TimerActivity extends AppCompatActivity {
     private void startTimer(){
 
         //change back to 60000 for 1 minute of partial time for calculation
-        //duration = timeLength * 60000;
+        duration = timeLength * 60000;
 
-        //Set to this for testing interventions
-        duration = 1000;
+        //Set to 1 second for testing interventions
+        //duration = 1000;
 
         demo = new CountDownTimer(duration, 1000) {
 

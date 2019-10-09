@@ -1,19 +1,17 @@
 package com.example.sixthsenseapp.setup;
 
 import android.content.Intent;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
-import com.example.sixthsenseapp.intervention.EmergencyActivity;
-import com.example.sixthsenseapp.mainMenu.MainActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.sixthsenseapp.R;
+import com.example.sixthsenseapp.mainMenu.MainActivity;
 
 public class SetupUserType extends AppCompatActivity {
 
-    private ImageView backgroundImage;
     private ImageButton mineButton;
     private ImageButton someoneElseButton;
     private ImageButton nextButton;
@@ -25,14 +23,10 @@ public class SetupUserType extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_user_type);
 
-        backgroundImage = findViewById(R.id.backgroundImage);
         mineButton = findViewById(R.id.mineButton);
         someoneElseButton = findViewById(R.id.someoneElseButton);
         nextButton = findViewById(R.id.nextButton);
         backButton = findViewById(R.id.backButton);
-
-        int imageResource = getResources().getIdentifier("@drawable/usertype", null, this.getPackageName());
-        backgroundImage.setImageResource(imageResource);
 
         nextButton.setEnabled(false);
 

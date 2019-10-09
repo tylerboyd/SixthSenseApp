@@ -8,22 +8,17 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.sixthsenseapp.intervention.UserInformation;
-import com.example.sixthsenseapp.mainMenu.LoginActivity;
 import com.example.sixthsenseapp.mainMenu.MainActivity;
 import com.example.sixthsenseapp.R;
 import com.example.sixthsenseapp.intervention.RetestBloodActivity;
 import com.example.sixthsenseapp.settings.tab1;
-import com.example.sixthsenseapp.settings.tab4;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -90,7 +85,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 readData(dataSnapshot);
-                Log.d("db", "READ");
+                Toast.makeText(Dashboard.this, "Data Read", Toast.LENGTH_SHORT).show();
 
             }
             @Override
@@ -98,7 +93,6 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
             }
         });
-
     }
 
     @Override
@@ -109,41 +103,6 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         } else {
             super.onBackPressed();
         }
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if(id == R.id.nav_dashboard)
-        {
-            //Intent intent = new Intent(Fill Dashboard Connection Here);
-            //startActivity(intent);
-        }
-        if(id == R.id.nav_calibrate)
-        {
-            //Create Toast Here
-        }
-        if(id == R.id.nav_toolbox)
-        {
-            //Create Toast Here
-        }
-        if(id == R.id.nav_settings)
-        {
-            //Intent intent = new Intent(Fill Settings Connection Here);
-            //startActivity(intent);
-        }
-        if(id == R.id.nav_logout)
-        {
-            //Run Logout Activity Here
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -164,7 +123,11 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             }
         }
         else if (id == R.id.nav_toolbox) {
-            Toast.makeText(this, "Feature Not Yet Implemented", Toast.LENGTH_LONG).show();
+            if(isDataRead == true) {
+                Intent intent = new Intent(Dashboard.this, T1DToolbox.class);
+                intent.putExtra("userInformation", uInfo);
+                startActivity(intent);
+            }
         }
         else if (id == R.id.nav_settings) {
             if(isDataRead == true) {
