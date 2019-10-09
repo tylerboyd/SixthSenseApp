@@ -97,7 +97,7 @@ public class SetupVerification extends AppCompatActivity {
                 //Gets data from each setup form
                 setData();
 
-                mAuth.createUserWithEmailAndPassword(patient.getEmailAddress(), patient.getPassword())
+                mAuth.createUserWithEmailAndPassword(patient.getEmailAddress(), SetupUserInfo2.getPassword())
                         .addOnCompleteListener(SetupVerification.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -142,7 +142,6 @@ public class SetupVerification extends AppCompatActivity {
         patient.setFirstName(SetupUserInfo.getFirstName());
         patient.setLastName(SetupUserInfo.getLastName());
         patient.setEmailAddress(SetupUserInfo.getEmailAddress());
-        patient.setPassword(SetupUserInfo2.getPassword());
         patient.setPhoneNumber(SetupUserInfo.getPhoneNumber());
         patient.setDateOfBirth(SetupUserInfo2.getDateOfBirth());
         patient.setGpName(SetupUserInfo3.getGpName());
