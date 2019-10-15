@@ -119,6 +119,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         else if (id == R.id.nav_calibrate) {
             if(isDataRead == true) {
                 Intent intent = new Intent(Dashboard.this, Calibrate.class);
+                intent.putExtra("userInformation", uInfo);
                 startActivity(intent);
             }
         }

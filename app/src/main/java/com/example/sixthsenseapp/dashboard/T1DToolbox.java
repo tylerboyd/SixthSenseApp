@@ -165,6 +165,7 @@ public class T1DToolbox extends AppCompatActivity implements NavigationView.OnNa
         else if (id == R.id.nav_calibrate) {
 
                 Intent intent = new Intent(this, Calibrate.class);
+                intent.putExtra("userInformation", uInfo);
                 startActivity(intent);
 
         }

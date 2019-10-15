@@ -115,14 +115,17 @@ public class tab4 extends AppCompatActivity implements NavigationView.OnNavigati
         }
         else if (id == R.id.nav_calibrate) {
             Intent intent = new Intent(tab4.this, Calibrate.class);
+            intent.putExtra("userInformation", uInfo);
             startActivity(intent);
         }
         else if (id == R.id.nav_toolbox) {
             Intent intent = new Intent(tab4.this, T1DToolbox.class);
+            intent.putExtra("userInformation", uInfo);
             startActivity(intent);
         }
         else if (id == R.id.nav_settings) {
             Intent intent = new Intent(this, tab1.class);
+            intent.putExtra("userInformation", uInfo);
             startActivity(intent);
         }
         else if (id == R.id.nav_logout) {
