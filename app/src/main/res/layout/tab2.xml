@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTintMode="add">
+
+
+    <ImageView
+        android:id="@+id/editPromptsCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:background="@drawable/settings_editprompts_card"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.004" />
+
+    <Button
+        android:id="@+id/t1dButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+
+        android:background="@drawable/setting_t1dtoolbox_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <Button
+        android:id="@+id/editAddButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@drawable/settings_editadd_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myMonitorCard"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myMonitorCard"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
+
+    <Button
+        android:id="@+id/myMonitorButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@drawable/settings_mymonitor_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myMonitorCard"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myMonitorCard"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/optimumContainer"
+        android:layout_width="327dp"
+        android:layout_height="117dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editPromptsCard"
+        app:layout_constraintEnd_toEndOf="@+id/editPromptsCard"
+        app:layout_constraintStart_toStartOf="@+id/editPromptsCard"
+        app:layout_constraintTop_toTopOf="@+id/editPromptsCard"
+        app:layout_constraintVertical_bias="0.120000005"
+        app:srcCompat="@drawable/settings_optimum_container" />
+
+    <TextView
+        android:id="@+id/lowbloodnumber"
+        android:layout_width="96dp"
+        android:layout_height="50dp"
+        android:background="#FFFFFF"
+        android:text="0.0"
+        android:textAlignment="center"
+        android:textColor="@color/common_google_signin_btn_text_light_pressed"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="@+id/optimumContainer"
+        app:layout_constraintEnd_toEndOf="@+id/optimumContainer"
+        app:layout_constraintHorizontal_bias="0.151"
+        app:layout_constraintStart_toStartOf="@+id/optimumContainer"
+        app:layout_constraintTop_toTopOf="@+id/optimumContainer"
+        app:layout_constraintVertical_bias="0.35000002" />
+
+    <TextView
+        android:id="@+id/mmolTextLow"
+        android:layout_width="31dp"
+        android:layout_height="12dp"
+        android:backgroundTintMode="add"
+        android:text="mmol/L"
+        android:textAllCaps="false"
+        android:textColor="#ea563c"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lowbloodnumber"
+        app:layout_constraintEnd_toEndOf="@+id/lowbloodnumber"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/lowbloodnumber"
+        app:layout_constraintTop_toTopOf="@+id/lowbloodnumber"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/lowerLimitBorder"
+        android:layout_width="96dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/optimumContainer"
+        app:layout_constraintEnd_toEndOf="@+id/optimumContainer"
+        app:layout_constraintHorizontal_bias="0.151"
+        app:layout_constraintStart_toStartOf="@+id/optimumContainer"
+        app:layout_constraintTop_toTopOf="@+id/optimumContainer"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/plusminusborder" />
+
+    <ImageButton
+        android:id="@+id/lowerLimitSubtract"
+        android:layout_width="39dp"
+        android:layout_height="22dp"
+        android:background="@drawable/minus"
+        android:backgroundTintMode="screen"
+        app:layout_constraintBottom_toBottomOf="@+id/lowerLimitBorder"
+        app:layout_constraintEnd_toEndOf="@+id/lowerLimitBorder"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="@+id/lowerLimitBorder"
+        app:layout_constraintTop_toTopOf="@+id/lowerLimitBorder" />
+
+    <ImageButton
+        android:id="@+id/lowerLimitAdd"
+        android:layout_width="39dp"
+        android:layout_height="22dp"
+        android:background="@drawable/plus"
+        android:backgroundTintMode="screen"
+        app:layout_constraintBottom_toBottomOf="@+id/lowerLimitBorder"
+        app:layout_constraintEnd_toEndOf="@+id/lowerLimitBorder"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="@+id/lowerLimitBorder"
+        app:layout_constraintTop_toTopOf="@+id/lowerLimitBorder" />
+
+    <TextView
+        android:id="@+id/highbloodnumber"
+        android:layout_width="96dp"
+        android:layout_height="50dp"
+        android:background="#FCF9F9"
+        android:text="0.0"
+        android:textAlignment="center"
+        android:textColor="@color/common_google_signin_btn_text_light_pressed"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="@+id/optimumContainer"
+        app:layout_constraintEnd_toEndOf="@+id/optimumContainer"
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toStartOf="@+id/optimumContainer"
+        app:layout_constraintTop_toTopOf="@+id/optimumContainer"
+        app:layout_constraintVertical_bias="0.358" />
+
+    <TextView
+        android:id="@+id/mmolTextHigh"
+        android:layout_width="31dp"
+        android:layout_height="12dp"
+        android:text="mmol/L"
+        android:textColor="#ea563c"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@+id/highbloodnumber"
+        app:layout_constraintEnd_toEndOf="@+id/highbloodnumber"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/highbloodnumber"
+        app:layout_constraintTop_toTopOf="@+id/highbloodnumber"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/upperLimitBorder"
+        android:layout_width="96dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/optimumContainer"
+        app:layout_constraintEnd_toEndOf="@+id/optimumContainer"
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toStartOf="@+id/optimumContainer"
+        app:layout_constraintTop_toTopOf="@+id/optimumContainer"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/plusminusborder" />
+
+    <ImageButton
+        android:id="@+id/upperLimitSubtract"
+        android:layout_width="39dp"
+        android:layout_height="22dp"
+        android:background="@drawable/minus"
+        android:backgroundTintMode="screen"
+        app:layout_constraintBottom_toBottomOf="@+id/upperLimitBorder"
+        app:layout_constraintEnd_toEndOf="@+id/upperLimitBorder"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="@+id/upperLimitBorder"
+        app:layout_constraintTop_toTopOf="@+id/upperLimitBorder" />
+
+    <ImageButton
+        android:id="@+id/upperLimitAdd"
+        android:layout_width="39dp"
+        android:layout_height="22dp"
+        android:background="@drawable/plus"
+        android:backgroundTintMode="screen"
+        app:layout_constraintBottom_toBottomOf="@+id/upperLimitBorder"
+        app:layout_constraintEnd_toEndOf="@+id/upperLimitBorder"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="@+id/upperLimitBorder"
+        app:layout_constraintTop_toTopOf="@+id/upperLimitBorder" />
+
+    <ImageView
+        android:id="@+id/interventionsContainer"
+        android:layout_width="327dp"
+        android:layout_height="117dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editPromptsCard"
+        app:layout_constraintEnd_toEndOf="@+id/editPromptsCard"
+        app:layout_constraintStart_toStartOf="@+id/editPromptsCard"
+        app:layout_constraintTop_toTopOf="@+id/editPromptsCard"
+        app:layout_constraintVertical_bias="0.38"
+        app:srcCompat="@drawable/settings_interventions_container" />
+
+    <ImageView
+        android:id="@+id/primaryTreatmentIcon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/interventionsContainer"
+        app:layout_constraintEnd_toEndOf="@+id/interventionsContainer"
+        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintStart_toStartOf="@+id/interventionsContainer"
+        app:layout_constraintTop_toTopOf="@+id/interventionsContainer"
+        app:layout_constraintVertical_bias="0.6"
+        app:srcCompat="@drawable/settings_glucose_tablet_icon"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/primaryText"
+        android:layout_width="72dp"
+        android:layout_height="wrap_content"
+        android:text="Primary"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/interventionsContainer"
+        app:layout_constraintEnd_toEndOf="@+id/interventionsContainer"
+        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintStart_toStartOf="@+id/interventionsContainer"
+        app:layout_constraintTop_toTopOf="@+id/interventionsContainer"
+        app:layout_constraintVertical_bias="0.95" />
+
+    <ImageView
+        android:id="@+id/secondaryTreatmentIcon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:backgroundTintMode="screen"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/interventionsContainer"
+        app:layout_constraintEnd_toEndOf="@+id/interventionsContainer"
+        app:layout_constraintStart_toStartOf="@+id/interventionsContainer"
+        app:layout_constraintTop_toTopOf="@+id/interventionsContainer"
+        app:layout_constraintVertical_bias="0.6"
+        app:srcCompat="@drawable/settings_glucose_gel_icon" />
+
+    <TextView
+        android:id="@+id/secondaryText"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="Secondary"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/interventionsContainer"
+        app:layout_constraintEnd_toEndOf="@+id/interventionsContainer"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="@+id/interventionsContainer"
+        app:layout_constraintTop_toTopOf="@+id/interventionsContainer"
+        app:layout_constraintVertical_bias="0.95" />
+
+    <ImageView
+        android:id="@+id/highBloodSugarTreatmentIcon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:backgroundTintMode="screen"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/interventionsContainer"
+        app:layout_constraintEnd_toEndOf="@+id/interventionsContainer"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="@+id/interventionsContainer"
+        app:layout_constraintTop_toTopOf="@+id/interventionsContainer"
+        app:layout_constraintVertical_bias="0.6"
+        app:srcCompat="@drawable/settings_insulin_pen_icon" />
+
+    <ImageView
+        android:id="@+id/waitingTimeContainer"
+        android:layout_width="120dp"
+        android:layout_height="97dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editPromptsCard"
+        app:layout_constraintEnd_toEndOf="@+id/editPromptsCard"
+        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintStart_toStartOf="@+id/editPromptsCard"
+        app:layout_constraintTop_toTopOf="@+id/editPromptsCard"
+        app:layout_constraintVertical_bias="0.62"
+        app:srcCompat="@drawable/settings_waittime_container" />
+
+    <TextView
+        android:id="@+id/highText"
+        android:layout_width="75dp"
+        android:layout_height="13dp"
+        android:text="High BS"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/interventionsContainer"
+        app:layout_constraintEnd_toEndOf="@+id/interventionsContainer"
+        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintStart_toStartOf="@+id/interventionsContainer"
+        app:layout_constraintTop_toTopOf="@+id/interventionsContainer"
+        app:layout_constraintVertical_bias="0.942" />
+
+
+    <EditText
+        android:id="@+id/waitTimeText"
+        android:layout_width="49dp"
+        android:layout_height="wrap_content"
+
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:inputType="number"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="@+id/waitingTimeContainer"
+        app:layout_constraintEnd_toEndOf="@+id/waitingTimeContainer"
+        app:layout_constraintStart_toStartOf="@+id/waitingTimeContainer"
+        app:layout_constraintTop_toTopOf="@+id/waitingTimeContainer"
+        app:layout_constraintVertical_bias="0.19" />
+
+    <TextView
+        android:id="@+id/minutesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="minutes"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/waitingTimeContainer"
+        app:layout_constraintEnd_toEndOf="@+id/waitingTimeContainer"
+        app:layout_constraintStart_toStartOf="@+id/waitingTimeContainer"
+        app:layout_constraintTop_toTopOf="@+id/waitingTimeContainer"
+        app:layout_constraintVertical_bias="0.63" />
+
+    <ImageView
+        android:id="@+id/waitingTimeBorder"
+        android:layout_width="72dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/waitingTimeContainer"
+        app:layout_constraintEnd_toEndOf="@+id/waitingTimeContainer"
+        app:layout_constraintStart_toStartOf="@+id/waitingTimeContainer"
+        app:layout_constraintTop_toTopOf="@+id/waitingTimeContainer"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/plusminusborder" />
+
+    <ImageButton
+        android:id="@+id/waitingTimeSubtract"
+        android:layout_width="30dp"
+        android:layout_height="15dp"
+        android:background="@drawable/minus"
+        android:backgroundTintMode="screen"
+        app:layout_constraintBottom_toBottomOf="@+id/waitingTimeBorder"
+        app:layout_constraintEnd_toEndOf="@+id/waitingTimeBorder"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="@+id/waitingTimeBorder"
+        app:layout_constraintTop_toTopOf="@+id/waitingTimeBorder" />
+
+    <ImageButton
+        android:id="@+id/waitingTimeAdd"
+        android:layout_width="30dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/plus"
+        android:backgroundTintMode="screen"
+        app:layout_constraintBottom_toBottomOf="@+id/waitingTimeBorder"
+        app:layout_constraintEnd_toEndOf="@+id/waitingTimeBorder"
+        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintStart_toStartOf="@+id/waitingTimeBorder"
+        app:layout_constraintTop_toTopOf="@+id/waitingTimeBorder"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <ImageView
+        android:id="@+id/personaliseContainer"
+        android:layout_width="215dp"
+        android:layout_height="97dp"
+        android:adjustViewBounds="false"
+        app:layout_constraintBottom_toBottomOf="@+id/editPromptsCard"
+        app:layout_constraintEnd_toEndOf="@+id/editPromptsCard"
+        app:layout_constraintHorizontal_bias="0.846"
+        app:layout_constraintStart_toStartOf="@+id/editPromptsCard"
+        app:layout_constraintTop_toTopOf="@+id/editPromptsCard"
+        app:layout_constraintVertical_bias="0.62"
+        app:srcCompat="@drawable/settings_personalise_container" />
+
+    <ImageView
+        android:id="@+id/personaliseIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/personaliseContainer"
+        app:layout_constraintEnd_toEndOf="@+id/personaliseContainer"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="@+id/personaliseContainer"
+        app:layout_constraintTop_toTopOf="@+id/personaliseContainer"
+        app:layout_constraintVertical_bias="0.51"
+        app:srcCompat="@drawable/settings_personalise_icon" />
+
+    <TextView
+        android:id="@+id/personaliseText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="personalise"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/personaliseContainer"
+        app:layout_constraintEnd_toEndOf="@+id/personaliseContainer"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="@+id/personaliseContainer"
+        app:layout_constraintTop_toTopOf="@+id/personaliseContainer"
+        app:layout_constraintVertical_bias="0.050000012" />
+
+    <ImageButton
+        android:id="@+id/personaliseButton"
+        android:layout_width="76dp"
+        android:layout_height="76dp"
+        android:background="@drawable/settings_personalise_plus"
+        app:layout_constraintBottom_toBottomOf="@+id/personaliseContainer"
+        app:layout_constraintEnd_toEndOf="@+id/personaliseContainer"
+        app:layout_constraintHorizontal_bias="0.81"
+        app:layout_constraintStart_toStartOf="@+id/personaliseContainer"
+        app:layout_constraintTop_toTopOf="@+id/personaliseContainer"
+        app:layout_constraintVertical_bias="0.87" />
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="edit prompts"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/t1dButton"
+        app:layout_constraintEnd_toEndOf="@+id/editPromptsCard"
+        app:layout_constraintStart_toStartOf="@+id/editPromptsCard"
+        app:layout_constraintTop_toTopOf="@+id/editPromptsCard"
+        app:layout_constraintVertical_bias="0.00999999" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

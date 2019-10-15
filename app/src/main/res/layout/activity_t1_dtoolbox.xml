@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bluecard"
+    tools:context=".dashboard.T1DToolbox" >
+
+    <ImageView
+        android:id="@+id/handIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerInside"
+        android:scaleX=".5"
+        android:scaleY=".5"
+        android:src="@drawable/t1d_toolbox_hand_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.00999999" />
+
+    <ImageView
+        android:id="@+id/graphBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX=".75"
+        android:scaleY=".75"
+        android:src="@drawable/t1d_toolbox_graph_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.651" />
+
+    <ImageView
+        android:id="@+id/graphBackground"
+        android:layout_width="267dp"
+        android:layout_height="253dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/t1d_toolbox_graph_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.29" />
+
+    <TextView
+        android:id="@+id/mmolText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mmol/L"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.16000003" />
+
+    <TextView
+        android:id="@+id/highLimitText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.0"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.279" />
+
+    <TextView
+        android:id="@+id/lowLimitText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.0"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.43" />
+
+    <ImageButton
+        android:id="@+id/addButton"
+        android:layout_width="110dp"
+        android:layout_height="119dp"
+        android:background="@drawable/t1d_toolbox_add_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.85" />
+
+    <ImageButton
+        android:id="@+id/feedbackButton"
+        android:layout_width="122dp"
+        android:layout_height="126dp"
+        android:background="@drawable/t1d_toolbox_request_feedback_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.86" />
+
+    <ImageView
+        android:id="@+id/iconContainer"
+        android:layout_width="328dp"
+        android:layout_height="52dp"
+        android:src="@drawable/t1d_toolbox_icon_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
+
+    <ImageButton
+        android:id="@+id/insulinCalculatorButton"
+        android:layout_width="25dp"
+        android:layout_height="42dp"
+        android:background="@drawable/t1d_toolbox_insulin_calculator_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/iconContainer"
+        app:layout_constraintEnd_toEndOf="@+id/iconContainer"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="@+id/iconContainer"
+        app:layout_constraintTop_toTopOf="@+id/iconContainer" />
+
+    <ImageButton
+        android:id="@+id/prescriptionsButton"
+        android:layout_width="35dp"
+        android:layout_height="39dp"
+        android:background="@drawable/t1d_toolbox_prescriptions_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/iconContainer"
+        app:layout_constraintEnd_toEndOf="@+id/iconContainer"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="@+id/iconContainer"
+        app:layout_constraintTop_toTopOf="@+id/iconContainer" />
+
+    <ImageButton
+        android:id="@+id/achievementsButton"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:background="@drawable/t1d_toolbox_achievements_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/iconContainer"
+        app:layout_constraintEnd_toEndOf="@+id/iconContainer"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="@+id/iconContainer"
+        app:layout_constraintTop_toTopOf="@+id/iconContainer" />
+
+    <ImageButton
+        android:id="@+id/libraryButton"
+        android:layout_width="37dp"
+        android:layout_height="28dp"
+        android:background="@drawable/t1d_toolbox_library_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/iconContainer"
+        app:layout_constraintEnd_toEndOf="@+id/iconContainer"
+        app:layout_constraintStart_toStartOf="@+id/iconContainer"
+        app:layout_constraintTop_toTopOf="@+id/iconContainer" />
+
+    <ImageButton
+        android:id="@+id/careCircleButton"
+        android:layout_width="25dp"
+        android:layout_height="33dp"
+        android:background="@drawable/t1d_toolbox_care_circle_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/iconContainer"
+        app:layout_constraintEnd_toEndOf="@+id/iconContainer"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="@+id/iconContainer"
+        app:layout_constraintTop_toTopOf="@+id/iconContainer" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

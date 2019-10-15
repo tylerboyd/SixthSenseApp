@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF"
+    android:backgroundTintMode="add">
+
+    <ImageView
+        android:id="@+id/editT1DCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:background="@drawable/settings_t1dtoolbox_card"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/editAddButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@drawable/settings_editadd_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myMonitorCard"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myMonitorCard"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <Button
+        android:id="@+id/myMonitorButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@drawable/settings_mymonitor_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myMonitorCard"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myMonitorCard"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
+
+    <Button
+        android:id="@+id/editPromptsButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@drawable/settings_edit_prompts_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/myBloodSugarBar"
+        android:layout_width="327dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editT1DCard"
+        app:layout_constraintEnd_toEndOf="@+id/editT1DCard"
+        app:layout_constraintStart_toStartOf="@+id/editT1DCard"
+        app:layout_constraintTop_toTopOf="@+id/editT1DCard"
+        app:layout_constraintVertical_bias="0.102"
+        app:srcCompat="@drawable/settings_my_blood_sugar_bar" />
+
+    <ImageView
+        android:id="@+id/insulinCalcBar"
+        android:layout_width="327dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editT1DCard"
+        app:layout_constraintEnd_toEndOf="@+id/editT1DCard"
+        app:layout_constraintStart_toStartOf="@+id/editT1DCard"
+        app:layout_constraintTop_toTopOf="@+id/editT1DCard"
+        app:layout_constraintVertical_bias="0.19999999"
+        app:srcCompat="@drawable/settings_insulin_calculator_bar" />
+
+    <ImageView
+        android:id="@+id/prescriptionsBar"
+        android:layout_width="327dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editT1DCard"
+        app:layout_constraintEnd_toEndOf="@+id/editT1DCard"
+        app:layout_constraintStart_toStartOf="@+id/editT1DCard"
+        app:layout_constraintTop_toTopOf="@+id/editT1DCard"
+        app:layout_constraintVertical_bias="0.3"
+        app:srcCompat="@drawable/settings_prescription_bar" />
+
+    <ImageView
+        android:id="@+id/libraryBar"
+        android:layout_width="327dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editT1DCard"
+        app:layout_constraintEnd_toEndOf="@+id/editT1DCard"
+        app:layout_constraintStart_toStartOf="@+id/editT1DCard"
+        app:layout_constraintTop_toTopOf="@+id/editT1DCard"
+        app:layout_constraintVertical_bias="0.4"
+        app:srcCompat="@drawable/settings_library_bar" />
+
+    <ImageView
+        android:id="@+id/achievementsBar"
+        android:layout_width="327dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editT1DCard"
+        app:layout_constraintEnd_toEndOf="@+id/editT1DCard"
+        app:layout_constraintStart_toStartOf="@+id/editT1DCard"
+        app:layout_constraintTop_toTopOf="@+id/editT1DCard"
+        app:srcCompat="@drawable/settings_achievements_bar" />
+
+    <ImageView
+        android:id="@+id/careCircleBar"
+        android:layout_width="327dp"
+        android:layout_height="49dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editT1DCard"
+        app:layout_constraintEnd_toEndOf="@+id/editT1DCard"
+        app:layout_constraintStart_toStartOf="@+id/editT1DCard"
+        app:layout_constraintTop_toTopOf="@+id/editT1DCard"
+        app:layout_constraintVertical_bias="0.6"
+        app:srcCompat="@drawable/settings_care_circle_bar" />
+
+    <Switch
+        android:id="@+id/bloodSugarSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:thumbTint="@color/white"
+        android:trackTint="#b2912f"
+        app:layout_constraintBottom_toBottomOf="@+id/myBloodSugarBar"
+        app:layout_constraintEnd_toEndOf="@+id/myBloodSugarBar"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="@+id/myBloodSugarBar"
+        app:layout_constraintTop_toTopOf="@+id/myBloodSugarBar" />
+
+    <Switch
+        android:id="@+id/insulinCalculatorSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:thumbTint="@color/white"
+        android:trackTint="#b2912f"
+        app:layout_constraintBottom_toBottomOf="@+id/insulinCalcBar"
+        app:layout_constraintEnd_toEndOf="@+id/insulinCalcBar"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="@+id/insulinCalcBar"
+        app:layout_constraintTop_toTopOf="@+id/insulinCalcBar" />
+
+    <Switch
+        android:id="@+id/prescriptionsSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:thumbTint="@color/white"
+        android:trackTint="#b2912f"
+        app:layout_constraintBottom_toBottomOf="@+id/prescriptionsBar"
+        app:layout_constraintEnd_toEndOf="@+id/prescriptionsBar"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="@+id/prescriptionsBar"
+        app:layout_constraintTop_toTopOf="@+id/prescriptionsBar" />
+
+    <Switch
+        android:id="@+id/librarySwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:thumbTint="@color/white"
+        android:trackTint="#b2912f"
+        app:layout_constraintBottom_toBottomOf="@+id/libraryBar"
+        app:layout_constraintEnd_toEndOf="@+id/libraryBar"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="@+id/libraryBar"
+        app:layout_constraintTop_toTopOf="@+id/libraryBar" />
+
+    <Switch
+        android:id="@+id/achievementsSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:thumbTint="@color/white"
+        android:trackTint="#b2912f"
+        app:layout_constraintBottom_toBottomOf="@+id/achievementsBar"
+        app:layout_constraintEnd_toEndOf="@+id/achievementsBar"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="@+id/achievementsBar"
+        app:layout_constraintTop_toTopOf="@+id/achievementsBar" />
+
+    <Switch
+        android:id="@+id/careCircleSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:thumbTint="@color/white"
+        android:trackTint="#b2912f"
+        app:layout_constraintBottom_toBottomOf="@+id/careCircleBar"
+        app:layout_constraintEnd_toEndOf="@+id/careCircleBar"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="@+id/careCircleBar"
+        app:layout_constraintTop_toTopOf="@+id/careCircleBar" />
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="edit T1D toolbox"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/editAddButton"
+        app:layout_constraintEnd_toEndOf="@+id/editT1DCard"
+        app:layout_constraintStart_toStartOf="@+id/editT1DCard"
+        app:layout_constraintTop_toTopOf="@+id/editT1DCard"
+        app:layout_constraintVertical_bias="0.01999998" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">SixthSenseApp</string>
+    <string name="app_name">Sixth Sense</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="tab_text_1">Monitor</string>
+    <string name="tab_text_2">Prompts</string>
+    <string name="tab_text_3">Toolbox</string>
+    <string name="tab_text_4">Account</string>
+    <string name="information">i</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="nightlight">nightlight</string>
+    <string name="auto_on">auto activate</string>
 </resources>

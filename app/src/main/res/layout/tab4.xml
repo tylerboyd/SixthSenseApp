@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00E4E1E1"
+    android:backgroundTint="#00E4E1E1"
+    android:backgroundTintMode="add"
+    android:foreground="#00E4E1E1"
+    android:foregroundTint="#00E4E1E1">
+
+
+    <ImageView
+        android:id="@+id/addEditCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:background="@drawable/settings_addedit_card"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/titleText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="edit/add account"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/addEditCard"
+        app:layout_constraintEnd_toEndOf="@+id/addEditCard"
+        app:layout_constraintStart_toStartOf="@+id/addEditCard"
+        app:layout_constraintTop_toTopOf="@+id/addEditCard"
+        app:layout_constraintVertical_bias="0.01999998" />
+
+    <Button
+        android:id="@+id/myMonitorButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@drawable/settings_mymonitor_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myMonitorCard"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myMonitorCard"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <Button
+        android:id="@+id/promptsButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@drawable/settings_edit_prompts_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myMonitorCard"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myMonitorCard"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
+
+
+    <Button
+        android:id="@+id/toolboxButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@drawable/setting_t1dtoolbox_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myMonitorCard"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myMonitorCard"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/updateText"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_marginStart="8dp"
+        android:text="Edit Login Details"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/addEditCard"
+        app:layout_constraintEnd_toEndOf="@+id/addEditCard"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="@+id/addEditCard"
+        app:layout_constraintTop_toTopOf="@+id/addEditCard"
+        app:layout_constraintVertical_bias="0.110000014" />
+
+    <ImageView
+        android:id="@+id/textBox"
+        android:layout_width="279dp"
+        android:layout_height="37dp"
+        app:layout_constraintBottom_toBottomOf="@+id/addEditCard"
+        app:layout_constraintEnd_toEndOf="@+id/addEditCard"
+        app:layout_constraintStart_toStartOf="@+id/addEditCard"
+        app:layout_constraintTop_toTopOf="@+id/addEditCard"
+        app:layout_constraintVertical_bias="0.19999999"
+        app:srcCompat="@drawable/textbox" />
+
+    <EditText
+        android:id="@+id/emailField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="@+id/textBox"
+        app:layout_constraintEnd_toEndOf="@+id/textBox"
+        app:layout_constraintStart_toStartOf="@+id/textBox"
+        app:layout_constraintTop_toTopOf="@+id/textBox" />
+
+    <ImageView
+        android:id="@+id/textBox2"
+        android:layout_width="279dp"
+        android:layout_height="37dp"
+        app:layout_constraintBottom_toBottomOf="@+id/addEditCard"
+        app:layout_constraintEnd_toEndOf="@+id/addEditCard"
+        app:layout_constraintStart_toStartOf="@+id/addEditCard"
+        app:layout_constraintTop_toTopOf="@+id/addEditCard"
+        app:layout_constraintVertical_bias="0.29000002"
+        app:srcCompat="@drawable/textbox" />
+
+    <EditText
+        android:id="@+id/passwordField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/textBox2"
+        app:layout_constraintEnd_toEndOf="@+id/textBox2"
+        app:layout_constraintStart_toStartOf="@+id/textBox2"
+        app:layout_constraintTop_toTopOf="@+id/textBox2" />
+
+    <Button
+        android:id="@+id/updateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/settings_update_info_button"
+        app:layout_constraintBottom_toBottomOf="@+id/addEditCard"
+        app:layout_constraintEnd_toEndOf="@+id/addEditCard"
+        app:layout_constraintStart_toStartOf="@+id/addEditCard"
+        app:layout_constraintTop_toTopOf="@+id/addEditCard"
+        app:layout_constraintVertical_bias="0.44" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
