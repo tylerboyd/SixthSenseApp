@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.sixthsenseapp.intervention.UserInformation;
 import com.example.sixthsenseapp.mainMenu.LoginActivity;
 import com.example.sixthsenseapp.mainMenu.MainActivity;
 import com.example.sixthsenseapp.R;
@@ -20,6 +21,9 @@ import com.example.sixthsenseapp.R;
 import com.example.sixthsenseapp.settings.tab1;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Calibrate extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -29,6 +33,10 @@ public class Calibrate extends AppCompatActivity implements NavigationView.OnNav
     private ImageButton connect;
     private ImageButton demo;
 
+    private UserInformation uInfo;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference ref;
+    private String userID;
     private FirebaseAuth mAuth;
 
     @Override
@@ -38,6 +46,14 @@ public class Calibrate extends AppCompatActivity implements NavigationView.OnNav
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+
+
+
+        mAuth = FirebaseAuth.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        ref = mFirebaseDatabase.getReference();
+        FirebaseUser user = mAuth.getCurrentUser();
+        userID = user.getUid();
 
         mAuth = LoginActivity.getFirebaseAuth();
 
@@ -91,14 +107,17 @@ public class Calibrate extends AppCompatActivity implements NavigationView.OnNav
         }
         else if (id == R.id.nav_calibrate) {
             Intent intent = new Intent(Calibrate.this, Calibrate.class);
+            intent.putExtra("userInformation", uInfo);
             startActivity(intent);
         }
         else if (id == R.id.nav_toolbox) {
             Intent intent = new Intent(Calibrate.this, T1DToolbox.class);
+            intent.putExtra("userInformation", uInfo);
             startActivity(intent);
         }
         else if (id == R.id.nav_settings) {
             Intent intent = new Intent(Calibrate.this, tab1.class);
+            intent.putExtra("userInformation", uInfo);
             startActivity(intent);
         }
         else if (id == R.id.nav_logout) {
