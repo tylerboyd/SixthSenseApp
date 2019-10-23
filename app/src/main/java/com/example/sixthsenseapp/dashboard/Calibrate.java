@@ -47,8 +47,6 @@ public class Calibrate extends AppCompatActivity implements NavigationView.OnNav
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
 
-
-
         mAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         ref = mFirebaseDatabase.getReference();
@@ -59,6 +57,9 @@ public class Calibrate extends AppCompatActivity implements NavigationView.OnNav
 
         connect = findViewById(R.id.connectButton);
         demo = findViewById(R.id.viewDemoButton);
+
+        Intent i = getIntent();
+        uInfo = (UserInformation)i.getSerializableExtra("userInformation");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
